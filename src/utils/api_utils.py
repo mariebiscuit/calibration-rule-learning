@@ -5,18 +5,7 @@ import time
 import requests
 import json
 
-TOGETHER_API_KEY = None
-OPENAI_API_KEY = None
-OPENAI_ORG = None
-
-with open('./src/api_keys.txt', 'r') as f:
-    for line in f:
-        line = line.strip()
-        if line == "together":
-            TOGETHER_API_KEY = next(f).strip()
-        elif line == "openai":
-            OPENAI_API_KEY = next(f).strip()
-            OPENAI_ORG = next(f).strip()
+from get_api_keys import TOGETHER_API_KEY, OPENAI_API_KEY, OPENAI_ORG
 
 together_client = OpenAI(
   api_key=TOGETHER_API_KEY,

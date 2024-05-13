@@ -1,29 +1,22 @@
-import sys
-from transformers import AutoModelForCausalLM, AutoTokenizer
 import os
-sys.path.append('/users/aloo1/thesis/rq2_fit')
-from inference import load_inference_model
 
 import pandas as pd
-from datasets import Dataset
-import datasets
-from transformers import Trainer, TrainingArguments
-import torch
-from torch import nn
-from torch.utils.data import DataLoader
-from typing import Dict, Union, Any
-
-sys.path.append('/users/aloo1/thesis/utils')
-from training import *
-
-from tqdm import tqdm
-from NeuroSurgeon.Models import model_configs, circuit_model
-from losses import compute_distribution_loss
+import numpy as np
 import pickle 
 
-os.environ['HF_TOKEN'] = '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'
-os.environ['TRANSFORMERS_CACHE'] = '/oscar/scratch/aloo1/model_cache_2'
+from typing import Dict, Union, Any
+from tqdm import tqdm
 
+from transformers import AutoTokenizer
+from transformers import Trainer, TrainingArguments
+import datasets
+import torch
+
+from torch import nn
+from torch.utils.data import DataLoader
+from NeuroSurgeon.Models import model_configs, circuit_model
+
+from losses import compute_distribution_loss
 from local_inference import _load_inference_model
 
 class TemperatureCallback:
@@ -289,20 +282,22 @@ def run_manual_trainer( conditions: dict,
 
 if __name__ == "__main__":
 
-    RUN_NAME= "gemma_2b_sparsing_manual_primitives_only_test"
+    from utils.get_api_keys import HF_TOKEN
+
+    RUN_NAME= "gemma2b_sparsing_manual_primitives_or"
 
     os.environ['CUDA_VISIBLE_DEVICES'] = "0,1"
     os.environ["WANDB_PROJECT"]=f"{RUN_NAME}"
     os.environ['TRANSFORMERS_CACHE'] = '/oscar/scratch/aloo1/model_cache_2'
+    os.environ['HF_TOKEN'] = HF_TOKEN
 
     conditions = {
-        # "test": ['hg03'],
-        "primitives_only": ['hg03', 'hg04', 'hg18', 'hg19', 'hg20'],
-        # "primitives_or": ['hg03', 'hg04', 'hg18', 'hg19', 'hg20', 'hg06', 'hg25'],
+        # "primitives_only": ['hg03', 'hg04', 'hg18', 'hg19', 'hg20'],
+        "primitives_or": ['hg03', 'hg04', 'hg18', 'hg19', 'hg20', 'hg06', 'hg25'],
         # "primitives_and": ['hg03', 'hg04', 'hg18', 'hg19', 'hg20', 'hg24', 'hg09']
     }
 
     run_manual_trainer(conditions=conditions, run_name=RUN_NAME, 
                 load_checkpoint="/users/aloo1/scratch/checkpoints_gemma_kl_fulldist_2b_5000/checkpoint-3000",
                 output_dir = f"/users/aloo1/scratch/checkpoints_{RUN_NAME}",
-                start_layer=0)
+                start_layer=0, eval_every=10, checkpoint_every=20)

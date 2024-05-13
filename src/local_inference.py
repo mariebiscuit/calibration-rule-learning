@@ -172,25 +172,33 @@ if __name__ == "__main__":
     import time
     import datasets
     from datasets.utils.logging import disable_progress_bar
+    from utils.get_api_keys import HF_TOKEN
     disable_progress_bar()
 
 
     timestamp =  str(time.time()).split(".")[0][-5:]
 
-    """
-    Sample querying a local model
-    """
-    os.environ['HF_TOKEN'] = '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'
+    os.environ['HF_TOKEN'] = HF_TOKEN
     os.environ['TRANSFORMERS_CACHE'] = '/oscar/scratch/aloo1/model_cache_2'
     os.environ["CUDA_VISIBLE_DEVICES"]="0,1"
 
     data = datasets.load_from_disk("./datasets/kl_dataset")["L2"]
 
-    ## Pretrained
-    query_local_completion('google/gemma-2b', data, "gemma2b-pretrained")
+    """
+    Querying a pretrained model
+    """
+    # query_local_completion('google/gemma-2b', data, "gemma2b-pretrained")
+    # query_local_completion('google/gemma-7b', data, "gemma7b-pretrained")
 
-    ## With LoRA tuning
+    """
+    Querying a model with LoRA Checkpoint
+    """ 
     # query_local_completion('google/gemma-2b', data, "gemma2b-tuned112",
     #                         lora_checkpoint="/users/aloo1/scratch/checkpoints_gemma_kl_fulldist_2b_5000/checkpoint-3000",
     #                         anstoks=([" True", " False"]))
+    
+    query_local_completion('google/gemma-7b', data, "gemma7b-tuned112",
+                            lora_checkpoint="/users/aloo1/scratch/checkpoints_gemma_kl_fulldist/checkpoint-2000",
+                            anstoks=([" True", " False"]))
+    
 

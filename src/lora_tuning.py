@@ -2,22 +2,18 @@ import pandas as pd
 import numpy as np
 from datasets import Dataset
 import os
+import sys
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from transformers import Trainer, TrainingArguments
 import transformers
-import sys
 from transformers import BitsAndBytesConfig
 import bitsandbytes as bnb
 from peft import LoraConfig, get_peft_model, PeftModel
 from tqdm import tqdm
 from typing import Type, Dict, List
 
-sys.path.append('/users/aloo1/thesis/task_vector_exp/icl_task_vectors')
-from core.models.llm_loading import _create_device_map
-
-sys.path.append('/users/aloo1/thesis')
-from utils.training import KLTrainer, RestrictedBackpropTrainer, NormalTrainer, get_target_idxes
+from losses import compute_distribution_loss
 
 def find_all_linear_names(model):
     cls = bnb.nn.Linear4bit #if args.bits == 4 else (bnb.nn.Linear8bitLt if args.bits == 8 else torch.nn.Linear)
@@ -75,11 +71,57 @@ def get_tokenizer(model_id):
                 add_eos_token=True)
     return tokenizer
 
-def train(model_factory, 
-          tokenizer_factory, 
+class KLTrainer(Trainer):
+    def __init__(self, *args, **kwargs):
+        super(SparsificationTrainer, self).__init__(*args, **kwargs)
+        self.true = self.tokenizer.encode(" True", add_special_tokens=False, return_tensors='pt').reshape(-1).to(torch.int64)
+        self.false = self.tokenizer.encode(" False", add_special_tokens=False, return_tensors='pt').reshape(-1).to(torch.int64)
+
+        with open('./datasets/kl_dataset/L1_hdists.pkl', 'rb') as f:
+            self.train_hdists = pickle.load(f)
+        
+        with open('./datasets/kl_dataset/L2_hdists.pkl', 'rb') as f:
+            self.test_hdists = pickle.load(f)
+
+    def compute_loss(self, model, inputs, return_outputs=False):
+        inputs['hdist'] = [self.train_hdists[i] for i in inputs['idx']]
+        _, kl = compute_distribution_loss(model, self.tokenizer, inputs, self.true, self.false)
+        return kl
+    
+    def evaluate(self, eval_dataset=None, ignore_keys=None, metric_key_prefix='eval'):
+        with torch.inference_mode():
+            test_losses = []
+            test_coef = []
+            for i in range(len(self.eval_dataset)):
+                inputs = self.eval_dataset[i]
+
+                if isinstance(inputs['idx'], int):
+                    inputs['hdist'] = self.test_hdists[inputs['idx']]
+                else:
+                    inputs['hdist'] = [self.test_hdists[i] for i in inputs['idx']]
+                
+                probs, kl_loss = compute_distribution_loss(self.model, self.tokenizer, 
+                            inputs, self.true, self.false)
+                
+                hdist = self.test_hdists[self.eval_dataset[i]['idx']][:, 0]
+                mdist = probs[:, self.true].reshape(-1)
+
+                r2 = np.corrcoef(mdist, hdist)[0, 1] ** 2
+
+                test_losses.append(kl_loss)
+                test_coef.append(r2)
+
+            kl_loss = np.mean(test_losses)
+            r2 = np.mean(np.mean(test_coef))
+        
+        return {"KL": kl_loss, "R2": r2}
+
+def train(model_factory: callable, 
+          tokenizer_factory: callable, 
           train_dataset: Type[Dataset],
-          loss_type: str,
-          run_name=str,
+          eval_dataset: Type[Dataset],
+          run_name:str,
+          output_dir:str,
           load_checkpoint:str=None,
           max_steps:int=1000,
           save_steps:int=200,
@@ -88,11 +130,16 @@ def train(model_factory,
           gradient_checkpointing:bool=True,
           gradient_checkpointing_kwargs={"use_reentrant":False},
           per_device_train_batch_size:int=1):
-
-    assert loss_type in ["KL", "RESTRICTED_LM", "LM"], 'Please enter a loss_type parameter within ["KL", "RESTRICTED_LM", "LM"]'
+    """
+    Performs training with HF Trainer
+    
+    With reference from:
+       - https://medium.com/@wwang1110/qlora-and-hf-trainer-with-custom-model-da636b0f7389
+       - https://medium.com/@samvardhan777/fine-tune-gemma-using-qlora-%EF%B8%8F-6b2f2e76dc55
+       - https://stackoverflow.com/questions/75814047/how-to-use-huggingface-trainer-with-multiple-gpus
+    """
 
     transformers.logging.set_verbosity_info()
-    os.environ["CUDA_VISIBLE_DEVICES"]="0,1"
 
     tokenizer = tokenizer_factory()
     
@@ -100,18 +147,11 @@ def train(model_factory,
     tokenizer.pad_token = tokenizer.eos_token
 
     train_dataset = train_dataset.map(lambda e: tokenizer(e['text'], truncation=False, padding='max_length'), batched=True)
+    eval_dataset = eval_dataset.map(lambda e: tokenizer(e['text'], truncation=False, padding='max_length'), batched=True)
     print("dataset length", len(train_dataset['text']))
     print(train_dataset['text'][2])
 
-    if loss_type == "KL": 
-        train_dataset = train_dataset.select_columns(['input_ids', 'attention_mask', 'idx']) # need idx column to access right hdists
-    elif loss_type in ["RESTRICTED_LM" or "LM"]:
-        train_dataset = train_dataset.select_columns(['input_ids', 'attention_mask'])
-    else:
-        raise ValueError("Invalid loss type") #shouldn't get here
-
     model= model_factory()
-    output_dir = f'/users/aloo1/scratch/checkpoints_{run_name}'
 
     trainer_arguments = dict(model=model,
             tokenizer=tokenizer,
@@ -138,48 +178,43 @@ def train(model_factory,
 
     torch.cuda.empty_cache()
 
-    if loss_type == "KL":
-        trainer = KLTrainer(**trainer_arguments)
-    elif loss_type == "RESTRICTED_LM":
-        trainer = RestrictedBackpropTrainer(**trainer_arguments)
-    elif loss_type == "LM":
-        trainer = Trainer(**trainer_arguments)
-    else:
-        raise ValueError("Invalid loss type") #shouldn't get here
-    
+    trainer = KLTrainer(**trainer_arguments)
     trainer.train()
     trainer.model.save_pretrained(output_dir)
     print("Done training!")
 
-    # https://medium.com/@wwang1110/qlora-and-hf-trainer-with-custom-model-da636b0f7389
-    # https://medium.com/@samvardhan777/fine-tune-gemma-using-qlora-%EF%B8%8F-6b2f2e76dc55
-    # https://stackoverflow.com/questions/75814047/how-to-use-huggingface-trainer-with-multiple-gpus
-
-if __name__ == "__main__":
-
+def main():
+    """
+    Example call:
+    `python3 ./src/lora_tuning run_name tuned112`
+    """
     RUN_NAME = sys.argv[1]
-    print(f"Starting run {RUN_NAME}...")
+    SUBSET_NAME = sys.argv[2]
 
-    datasets = {'kl': '/users/aloo1/thesis/rq2_fit/train_kl_label_dataset.csv', 
-               'indiv': '/users/aloo1/thesis/rq2_fit/indiv_dataset_train.csv',
-               'agg': '/users/aloo1/thesis/rq2_fit/train_agg_dataset.csv'}
+    from utils.get_api_keys import HF_TOKEN
+    from utils.get_concept_subsets import SUBSETS
 
-    with open('/users/aloo1/thesis/rq2_fit/held-out-concepts.txt', 'r') as f:
-        heldout = [x.strip() for x in f.readlines()]
-    
-    with open('/users/aloo1/thesis/rq2_fit/primitives.txt', 'r') as f:
-        primitives = [x.strip() for x in f.readlines()]
-
-    with open('/users/aloo1/thesis/sfl-data/boolean_concepts.txt', 'r') as f:
-        boolean = [x.strip() for x in f.readlines()]
+    print(f"Starting run {RUN_NAME} on subset {SUBSET_NAME}...")
 
     torch.cuda.empty_cache()
     os.environ["WANDB_PROJECT"]=f"{RUN_NAME}"
-    os.environ['HF_TOKEN'] = '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'
+    os.environ['HF_TOKEN'] = HF_TOKEN
     os.environ['TRANSFORMERS_CACHE'] = '/oscar/scratch/aloo1/model_cache_2'
 
+    concept_list = SUBSETS[SUBSET_NAME]
+    data = datasets.load_from_disk("./datasets/kl_dataset")
+    train_data = data["L1"].filter(lambda x: x['concepts'] in concept_list)
+    test_data = data["L2"].filter(lambda x: x['concepts'] in concept_list)
 
-    datasets = Dataset.from_csv(datasets['kl'])
-    # datasets = datasets.filter(lambda x: x['concepts'] in primitives)
-    train(model_factory = lambda: get_gemma_model('google/gemma-2b'), tokenizer_factory=lambda: get_tokenizer('google/gemma-2b'),
-         train_dataset=datasets, loss_type='KL', run_name=RUN_NAME, max_steps=5000, save_steps=500)
+    train(model_factory = lambda: get_gemma_model('google/gemma-2b'),
+          tokenizer_factory=lambda: get_tokenizer('google/gemma-2b'),
+          train_dataset=train_data, 
+          eval_dataset=test_data, 
+          run_name=RUN_NAME, 
+          output_dir= f'/users/aloo1/scratch/checkpoints_{RUN_NAME}',
+          max_steps=5000, 
+          save_steps=500)
+
+
+if __name__ == "__main__":
+    main()

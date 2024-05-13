@@ -5,6 +5,9 @@ import xicorpy
 
 from preprocess import process_human_data_file_to_df, process_response_file
 
+"""
+Data processors to generate dataframes compatible with visualization notebooks
+"""
 # def calculate_human_stats(use_hdf_cache: str=None):
 
 #     if use_hdf_cache is None:
@@ -80,9 +83,14 @@ def compile_raw_results(filepath_template: str) -> pd.DataFrame:
         model_df = pd.read_csv(filepath_template.format(concept=concept))
         myes, mno = model_df['norm_true_mass'], np.ones(model_df['norm_true_mass'].shape)-model_df['norm_true_mass']
 
-        answer_idx = (np.array(hdf[hdf['concepts'] == concept]['answers'])).astype(bool).astype(int)[:len(myes)]
-        hscore = np.vstack((hno, hyes))[answer_idx, np.arange(len(hyes))][:len(myes)]
+        if isinstance(np.array(hdf[hdf['concepts'] == concept]['answers'])[0], str):
+            answer_idx = (np.array(hdf[hdf['concepts'] == concept]['answers']) == "True").astype(int)
+        elif isinstance(np.array(hdf[hdf['concepts'] == concept]['answers'])[0], bool):
+            answer_idx = (np.array(hdf[hdf['concepts'] == concept]['answers'])).astype(int)
+        else:
+            raise ValueError("DataFrame 'answers' column neither string nor boolean.")
 
+        hscore = np.vstack((hno, hyes))[answer_idx, np.arange(len(hyes))]
         mscore = np.vstack((mno, myes))[answer_idx, np.arange(len(myes))]
 
         df_dict['concept'].append(concept)
@@ -112,16 +120,20 @@ def compile_raw_results(filepath_template: str) -> pd.DataFrame:
         df_dict['pcorrect_corr'].append(pcorrect_corr)
         df_dict['pcorrect_corr_p'].append(pcorrect_corr_p)
 
-    [print(k, len(v)) for k,v in df_dict.items()]
+    # [print(k, len(v)) for k,v in df_dict.items()] # debugging check
     df = pd.DataFrame.from_dict(df_dict)
+    print("Done processing!")
     return df
 
 
 if __name__ == "__main__":
 
-    prefix = "gemma2b-pretrained"
+    prefix = [
+        # "gemma2b-tuned112",
+        "gemma7b-tuned112",
+        # 'gemma2b-pretrained',
+        # 'gemma7b-pretrained'
+    ][0]
+
     df = compile_raw_results(f"./results/raw_results/{prefix}/{prefix}" + "_{concept}.csv")
     df.to_csv(f'./results/compiled_{prefix}.csv')
-
-    # FILE_TEMPLATE = "/users/aloo1/thesis/rq2_fit/raw_results_gemma_kl_fulldist_primitives/gemma_kl_fulldist_primitives_{concept}_L2.csv"
-    # SAVETO = '/users/aloo1/thesis/rq2_fit/corr_results_kl_fulldist_primitives.csv'
