@@ -1,0 +1,83 @@
+,top5_ans,top_ans,sampled_ans,mass_ans,raw_true_mass,raw_false_mass,norm_true_mass,concept,uid,answers,object
+0,"[' True', ' False', ' true', "" '"", ' false']", True,1,True,0.6937037706375122,0.2221614420413971,0.7574300169944763,hg03,gemma2b-pretrained,False,small yellow triangle
+1,"[' True', ' False', ' false', ' true', 'True']", True,1,True,0.5787437558174133,0.4184161126613617,0.5803921818733215,hg03,gemma2b-pretrained,False,small green circle
+2,"[' True', ' False', 'True', ' true', ' false']", True,0,True,0.6471500992774963,0.3496406674385071,0.6492336392402649,hg03,gemma2b-pretrained,False,medium green circle
+3,"[' False', ' True', ' false', 'False', '  ']", False,0,False,0.39774566888809204,0.5997669100761414,0.39873749017715454,hg03,gemma2b-pretrained,True,small blue triangle
+4,"[' True', ' False', 'True', '  ', ' true']", True,1,True,0.8612703084945679,0.13756616413593292,0.8622735738754272,hg03,gemma2b-pretrained,True,medium blue triangle
+5,"[' True', ' False', ' false', '  ', ' true']", True,1,True,0.566445529460907,0.42896604537963867,0.5690566301345825,hg03,gemma2b-pretrained,True,large blue triangle
+6,"[' False', ' True', ' false', 'False', '  ']", False,1,False,0.45784252882003784,0.539506196975708,0.45905962586402893,hg03,gemma2b-pretrained,False,small yellow triangle
+7,"[' False', ' True', 'False', ' false', 'True']", False,0,False,0.4773847162723541,0.5209803581237793,0.47816649079322815,hg03,gemma2b-pretrained,False,medium green rectangle
+8,"[' False', ' True', ' false', 'False', 'True']", False,1,False,0.45344609022140503,0.5447608232498169,0.45426061749458313,hg03,gemma2b-pretrained,True,medium blue circle
+9,"[' True', ' False', ' None', '  ', 'True']", True,1,True,0.5592716932296753,0.4395812749862671,0.5599139332771301,hg03,gemma2b-pretrained,True,medium blue triangle
+10,"[' True', ' False', '  ', 'True', 'False']", True,1,True,0.5333350896835327,0.4647230803966522,0.5343727469444275,hg03,gemma2b-pretrained,False,small green triangle
+11,"[' False', ' True', ' false', 'False', 'True']", False,0,False,0.46959224343299866,0.528866171836853,0.4703173041343689,hg03,gemma2b-pretrained,False,medium yellow rectangle
+12,"[' False', ' True', 'False', ' false', 'True']", False,1,False,0.38004323840141296,0.6189095973968506,0.3804416060447693,hg03,gemma2b-pretrained,True,large blue rectangle
+13,"[' False', ' True', ' false', 'False', 'True']", False,0,False,0.4643985629081726,0.5346516966819763,0.4648400545120239,hg03,gemma2b-pretrained,False,medium green triangle
+14,"[' True', ' False', ' None', 'True', '  ']", True,1,True,0.5992347598075867,0.39984598755836487,0.599786102771759,hg03,gemma2b-pretrained,False,small green circle
+15,"[' False', ' True', 'False', ' false', '  ']", False,0,False,0.37088578939437866,0.628088653087616,0.37126654386520386,hg03,gemma2b-pretrained,False,medium yellow circle
+16,"[' False', ' True', 'False', ' false', 'True']", False,1,False,0.33810555934906006,0.6608569622039795,0.3384566903114319,hg03,gemma2b-pretrained,False,large yellow rectangle
+17,"[' False', ' True', 'False', ' false', ' None']", False,0,False,0.383078932762146,0.6158699989318848,0.3834820091724396,hg03,gemma2b-pretrained,True,medium blue circle
+18,"[' False', ' True', ' None', ' false', 'False']", False,0,False,0.29634034633636475,0.7027042508125305,0.29662373661994934,hg03,gemma2b-pretrained,False,small green triangle
+19,"[' False', ' True', 'False', ' false', '  ']", False,1,False,0.24911169707775116,0.750079870223999,0.24931325018405914,hg03,gemma2b-pretrained,True,medium blue triangle
+20,"[' False', ' True', 'False', ' false', ' None']", False,0,False,0.3137351870536804,0.6854168772697449,0.3140014410018921,hg03,gemma2b-pretrained,False,large green rectangle
+21,"[' False', ' True', ' None', ' false', 'False']", False,0,False,0.24220748245716095,0.7565958499908447,0.24249768257141113,hg03,gemma2b-pretrained,False,medium green circle
+22,"[' False', ' True', 'False', ' false', '  ']", False,0,False,0.25586724281311035,0.7430996298789978,0.2561318576335907,hg03,gemma2b-pretrained,False,small yellow triangle
+23,"[' False', ' True', 'False', ' false', ' Fake']", False,0,False,0.38643330335617065,0.6127991676330566,0.3867301344871521,hg03,gemma2b-pretrained,False,medium green triangle
+24,"[' False', ' True', 'False', ' false', ' Fake']", False,1,False,0.31715619564056396,0.6820853352546692,0.31739693880081177,hg03,gemma2b-pretrained,False,medium yellow circle
+25,"[' True', ' False', '  ', 'True', 'False']", True,1,True,0.5790205001831055,0.42036375403404236,0.5793772339820862,hg03,gemma2b-pretrained,False,medium green circle
+26,"[' False', ' True', ' false', '  ', ' None']", False,0,False,0.23248924314975739,0.7663506865501404,0.2327592670917511,hg03,gemma2b-pretrained,False,small green rectangle
+27,"[' False', ' True', 'False', '  ', ' false']", False,0,False,0.4079129695892334,0.5912975668907166,0.40823525190353394,hg03,gemma2b-pretrained,True,large blue triangle
+28,"[' True', ' False', ' false', ' Tru', 'True']", True,1,True,0.6124117970466614,0.387043297290802,0.6127457022666931,hg03,gemma2b-pretrained,False,large green triangle
+29,"[' False', ' True', ' None', 'False', ' false']", False,0,False,0.2496090978384018,0.749652087688446,0.2497936487197876,hg03,gemma2b-pretrained,False,large green circle
+30,"[' False', ' True', ' None', ' false', 'False']", False,1,False,0.21721802651882172,0.782131552696228,0.21735939383506775,hg03,gemma2b-pretrained,False,small green rectangle
+31,"[' False', ' True', '  ', 'False', ' false']", False,0,False,0.12022986263036728,0.8790062069892883,0.12032178044319153,hg03,gemma2b-pretrained,False,small yellow rectangle
+32,"[' False', ' True', 'False', ' false', 'True']", False,1,False,0.45098719000816345,0.5483835339546204,0.4512711763381958,hg03,gemma2b-pretrained,True,large blue circle
+33,"[' False', ' True', 'False', ' false', ' None']", False,0,False,0.24582849442958832,0.7536283731460571,0.24596208333969116,hg03,gemma2b-pretrained,False,medium yellow circle
+34,"[' False', ' True', 'False', ' false', ' None']", False,0,False,0.20498614013195038,0.7943649888038635,0.20511923730373383,hg03,gemma2b-pretrained,False,large green triangle
+35,"[' False', ' True', 'False', ' false', ' None']", False,0,False,0.2024524062871933,0.796891987323761,0.20258522033691406,hg03,gemma2b-pretrained,False,medium green circle
+36,"[' False', ' True', ' None', 'False', '  ']", False,0,False,0.3910285234451294,0.6080521941184998,0.39138832688331604,hg03,gemma2b-pretrained,True,small blue triangle
+37,"[' True', ' False', 'True', 'False', '  ']", True,0,True,0.6158593893051147,0.3835699260234833,0.6162110567092896,hg03,gemma2b-pretrained,True,large blue triangle
+38,"[' False', ' True', ' false', 'False', ' None']", False,1,False,0.19856800138950348,0.8009477257728577,0.19866421818733215,hg03,gemma2b-pretrained,False,medium yellow rectangle
+39,"[' False', ' True', ' None', 'False', ' false']", False,0,False,0.23705747723579407,0.7623001337051392,0.23720987141132355,hg03,gemma2b-pretrained,True,medium blue rectangle
+40,"[' False', ' True', ' None', 'False', ' false']", False,0,False,0.3552767038345337,0.6440168023109436,0.3555278778076172,hg03,gemma2b-pretrained,True,large blue rectangle
+41,"[' False', ' True', 'False', ' false', ' None']", False,0,False,0.1251046359539032,0.8744187355041504,0.12516428530216217,hg03,gemma2b-pretrained,False,medium yellow circle
+42,"[' False', ' True', 'False', ' false', ' None']", False,0,False,0.21953393518924713,0.7799471616744995,0.21964791417121887,hg03,gemma2b-pretrained,False,small green rectangle
+43,"[' False', ' True', ' false', 'False', ' None']", False,0,False,0.07945547997951508,0.9201081991195679,0.07949016243219376,hg03,gemma2b-pretrained,False,small green circle
+44,"[' False', ' True', 'False', ' false', ' Tru']", False,0,False,0.34703442454338074,0.6522238850593567,0.3472920060157776,hg03,gemma2b-pretrained,False,large yellow rectangle
+45,"[' False', ' True', 'False', ' false', ' None']", False,0,False,0.250746488571167,0.7486434578895569,0.2508995532989502,hg03,gemma2b-pretrained,True,large blue circle
+46,"[' False', ' True', 'False', ' false', '  ']", False,0,False,0.30718863010406494,0.6923444271087646,0.3073321282863617,hg03,gemma2b-pretrained,True,medium blue rectangle
+47,"[' False', ' True', ' false', 'False', ' None']", False,0,False,0.13884270191192627,0.860649585723877,0.13891322910785675,hg03,gemma2b-pretrained,False,small yellow triangle
+48,"[' False', ' True', 'False', ' false', ' None']", False,1,False,0.1530785709619522,0.8464055061340332,0.15315759181976318,hg03,gemma2b-pretrained,False,medium green circle
+49,"[' False', ' True', 'False', ' false', ' None']", False,0,False,0.0976785346865654,0.9018254280090332,0.09772700816392899,hg03,gemma2b-pretrained,False,small yellow rectangle
+50,"[' False', ' True', 'False', ' false', ' None']", False,1,False,0.17829187214374542,0.821256160736084,0.17837248742580414,hg03,gemma2b-pretrained,False,medium green rectangle
+51,"[' False', ' True', 'False', ' false', '  ']", False,0,False,0.178290456533432,0.8212859630584717,0.17836600542068481,hg03,gemma2b-pretrained,True,small blue circle
+52,"[' False', ' True', 'False', ' false', ' None']", False,0,False,0.11997195333242416,0.8794532418251038,0.12004095315933228,hg03,gemma2b-pretrained,False,small yellow triangle
+53,"[' False', ' True', ' false', 'False', ' None']", False,1,False,0.19267983734607697,0.806664764881134,0.1928061991930008,hg03,gemma2b-pretrained,True,medium blue circle
+54,"[' False', ' True', 'False', '  ', ' false']", False,0,False,0.1855507642030716,0.813974916934967,0.18563881516456604,hg03,gemma2b-pretrained,False,medium yellow rectangle
+55,"[' False', ' True', 'False', ' false', '  ']", False,0,False,0.1992104947566986,0.8004049062728882,0.19928713142871857,hg03,gemma2b-pretrained,False,small yellow circle
+56,"[' False', ' True', 'False', ' false', ' None']", False,0,False,0.1690329909324646,0.830455482006073,0.16911950707435608,hg03,gemma2b-pretrained,False,medium green circle
+57,"[' False', ' True', ' false', ' None', 'False']", False,0,False,0.25294265151023865,0.7464001774787903,0.25310900807380676,hg03,gemma2b-pretrained,False,large green triangle
+58,"[' False', ' True', 'False', ' false', 'True']", False,0,False,0.3736923336982727,0.6258859038352966,0.373850017786026,hg03,gemma2b-pretrained,False,medium green rectangle
+59,"[' False', ' True', ' None', ' false', 'False']", False,0,False,0.33087965846061707,0.6684557795524597,0.3310997188091278,hg03,gemma2b-pretrained,True,large blue circle
+60,"[' False', ' True', 'False', ' None', ' false']", False,0,False,0.18911036849021912,0.8103517889976501,0.1892121434211731,hg03,gemma2b-pretrained,False,medium green circle
+61,"[' False', ' True', 'False', ' None', ' false']", False,0,False,0.1438221037387848,0.8556321859359741,0.14390063285827637,hg03,gemma2b-pretrained,False,large green circle
+62,"[' True', ' False', ' None', 'True', ' Tru']", True,1,True,0.8797242641448975,0.11988051980733871,0.8800721168518066,hg03,gemma2b-pretrained,True,small blue triangle
+63,"[' True', ' False', 'True', 'False', '  ']", True,0,True,0.59520423412323,0.4043584167957306,0.5954647064208984,hg03,gemma2b-pretrained,True,medium blue rectangle
+64,"[' False', ' True', ' false', 'False', ' None']", False,0,False,0.07480446249246597,0.9248191714286804,0.07483262568712234,hg03,gemma2b-pretrained,False,small yellow triangle
+65,"[' False', ' True', ' None', 'False', ' Fake']", False,0,False,0.11282483488321304,0.8866152763366699,0.11288803815841675,hg03,gemma2b-pretrained,False,large green triangle
+66,"[' False', ' True', 'False', ' false', ' None']", False,0,False,0.15218734741210938,0.8472457528114319,0.15227366983890533,hg03,gemma2b-pretrained,False,medium yellow rectangle
+67,"[' False', ' True', ' None', 'False', ' false']", False,0,False,0.18985559046268463,0.8095940351486206,0.18996013700962067,hg03,gemma2b-pretrained,True,small blue rectangle
+68,"[' False', ' True', 'False', ' false', '  ']", False,0,False,0.1575859785079956,0.8420381546020508,0.15764522552490234,hg03,gemma2b-pretrained,False,small green triangle
+69,"[' False', ' True', 'False', ' false', ' Fake']", False,1,False,0.07247403264045715,0.9271571636199951,0.07250077277421951,hg03,gemma2b-pretrained,False,medium yellow triangle
+70,"[' False', ' True', ' None', ' false', ' Tru']", False,1,False,0.4086430072784424,0.590561032295227,0.4089685380458832,hg03,gemma2b-pretrained,True,small blue circle
+71,"[' False', ' True', 'False', ' false', 'True']", False,0,False,0.49688804149627686,0.502777636051178,0.49705421924591064,hg03,gemma2b-pretrained,False,large yellow rectangle
+72,"[' False', ' True', ' false', 'False', ' None']", False,0,False,0.07872309535741806,0.9210085272789001,0.07874423265457153,hg03,gemma2b-pretrained,False,small green triangle
+73,"[' False', ' True', ' false', ' Tru', ' None']", False,0,False,0.3046388626098633,0.6946693062782288,0.304849773645401,hg03,gemma2b-pretrained,False,large green rectangle
+74,"[' False', ' True', 'False', ' false', '  ']", False,1,False,0.10120504349470139,0.8985593914985657,0.10122888535261154,hg03,gemma2b-pretrained,False,small green triangle
+75,"[' False', ' True', ' false', 'False', ' Fake']", False,0,False,0.05443447455763817,0.9453281760215759,0.05444739758968353,hg03,gemma2b-pretrained,False,medium green triangle
+76,"[' False', ' True', ' None', ' false', 'False']", False,1,False,0.37317314743995667,0.62621009349823,0.3734034597873688,hg03,gemma2b-pretrained,True,large blue circle
+77,"[' False', ' True', ' None', ' false', 'False']", False,0,False,0.1573026478290558,0.8421598672866821,0.15738724172115326,hg03,gemma2b-pretrained,True,small blue rectangle
+78,"[' False', ' True', ' false', 'False', '  ']", False,0,False,0.08363131433725357,0.9160183072090149,0.08366062492132187,hg03,gemma2b-pretrained,False,medium green rectangle
+79,"[' False', ' True', 'False', ' false', ' None']", False,0,False,0.2872534692287445,0.7123990058898926,0.2873533368110657,hg03,gemma2b-pretrained,False,medium yellow rectangle
+80,"[' False', ' True', ' false', 'False', ' None']", False,0,False,0.09372466802597046,0.9059432744979858,0.093755804002285,hg03,gemma2b-pretrained,False,large yellow triangle
+81,"[' False', ' True', ' false', 'False', ' None']", False,0,False,0.190918430685997,0.8085744380950928,0.1910153031349182,hg03,gemma2b-pretrained,False,large yellow circle

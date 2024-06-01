@@ -241,8 +241,8 @@ def compute_restricted_ce_loss(model, tokenizer, inputs):
     """
     LM cross-entropy loss but only at answer tokens
     """
-    ids = inputs['input_ids'] if inputs['input_ids'].isinstance(list) else inputs['input_ids'].cpu()
-    
+    ids = inputs['input_ids'] if isinstance(inputs['input_ids'], list) else inputs['input_ids'].cpu()
+
     keep_seq_idx = get_target_idxes(
             tokenizer,
             ids,
@@ -269,7 +269,10 @@ def compute_restricted_ce_loss(model, tokenizer, inputs):
     ).to(
         torch.int64
     )  # (batch x seq len)
-
+    
+    if len(keep_seq_idx.shape) == 1:
+        keep_seq_idx = torch.unsqueeze(keep_seq_idx, 0)
+        
     only_answers = torch.gather(labels, 1, keep_seq_idx).to(
         device
     )  # get token_ids of only answer tokens

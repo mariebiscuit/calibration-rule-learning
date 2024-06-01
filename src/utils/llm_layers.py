@@ -2,7 +2,9 @@ from torch import nn
 from transformers import PreTrainedModel
 import math
 
- # credit to https://github.com/roeehendel/icl_task_vectors/blob/master/core/models/
+"""
+All credit to https://github.com/roeehendel/icl_task_vectors/blob/master/core/models/
+"""
 
 def get_nested_attr(obj, attr_path):
     attrs = attr_path.split(".")

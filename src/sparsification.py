@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import pickle 
 
-from typing import Dict, Union, Any
+from typing import Dict, Union, Any, Tuple
 from tqdm import tqdm
 
 from transformers import AutoTokenizer
@@ -17,7 +17,7 @@ from torch.utils.data import DataLoader
 from NeuroSurgeon.Models import model_configs, circuit_model
 
 from losses import compute_distribution_loss
-from local_inference import _load_inference_model
+from utils.model_loading import load_model_and_tokenizer
 
 class TemperatureCallback:
     # A simple callback that updates the probes temperature parameter,
@@ -28,18 +28,6 @@ class TemperatureCallback:
     def update(self, model):
         temp = model.temperature
         model.temperature = temp * self.temp_increase
-
-
-def load_model_and_tokenizer(model_id: str, lora_checkpoint: str =None):
-
-    model = _load_inference_model(model_id, lora_checkpoint)
-                                    
-    tokenizer = AutoTokenizer.from_pretrained(
-            model_id,
-            cache_dir=os.environ['TRANSFORMERS_CACHE'], 
-            add_eos_token=True)
-
-    return model, tokenizer
 
 
 class SparsificationTrainer(Trainer):
@@ -109,7 +97,12 @@ class SparsificationTrainer(Trainer):
         
         return {"KL": kl_loss, "R2": r2, "L0": L0}
 
-def load_wrapped_model(model_id, load_checkpoint, l0_lambda, start_layer):
+def load_wrapped_model(model_id: str, 
+                    load_checkpoint: str, 
+                    l0_lambda: float, 
+                    start_layer: int, 
+                    load_sparsification_checkpoint: str = None):
+
     model, tokenizer = load_model_and_tokenizer(model_id, load_checkpoint)
 
     target_layers = list(model.state_dict().keys())
@@ -148,6 +141,13 @@ def load_wrapped_model(model_id, load_checkpoint, l0_lambda, start_layer):
         if p.requires_grad:
             print(n)
     
+    if load_sparsification_checkpoint is not None:
+        checkpoint = torch.load(load_sparsification_checkpoint)
+        model.load_state_dict(checkpoint['state_dict'])
+        stats = model.compute_l0_statistics()
+        print("Sparsification checkpoint \%", stats['total_l0'].item() / stats['max_l0'])
+        print(stats)
+
     return model, tokenizer
 
 # this gives OOM because loss needs to be backwarded and clearaed for each input
@@ -216,19 +216,27 @@ def run_manual_trainer( conditions: dict,
                         load_checkpoint: str,
                         output_dir: str,
                         start_layer: int=8,
+                        load_prev_epoch: Tuple[str, int]= None,
                         l0_lambda: float=1e-8,
-                         num_epochs=300,
-                         batch_size=2, 
-                         final_temp=150,
-                         eval_every: int = 10,
-                         checkpoint_every: int = 20):
+                        num_epochs=300,
+                        batch_size=2, 
+                        final_temp=150,
+                        eval_every: int = 10,
+                        checkpoint_every: int = 20):
 
     if not os.path.isdir(output_dir):
         os.mkdir(output_dir)
 
     model, tokenizer = load_wrapped_model("google/gemma-2b", load_checkpoint, l0_lambda, start_layer)
     optimizer = torch.optim.AdamW(model.parameters(), lr=0.001)
-    
+    start_epoch = 0
+
+    if load_prev_epoch is not None:
+        state_dict, start_epoch = load_prev_epoch
+        print(f"Loading checkpoint from {state_dict}...")
+        checkpoint = torch.load(state_dict)
+        model.load_state_dict(checkpoint['state_dict'])
+
     for condition, concept_list in conditions.items():
         data = datasets.load_from_disk("./datasets/kl_dataset")
         train_data = data["L1"].filter(lambda x: x['concepts'] in concept_list).map(
@@ -244,9 +252,9 @@ def run_manual_trainer( conditions: dict,
         falsetok = tokenizer.encode(" False", add_special_tokens=False, return_tensors='pt').reshape(-1).to(torch.int64)
 
         torch.cuda.empty_cache()
-        progress_bar = tqdm(range(num_epochs))
+        progress_bar = tqdm(range(start_epoch, num_epochs))
 
-        for epoch in range(num_epochs):
+        for epoch in range(start_epoch, num_epochs):
             total_train_loss = torch.zeros((1)).to(model.wrapped_model.device)
             concept_order = []
             for batch in train_dataloader:
@@ -276,15 +284,15 @@ def run_manual_trainer( conditions: dict,
                 checkpoint = {'state_dict': model.state_dict(),'optimizer' : optimizer.state_dict()}
                 torch.save(checkpoint, os.path.join(output_dir, f"{condition}_{epoch}_sparsified_checkpoint.pth"))
 
-            checkpoint = {'state_dict': model.state_dict(),'optimizer' : optimizer.state_dict()}
-            torch.save(checkpoint, os.path.join(output_dir, f"{condition}_{epoch}_sparsified_checkpoint.pth"))
+        checkpoint = {'state_dict': model.state_dict(),'optimizer' : optimizer.state_dict()}
+        torch.save(checkpoint, os.path.join(output_dir, f"{condition}_{epoch}_sparsified_checkpoint.pth"))
 
 
 if __name__ == "__main__":
 
     from utils.get_api_keys import HF_TOKEN
 
-    RUN_NAME= "gemma2b_sparsing_manual_primitives_or"
+    RUN_NAME= "gemma2b_100e_sparsing_manual_primitives_or"
 
     os.environ['CUDA_VISIBLE_DEVICES'] = "0,1"
     os.environ["WANDB_PROJECT"]=f"{RUN_NAME}"
@@ -298,6 +306,7 @@ if __name__ == "__main__":
     }
 
     run_manual_trainer(conditions=conditions, run_name=RUN_NAME, 
-                load_checkpoint="/users/aloo1/scratch/checkpoints_gemma_kl_fulldist_2b_5000/checkpoint-3000",
+                load_checkpoint="/users/aloo1/scratch/checkpoints_gemma-2b-tuned112/checkpoint-1500",
+                # load_prev_epoch=("/users/aloo1/scratch/checkpoints_gemma2b_sparsing_manual_primitives_or/primitives_or_88_sparsified_checkpoint.pth", 89),
                 output_dir = f"/users/aloo1/scratch/checkpoints_{RUN_NAME}",
                 start_layer=0, eval_every=10, checkpoint_every=20)

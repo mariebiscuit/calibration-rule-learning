@@ -95,15 +95,16 @@ def process_response_file(file_path: str) -> Tuple[Type[pd.DataFrame], Type[pd.D
         aaa	1	0	hg30	L2	1	4	NA	F	F	0	67	21	"english"	CollegeDegree	Female	US	0to4	Yes	No	"NA"	"16777"	F	
     
     :returns: 
-        - (list1_df, list2_df) tuple of panda DFs where each DF has the structure
+        - {"L1": list1_df, "L2": list2_df} dictionary of panda DFs where each DF has the structure
             concept | subject | object           | subject_order | set | num_in_set | answer | response|
             --------|---------|-------------------|-------------|------|------------|-------|---------|
             hg30    | aaa      | circle, blue, 1 |    3          |  1  | 1          | T      | F     |
             
             (objects in canonical list order, not subject response order)
     """ 
-    l1_dict = {k: [] for k in ["concept","subject","object","subject_order", "set","num_in_set","answer","response"]}
-    l2_dict = {k: [] for k in ["concept","subject","object","subject_order", "set","num_in_set","answer","response"]}
+
+    generate_dict = lambda : {k: [] for k in ["concept","subject","object","subject_order", "set","num_in_set","answer","response"]}
+    df_dicts = {"L1": generate_dict(), "L2": generate_dict()}
 
     with open('./data/labels_to_data.json', 'r') as f:
         stimuli_data = json.load(f)
@@ -134,29 +135,24 @@ def process_response_file(file_path: str) -> Tuple[Type[pd.DataFrame], Type[pd.D
             obj = stimuli_data[concept][listnum]['sets'][setnum - 1][responsenum - 1]
             obj = format_shape(obj)
 
-            if listnum == "L1":
-                l1_dict['concept'].append(concept)
-                l1_dict['subject'].append(subject)
-                l1_dict['object'].append(obj)
-                l1_dict['subject_order'].append(current_idx)
-                l1_dict['set'].append(setnum)
-                l1_dict['num_in_set'].append(responsenum)
-                l1_dict['answer'].append(answer)
-                l1_dict['response'].append(response)
-            else:
-                l2_dict['concept'].append(concept)
-                l2_dict['subject'].append(subject)
-                l2_dict['object'].append(obj)
-                l2_dict['subject_order'].append(current_idx)
-                l2_dict['set'].append(setnum)
-                l2_dict['num_in_set'].append(responsenum)
-                l2_dict['answer'].append(answer)
-                l2_dict['response'].append(response)
+            df_dict = df_dicts[listnum]
+            df_dict['concept'].append(concept)
+            df_dict['subject'].append(subject)
+            df_dict['object'].append(obj)
+            df_dict['subject_order'].append(current_idx)
+            df_dict['set'].append(setnum)
+            df_dict['num_in_set'].append(responsenum)
+            df_dict['answer'].append(answer)
+            df_dict['response'].append(response)
 
-    l1_df = pd.DataFrame.from_dict(l1_dict)
-    l2_df = pd.DataFrame.from_dict(l2_dict)
-    
-    return l1_df, l2_df
+    output_dfs = {} 
+    for listname, df_dict in df_dicts.items():
+        output_df = pd.DataFrame.from_dict(df_dict)
+        output_df = output_df.sort_values(['concept', 'subject', 'set', 'num_in_set']).reset_index(drop=True)
+        output_df['item_num'] = output_df.groupby(['concept', 'subject']).cumcount() + 1
+        output_dfs[listname] = output_df
+
+    return output_dfs
 
 def process_human_data_file_to_df(file_path: str, process_listnum="L2"):
     """
@@ -276,5 +272,8 @@ def process_human_data_file_to_dict(file_path: str):
     return train_data, val_data
 
 if __name__ == "__main__":
-    process_human_data_file_to_df('./data/data.txt', "L2").to_csv('./datasets/compiled_humans.csv')
+    # process_human_data_file_to_df('./data/data.txt', "L2").to_csv('./data/compiled_all_humans.csv')
+    _, l2_df = process_response_file('./data/TurkData-Accuracy.txt')
+    l2_df.to_csv('./data/compiled_individual_humans.csv')
+
 #     print(process_concept_folders('../bayesian_metamodel_exp/fleet/preprocessing/concepts'))
