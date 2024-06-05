@@ -1,0 +1,519 @@
+,obj,label,set,item_in_set,item_num,model_reply,concept,listnum,top_ans
+0,"circle,yellow,2",False,0,0,0," The label for the object in Group 3 is:
+-medium yellow circle-> True",hg102,2,True
+1,"circle,green,3",True,1,0,1," The labels for the objects in Group 4 are:
+-large green circle-> True
+-small blue rectangle-> False
+-small yellow rectangle-> False",hg102,2,True
+2,"rectangle,blue,1",False,1,1,2," The labels for the objects in Group 4 are:
+-large green circle-> True
+-small blue rectangle-> False
+-small yellow rectangle-> False",hg102,2,False
+3,"rectangle,yellow,1",True,1,2,3," The labels for the objects in Group 4 are:
+-large green circle-> True
+-small blue rectangle-> False
+-small yellow rectangle-> False",hg102,2,False
+4,"circle,yellow,2",True,2,0,4," The labels for the objects in Group 5 are:
+-medium yellow circle-> False
+-large blue triangle-> True
+-small green circle-> True",hg102,2,False
+5,"triangle,blue,3",False,2,1,5," The labels for the objects in Group 5 are:
+-medium yellow circle-> False
+-large blue triangle-> True
+-small green circle-> True",hg102,2,True
+6,"circle,green,1",True,2,2,6," The labels for the objects in Group 5 are:
+-medium yellow circle-> False
+-large blue triangle-> True
+-small green circle-> True",hg102,2,True
+7,"triangle,green,3",False,3,0,7," The labels for the objects in Group 6 are:
+-large green triangle-> True
+-large yellow rectangle-> True
+-small yellow triangle-> True 
+
+(Note: In this case, the rule for labeling the objects in the group may be based on the color of the objects, with all objects having the color green or yellow being labeled 'True'.)",hg102,2,True
+8,"rectangle,yellow,3",False,3,1,8," The labels for the objects in Group 6 are:
+-large green triangle-> True
+-large yellow rectangle-> True
+-small yellow triangle-> True 
+
+(Note: In this case, the rule for labeling the objects in the group may be based on the color of the objects, with all objects having the color green or yellow being labeled 'True'.)",hg102,2,True
+9,"triangle,yellow,1",False,3,2,9," The labels for the objects in Group 6 are:
+-large green triangle-> True
+-large yellow rectangle-> True
+-small yellow triangle-> True 
+
+(Note: In this case, the rule for labeling the objects in the group may be based on the color of the objects, with all objects having the color green or yellow being labeled 'True'.)",hg102,2,True
+10,"triangle,green,1",False,4,0,10," The labels for the objects in Group 7 are:
+-small green triangle-> True 
+
+It seems that in Group 7, the rule for labeling the objects is that they must be a small green triangle.",hg102,2,True
+11,"circle,blue,2",False,5,0,11," The labels for the objects in Group 8 are:
+-medium blue circle-> True
+-large blue circle-> True
+-medium yellow circle-> True
+-small blue rectangle-> True
+-small green rectangle-> True 
+
+It appears that in Group 8, all objects are labeled 'True' regardless of their color, size, or shape. This suggests that the rule for Group 8 is simply to label all objects as 'True'.",hg102,2,True
+12,"circle,blue,3",False,5,1,12," The labels for the objects in Group 8 are:
+-medium blue circle-> True
+-large blue circle-> True
+-medium yellow circle-> True
+-small blue rectangle-> True
+-small green rectangle-> True 
+
+It appears that in Group 8, all objects are labeled 'True' regardless of their color, size, or shape. This suggests that the rule for Group 8 is simply to label all objects as 'True'.",hg102,2,True
+13,"circle,yellow,2",False,5,2,13," The labels for the objects in Group 8 are:
+-medium blue circle-> True
+-large blue circle-> True
+-medium yellow circle-> True
+-small blue rectangle-> True
+-small green rectangle-> True 
+
+It appears that in Group 8, all objects are labeled 'True' regardless of their color, size, or shape. This suggests that the rule for Group 8 is simply to label all objects as 'True'.",hg102,2,True
+14,"rectangle,blue,1",False,5,3,14," The labels for the objects in Group 8 are:
+-medium blue circle-> True
+-large blue circle-> True
+-medium yellow circle-> True
+-small blue rectangle-> True
+-small green rectangle-> True 
+
+It appears that in Group 8, all objects are labeled 'True' regardless of their color, size, or shape. This suggests that the rule for Group 8 is simply to label all objects as 'True'.",hg102,2,True
+15,"rectangle,green,1",False,5,4,15," The labels for the objects in Group 8 are:
+-medium blue circle-> True
+-large blue circle-> True
+-medium yellow circle-> True
+-small blue rectangle-> True
+-small green rectangle-> True 
+
+It appears that in Group 8, all objects are labeled 'True' regardless of their color, size, or shape. This suggests that the rule for Group 8 is simply to label all objects as 'True'.",hg102,2,True
+16,"triangle,blue,1",True,6,0,16," The labels for the objects in Group 9 are:
+-small blue triangle-> False
+-large green rectangle-> True
+-large yellow rectangle-> True
+-small blue circle-> False 
+
+It appears that the secret rule for labeling the objects as 'True' is that they must be either a large green rectangle or a large yellow rectangle.",hg102,2,False
+17,"rectangle,green,3",False,6,1,17," The labels for the objects in Group 9 are:
+-small blue triangle-> False
+-large green rectangle-> True
+-large yellow rectangle-> True
+-small blue circle-> False 
+
+It appears that the secret rule for labeling the objects as 'True' is that they must be either a large green rectangle or a large yellow rectangle.",hg102,2,True
+18,"rectangle,yellow,3",False,6,2,18," The labels for the objects in Group 9 are:
+-small blue triangle-> False
+-large green rectangle-> True
+-large yellow rectangle-> True
+-small blue circle-> False 
+
+It appears that the secret rule for labeling the objects as 'True' is that they must be either a large green rectangle or a large yellow rectangle.",hg102,2,True
+19,"circle,blue,1",True,6,3,19," The labels for the objects in Group 9 are:
+-small blue triangle-> False
+-large green rectangle-> True
+-large yellow rectangle-> True
+-small blue circle-> False 
+
+It appears that the secret rule for labeling the objects as 'True' is that they must be either a large green rectangle or a large yellow rectangle.",hg102,2,False
+20,"triangle,blue,3",True,7,0,20," The labels for the objects in Group 10 are:
+-large blue triangle-> False
+-medium blue rectangle-> False
+-small yellow triangle-> False
+-small yellow rectangle-> False 
+
+It appears that the secret rule for labeling the objects as 'True' is not explicitly stated in the given instructions. However, based on the given examples, it seems that the rule is that all objects in a group must be the same color and shape. If there is any object in the group that does not match the color and shape of the other objects, then it is labeled as 'False'. If all objects in the group match in color and shape, then they are labeled as 'True'.",hg102,2,False
+21,"rectangle,blue,2",True,7,1,21," The labels for the objects in Group 10 are:
+-large blue triangle-> False
+-medium blue rectangle-> False
+-small yellow triangle-> False
+-small yellow rectangle-> False 
+
+It appears that the secret rule for labeling the objects as 'True' is not explicitly stated in the given instructions. However, based on the given examples, it seems that the rule is that all objects in a group must be the same color and shape. If there is any object in the group that does not match the color and shape of the other objects, then it is labeled as 'False'. If all objects in the group match in color and shape, then they are labeled as 'True'.",hg102,2,False
+22,"triangle,yellow,1",False,7,2,22," The labels for the objects in Group 10 are:
+-large blue triangle-> False
+-medium blue rectangle-> False
+-small yellow triangle-> False
+-small yellow rectangle-> False 
+
+It appears that the secret rule for labeling the objects as 'True' is not explicitly stated in the given instructions. However, based on the given examples, it seems that the rule is that all objects in a group must be the same color and shape. If there is any object in the group that does not match the color and shape of the other objects, then it is labeled as 'False'. If all objects in the group match in color and shape, then they are labeled as 'True'.",hg102,2,False
+23,"rectangle,yellow,1",False,7,3,23," The labels for the objects in Group 10 are:
+-large blue triangle-> False
+-medium blue rectangle-> False
+-small yellow triangle-> False
+-small yellow rectangle-> False 
+
+It appears that the secret rule for labeling the objects as 'True' is not explicitly stated in the given instructions. However, based on the given examples, it seems that the rule is that all objects in a group must be the same color and shape. If there is any object in the group that does not match the color and shape of the other objects, then it is labeled as 'False'. If all objects in the group match in color and shape, then they are labeled as 'True'.",hg102,2,False
+24,"circle,blue,2",False,8,0,24," The labels for the objects in Group 11 are:
+-medium blue circle-> False
+-medium green triangle-> False
+-medium green rectangle-> False
+-small green circle-> False
+-small green triangle-> False 
+
+It seems that the secret rule to label the objects in groups correctly is not provided. The labels I have given are based on the assumption that the rule is to label an object 'True' if it is the only object of its kind in the group, and 'False' otherwise. However, this may not be the actual rule.",hg102,2,False
+25,"triangle,green,2",True,8,1,25," The labels for the objects in Group 11 are:
+-medium blue circle-> False
+-medium green triangle-> False
+-medium green rectangle-> False
+-small green circle-> False
+-small green triangle-> False 
+
+It seems that the secret rule to label the objects in groups correctly is not provided. The labels I have given are based on the assumption that the rule is to label an object 'True' if it is the only object of its kind in the group, and 'False' otherwise. However, this may not be the actual rule.",hg102,2,False
+26,"rectangle,green,2",True,8,2,26," The labels for the objects in Group 11 are:
+-medium blue circle-> False
+-medium green triangle-> False
+-medium green rectangle-> False
+-small green circle-> False
+-small green triangle-> False 
+
+It seems that the secret rule to label the objects in groups correctly is not provided. The labels I have given are based on the assumption that the rule is to label an object 'True' if it is the only object of its kind in the group, and 'False' otherwise. However, this may not be the actual rule.",hg102,2,False
+27,"circle,green,1",True,8,3,27," The labels for the objects in Group 11 are:
+-medium blue circle-> False
+-medium green triangle-> False
+-medium green rectangle-> False
+-small green circle-> False
+-small green triangle-> False 
+
+It seems that the secret rule to label the objects in groups correctly is not provided. The labels I have given are based on the assumption that the rule is to label an object 'True' if it is the only object of its kind in the group, and 'False' otherwise. However, this may not be the actual rule.",hg102,2,False
+28,"triangle,green,1",True,8,4,28," The labels for the objects in Group 11 are:
+-medium blue circle-> False
+-medium green triangle-> False
+-medium green rectangle-> False
+-small green circle-> False
+-small green triangle-> False 
+
+It seems that the secret rule to label the objects in groups correctly is not provided. The labels I have given are based on the assumption that the rule is to label an object 'True' if it is the only object of its kind in the group, and 'False' otherwise. However, this may not be the actual rule.",hg102,2,False
+29,"triangle,green,3",True,9,0,29," The labels for the objects in Group 12 are:
+-large green triangle-> False
+-large blue triangle-> True
+-medium green triangle-> True
+-medium green circle-> True
+-large yellow rectangle-> False 
+
+It appears that the secret rule for labeling the objects as 'True' is:
+
+* For Groups 1, 3, 6, 7, and 8, all objects are labeled 'False'.
+* For Groups 2, 4, 5, 9, 10, and 11, the objects that meet the following criteria are labeled 'True':
+	+ Small blue triangles
+	+ Small blue circles
+	+ Large green rectangles
+	+ Medium green triangles
+	+ Medium green circles
+	+ Large blue triangles
+* For Group 12, the objects that meet the following criteria are labeled 'True':
+	+ Large blue triangles
+	+ Medium green triangles
+	+ Medium green circles
+	+ Large green rectangles
+
+It is not clear what the criteria are for labeling the objects as 'True' in Groups 1, 3, 6, 7, and 8. It is possible that there is no rule for these groups, or that the rule is more complex than the one for the other groups.",hg102,2,False
+30,"triangle,blue,3",False,9,1,30," The labels for the objects in Group 12 are:
+-large green triangle-> False
+-large blue triangle-> True
+-medium green triangle-> True
+-medium green circle-> True
+-large yellow rectangle-> False 
+
+It appears that the secret rule for labeling the objects as 'True' is:
+
+* For Groups 1, 3, 6, 7, and 8, all objects are labeled 'False'.
+* For Groups 2, 4, 5, 9, 10, and 11, the objects that meet the following criteria are labeled 'True':
+	+ Small blue triangles
+	+ Small blue circles
+	+ Large green rectangles
+	+ Medium green triangles
+	+ Medium green circles
+	+ Large blue triangles
+* For Group 12, the objects that meet the following criteria are labeled 'True':
+	+ Large blue triangles
+	+ Medium green triangles
+	+ Medium green circles
+	+ Large green rectangles
+
+It is not clear what the criteria are for labeling the objects as 'True' in Groups 1, 3, 6, 7, and 8. It is possible that there is no rule for these groups, or that the rule is more complex than the one for the other groups.",hg102,2,True
+31,"triangle,green,2",True,9,2,31," The labels for the objects in Group 12 are:
+-large green triangle-> False
+-large blue triangle-> True
+-medium green triangle-> True
+-medium green circle-> True
+-large yellow rectangle-> False 
+
+It appears that the secret rule for labeling the objects as 'True' is:
+
+* For Groups 1, 3, 6, 7, and 8, all objects are labeled 'False'.
+* For Groups 2, 4, 5, 9, 10, and 11, the objects that meet the following criteria are labeled 'True':
+	+ Small blue triangles
+	+ Small blue circles
+	+ Large green rectangles
+	+ Medium green triangles
+	+ Medium green circles
+	+ Large blue triangles
+* For Group 12, the objects that meet the following criteria are labeled 'True':
+	+ Large blue triangles
+	+ Medium green triangles
+	+ Medium green circles
+	+ Large green rectangles
+
+It is not clear what the criteria are for labeling the objects as 'True' in Groups 1, 3, 6, 7, and 8. It is possible that there is no rule for these groups, or that the rule is more complex than the one for the other groups.",hg102,2,True
+32,"circle,green,2",True,9,3,32," The labels for the objects in Group 12 are:
+-large green triangle-> False
+-large blue triangle-> True
+-medium green triangle-> True
+-medium green circle-> True
+-large yellow rectangle-> False 
+
+It appears that the secret rule for labeling the objects as 'True' is:
+
+* For Groups 1, 3, 6, 7, and 8, all objects are labeled 'False'.
+* For Groups 2, 4, 5, 9, 10, and 11, the objects that meet the following criteria are labeled 'True':
+	+ Small blue triangles
+	+ Small blue circles
+	+ Large green rectangles
+	+ Medium green triangles
+	+ Medium green circles
+	+ Large blue triangles
+* For Group 12, the objects that meet the following criteria are labeled 'True':
+	+ Large blue triangles
+	+ Medium green triangles
+	+ Medium green circles
+	+ Large green rectangles
+
+It is not clear what the criteria are for labeling the objects as 'True' in Groups 1, 3, 6, 7, and 8. It is possible that there is no rule for these groups, or that the rule is more complex than the one for the other groups.",hg102,2,True
+33,"rectangle,yellow,3",True,9,4,33," The labels for the objects in Group 12 are:
+-large green triangle-> False
+-large blue triangle-> True
+-medium green triangle-> True
+-medium green circle-> True
+-large yellow rectangle-> False 
+
+It appears that the secret rule for labeling the objects as 'True' is:
+
+* For Groups 1, 3, 6, 7, and 8, all objects are labeled 'False'.
+* For Groups 2, 4, 5, 9, 10, and 11, the objects that meet the following criteria are labeled 'True':
+	+ Small blue triangles
+	+ Small blue circles
+	+ Large green rectangles
+	+ Medium green triangles
+	+ Medium green circles
+	+ Large blue triangles
+* For Group 12, the objects that meet the following criteria are labeled 'True':
+	+ Large blue triangles
+	+ Medium green triangles
+	+ Medium green circles
+	+ Large green rectangles
+
+It is not clear what the criteria are for labeling the objects as 'True' in Groups 1, 3, 6, 7, and 8. It is possible that there is no rule for these groups, or that the rule is more complex than the one for the other groups.",hg102,2,False
+34,"rectangle,yellow,3",False,10,0,34," The labels for the objects in Group 13 are:
+-large yellow rectangle-> False
+-large green circle-> False ",hg102,2,False
+35,"circle,green,3",False,10,1,35," The labels for the objects in Group 13 are:
+-large yellow rectangle-> False
+-large green circle-> False ",hg102,2,False
+36,"rectangle,green,1",True,11,0,36," The labels for the objects in Group 14 are:
+-small green rectangle-> False
+-medium green rectangle-> False
+-large blue circle-> False
+-large yellow circle-> False 
+
+It seems that the secret rule for labeling the objects as 'True' is not provided. I can only label the objects as 'True' if they follow the rule. Since the rule is not provided, I am assuming that the objects should be labeled as 'False' if they do not follow the rule.",hg102,2,False
+37,"rectangle,green,2",True,11,1,37," The labels for the objects in Group 14 are:
+-small green rectangle-> False
+-medium green rectangle-> False
+-large blue circle-> False
+-large yellow circle-> False 
+
+It seems that the secret rule for labeling the objects as 'True' is not provided. I can only label the objects as 'True' if they follow the rule. Since the rule is not provided, I am assuming that the objects should be labeled as 'False' if they do not follow the rule.",hg102,2,False
+38,"circle,blue,3",False,11,2,38," The labels for the objects in Group 14 are:
+-small green rectangle-> False
+-medium green rectangle-> False
+-large blue circle-> False
+-large yellow circle-> False 
+
+It seems that the secret rule for labeling the objects as 'True' is not provided. I can only label the objects as 'True' if they follow the rule. Since the rule is not provided, I am assuming that the objects should be labeled as 'False' if they do not follow the rule.",hg102,2,False
+39,"circle,yellow,3",True,11,3,39," The labels for the objects in Group 14 are:
+-small green rectangle-> False
+-medium green rectangle-> False
+-large blue circle-> False
+-large yellow circle-> False 
+
+It seems that the secret rule for labeling the objects as 'True' is not provided. I can only label the objects as 'True' if they follow the rule. Since the rule is not provided, I am assuming that the objects should be labeled as 'False' if they do not follow the rule.",hg102,2,False
+40,"circle,green,1",False,12,0,40," The labels for the objects in Group 15 are:
+-small green circle-> True
+-medium blue circle-> False
+-medium yellow rectangle-> True
+-medium blue triangle-> True
+-medium yellow circle-> True ",hg102,2,True
+41,"circle,blue,2",True,12,1,41," The labels for the objects in Group 15 are:
+-small green circle-> True
+-medium blue circle-> False
+-medium yellow rectangle-> True
+-medium blue triangle-> True
+-medium yellow circle-> True ",hg102,2,False
+42,"rectangle,yellow,2",False,12,2,42," The labels for the objects in Group 15 are:
+-small green circle-> True
+-medium blue circle-> False
+-medium yellow rectangle-> True
+-medium blue triangle-> True
+-medium yellow circle-> True ",hg102,2,True
+43,"triangle,blue,2",True,12,3,43," The labels for the objects in Group 15 are:
+-small green circle-> True
+-medium blue circle-> False
+-medium yellow rectangle-> True
+-medium blue triangle-> True
+-medium yellow circle-> True ",hg102,2,True
+44,"circle,yellow,2",False,12,4,44," The labels for the objects in Group 15 are:
+-small green circle-> True
+-medium blue circle-> False
+-medium yellow rectangle-> True
+-medium blue triangle-> True
+-medium yellow circle-> True ",hg102,2,True
+45,"triangle,yellow,2",True,13,0,45," The labels for the objects in Group 16 are:
+-medium yellow triangle-> False
+-large blue rectangle-> False
+-large yellow rectangle-> False ",hg102,2,False
+46,"rectangle,blue,3",False,13,1,46," The labels for the objects in Group 16 are:
+-medium yellow triangle-> False
+-large blue rectangle-> False
+-large yellow rectangle-> False ",hg102,2,False
+47,"rectangle,yellow,3",True,13,2,47," The labels for the objects in Group 16 are:
+-medium yellow triangle-> False
+-large blue rectangle-> False
+-large yellow rectangle-> False ",hg102,2,False
+48,"circle,yellow,1",True,14,0,48," The labels for the objects in Group 17 are:
+-small yellow circle-> False
+-large blue triangle-> True
+-large green triangle-> True
+-small green triangle-> True
+-medium green circle-> True ",hg102,2,False
+49,"triangle,blue,3",False,14,1,49," The labels for the objects in Group 17 are:
+-small yellow circle-> False
+-large blue triangle-> True
+-large green triangle-> True
+-small green triangle-> True
+-medium green circle-> True ",hg102,2,True
+50,"triangle,green,3",True,14,2,50," The labels for the objects in Group 17 are:
+-small yellow circle-> False
+-large blue triangle-> True
+-large green triangle-> True
+-small green triangle-> True
+-medium green circle-> True ",hg102,2,True
+51,"triangle,green,1",True,14,3,51," The labels for the objects in Group 17 are:
+-small yellow circle-> False
+-large blue triangle-> True
+-large green triangle-> True
+-small green triangle-> True
+-medium green circle-> True ",hg102,2,True
+52,"circle,green,2",True,14,4,52," The labels for the objects in Group 17 are:
+-small yellow circle-> False
+-large blue triangle-> True
+-large green triangle-> True
+-small green triangle-> True
+-medium green circle-> True ",hg102,2,True
+53,"rectangle,yellow,3",False,15,0,53," The labels for the objects in Group 18 are:
+-large yellow rectangle-> False
+-medium blue circle-> True
+-large blue rectangle-> True ",hg102,2,False
+54,"circle,blue,2",True,15,1,54," The labels for the objects in Group 18 are:
+-large yellow rectangle-> False
+-medium blue circle-> True
+-large blue rectangle-> True ",hg102,2,True
+55,"rectangle,blue,3",True,15,2,55," The labels for the objects in Group 18 are:
+-large yellow rectangle-> False
+-medium blue circle-> True
+-large blue rectangle-> True ",hg102,2,True
+56,"circle,yellow,2",False,16,0,56," The labels for the objects in Group 19 are:
+-medium yellow circle-> True
+-medium blue rectangle-> True
+-large green triangle-> False
+-small blue rectangle-> True ",hg102,2,True
+57,"rectangle,blue,2",True,16,1,57," The labels for the objects in Group 19 are:
+-medium yellow circle-> True
+-medium blue rectangle-> True
+-large green triangle-> False
+-small blue rectangle-> True ",hg102,2,True
+58,"triangle,green,3",False,16,2,58," The labels for the objects in Group 19 are:
+-medium yellow circle-> True
+-medium blue rectangle-> True
+-large green triangle-> False
+-small blue rectangle-> True ",hg102,2,False
+59,"rectangle,blue,1",True,16,3,59," The labels for the objects in Group 19 are:
+-medium yellow circle-> True
+-medium blue rectangle-> True
+-large green triangle-> False
+-small blue rectangle-> True ",hg102,2,True
+60,"triangle,yellow,2",False,17,0,60," The labels for the objects in Group 20 are:
+-medium yellow triangle-> False 
+
+It appears that the secret rule for labeling the objects in these groups is that all objects with a blue color should be labeled 'True' and all other objects should be labeled 'False'.",hg102,2,False
+61,"triangle,green,2",False,18,0,61," The labels for the objects in Group 21 are:
+-medium green triangle-> False ",hg102,2,False
+62,"circle,blue,3",False,19,0,62," The labels for the objects in Group 22 are:
+-large blue circle-> False
+-small yellow rectangle-> True
+-large yellow rectangle-> True ",hg102,2,False
+63,"rectangle,yellow,1",True,19,1,63," The labels for the objects in Group 22 are:
+-large blue circle-> False
+-small yellow rectangle-> True
+-large yellow rectangle-> True ",hg102,2,True
+64,"rectangle,yellow,3",True,19,2,64," The labels for the objects in Group 22 are:
+-large blue circle-> False
+-small yellow rectangle-> True
+-large yellow rectangle-> True ",hg102,2,True
+65,"circle,green,3",False,20,0,65," The labels for the objects in Group 23 are:
+-large green circle-> False
+-medium green triangle-> False
+-large yellow circle-> False ",hg102,2,False
+66,"triangle,green,2",False,20,1,66," The labels for the objects in Group 23 are:
+-large green circle-> False
+-medium green triangle-> False
+-large yellow circle-> False ",hg102,2,False
+67,"circle,yellow,3",False,20,2,67," The labels for the objects in Group 23 are:
+-large green circle-> False
+-medium green triangle-> False
+-large yellow circle-> False ",hg102,2,False
+68,"rectangle,green,1",False,21,0,68," The labels for the objects in Group 24 are:
+-small green rectangle-> False ",hg102,2,False
+69,"circle,blue,3",False,22,0,69," The labels for the objects in Group 25 are:
+-large blue circle-> False
+-medium blue triangle-> True
+-large green circle-> False
+-large blue rectangle-> True ",hg102,2,False
+70,"triangle,blue,2",False,22,1,70," The labels for the objects in Group 25 are:
+-large blue circle-> False
+-medium blue triangle-> True
+-large green circle-> False
+-large blue rectangle-> True ",hg102,2,True
+71,"circle,green,3",False,22,2,71," The labels for the objects in Group 25 are:
+-large blue circle-> False
+-medium blue triangle-> True
+-large green circle-> False
+-large blue rectangle-> True ",hg102,2,False
+72,"rectangle,blue,3",False,22,3,72," The labels for the objects in Group 25 are:
+-large blue circle-> False
+-medium blue triangle-> True
+-large green circle-> False
+-large blue rectangle-> True ",hg102,2,True
+73,"triangle,yellow,1",True,23,0,73," The labels for the objects in Group 26 are:
+-small yellow triangle-> False
+-large blue triangle-> False
+-small green rectangle-> False ",hg102,2,False
+74,"triangle,blue,3",False,23,1,74," The labels for the objects in Group 26 are:
+-small yellow triangle-> False
+-large blue triangle-> False
+-small green rectangle-> False ",hg102,2,False
+75,"rectangle,green,1",True,23,2,75," The labels for the objects in Group 26 are:
+-small yellow triangle-> False
+-large blue triangle-> False
+-small green rectangle-> False ",hg102,2,False
+76,"circle,green,3",False,24,0,76," The labels for the objects in Group 27 are:
+-large green circle-> False
+-medium green triangle-> False
+-medium yellow triangle-> False ",hg102,2,False
+77,"triangle,green,2",False,24,1,77," The labels for the objects in Group 27 are:
+-large green circle-> False
+-medium green triangle-> False
+-medium yellow triangle-> False ",hg102,2,False
+78,"triangle,yellow,2",False,24,2,78," The labels for the objects in Group 27 are:
+-large green circle-> False
+-medium green triangle-> False
+-medium yellow triangle-> False ",hg102,2,False
