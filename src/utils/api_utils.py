@@ -5,7 +5,7 @@ import time
 import requests
 import json
 
-from get_api_keys import TOGETHER_API_KEY, OPENAI_API_KEY, OPENAI_ORG
+from utils.get_api_keys import TOGETHER_API_KEY, OPENAI_API_KEY, OPENAI_ORG
 
 together_client = OpenAI(
   api_key=TOGETHER_API_KEY,

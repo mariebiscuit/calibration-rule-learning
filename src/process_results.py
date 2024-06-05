@@ -6,7 +6,9 @@ import xicorpy
 from preprocess import process_human_data_file_to_df, process_response_file
 
 """
+=== Experiment 1 and 3 ===
 Data processors to generate dataframes compatible with visualization notebooks
+from inference code
 """
 # def calculate_human_stats(use_hdf_cache: str=None):
 

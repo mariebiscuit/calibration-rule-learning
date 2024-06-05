@@ -1,0 +1,512 @@
+,Unnamed: 0,concept_num,concept,object,answer,model_answer,model_reply,code,rule_expression,rule_evaluation,rule_coverage,consistency,rule_match,set
+0,0,hg16,circle xor (not blue),small blue circle,True,False,"Based on your examples, I've learned that the rule for labeling the objects considers their shape, specifically the presence of a triangle shape. If an object is a triangle, it should be labeled 'True'. All other shapes should be labeled 'False', regardless of their color or size.
+
+Labeling Group 1:
+- small blue circle -> False
+- small yellow rectangle -> False
+- medium green triangle -> True","def is_rule(obj):
+    return obj.triangle",triangle,False,,True,False,1
+1,1,hg16,circle xor (not blue),small yellow rectangle,True,False,"Based on your examples, I've learned that the rule for labeling the objects considers their shape, specifically the presence of a triangle shape. If an object is a triangle, it should be labeled 'True'. All other shapes should be labeled 'False', regardless of their color or size.
+
+Labeling Group 1:
+- small blue circle -> False
+- small yellow rectangle -> False
+- medium green triangle -> True","def is_rule(obj):
+    return obj.triangle",triangle,False,,True,False,1
+2,2,hg16,circle xor (not blue),medium green triangle,True,True,"Based on your examples, I've learned that the rule for labeling the objects considers their shape, specifically the presence of a triangle shape. If an object is a triangle, it should be labeled 'True'. All other shapes should be labeled 'False', regardless of their color or size.
+
+Labeling Group 1:
+- small blue circle -> False
+- small yellow rectangle -> False
+- medium green triangle -> True","def is_rule(obj):
+    return obj.triangle",triangle,True,,True,False,1
+3,3,hg16,circle xor (not blue),large green rectangle,True,True,"Based on your examples, I've learned that the rule for labeling objects 'True' does not depend on their color, size, or specific shape, as we have different colors, sizes, and shapes labeled 'True' in Group 1. Since there are no other objects to compare within the group, and no additional information is provided about their potential functions or other characteristics, the rule seems to be that all objects presented in Group 1 should be labeled 'True', regardless of their individual attributes.
+
+As you have provided only a single object in Group 2 without any additional information, I will apply the rule from Group 1 to Group 2:
+
+-large green rectangle-> True","def is_rule(obj):
+    return True",True,True,1.0,True,False,2
+4,4,hg16,circle xor (not blue),small blue rectangle,False,True,"Based on your examples, I've learned that the rule for labeling objects 'True' does not depend on their color or size, as there are multiple colors and sizes labeled 'True'. However, it does seem to be related to their shape since all shapes presented (circle, rectangle, triangle) are labeled as 'True' in both groups regardless of other attributes. Therefore, the rule appears to be that all objects can be labeled 'True' regardless of their color, size, or shape.
+
+Label the following objects in Group 3:
+-small blue rectangle -> True
+-medium blue circle -> True
+-large green rectangle -> True
+-medium yellow triangle -> True
+-medium blue triangle -> True","def is_rule(obj):
+    return True",True,True,1.0,True,False,3
+5,5,hg16,circle xor (not blue),medium blue circle,True,True,"Based on your examples, I've learned that the rule for labeling objects 'True' does not depend on their color or size, as there are multiple colors and sizes labeled 'True'. However, it does seem to be related to their shape since all shapes presented (circle, rectangle, triangle) are labeled as 'True' in both groups regardless of other attributes. Therefore, the rule appears to be that all objects can be labeled 'True' regardless of their color, size, or shape.
+
+Label the following objects in Group 3:
+-small blue rectangle -> True
+-medium blue circle -> True
+-large green rectangle -> True
+-medium yellow triangle -> True
+-medium blue triangle -> True","def is_rule(obj):
+    return True",True,True,1.0,True,False,3
+6,6,hg16,circle xor (not blue),large green rectangle,True,True,"Based on your examples, I've learned that the rule for labeling objects 'True' does not depend on their color or size, as there are multiple colors and sizes labeled 'True'. However, it does seem to be related to their shape since all shapes presented (circle, rectangle, triangle) are labeled as 'True' in both groups regardless of other attributes. Therefore, the rule appears to be that all objects can be labeled 'True' regardless of their color, size, or shape.
+
+Label the following objects in Group 3:
+-small blue rectangle -> True
+-medium blue circle -> True
+-large green rectangle -> True
+-medium yellow triangle -> True
+-medium blue triangle -> True","def is_rule(obj):
+    return True",True,True,1.0,True,False,3
+7,7,hg16,circle xor (not blue),medium yellow triangle,True,True,"Based on your examples, I've learned that the rule for labeling objects 'True' does not depend on their color or size, as there are multiple colors and sizes labeled 'True'. However, it does seem to be related to their shape since all shapes presented (circle, rectangle, triangle) are labeled as 'True' in both groups regardless of other attributes. Therefore, the rule appears to be that all objects can be labeled 'True' regardless of their color, size, or shape.
+
+Label the following objects in Group 3:
+-small blue rectangle -> True
+-medium blue circle -> True
+-large green rectangle -> True
+-medium yellow triangle -> True
+-medium blue triangle -> True","def is_rule(obj):
+    return True",True,True,1.0,True,False,3
+8,8,hg16,circle xor (not blue),medium blue triangle,False,True,"Based on your examples, I've learned that the rule for labeling objects 'True' does not depend on their color or size, as there are multiple colors and sizes labeled 'True'. However, it does seem to be related to their shape since all shapes presented (circle, rectangle, triangle) are labeled as 'True' in both groups regardless of other attributes. Therefore, the rule appears to be that all objects can be labeled 'True' regardless of their color, size, or shape.
+
+Label the following objects in Group 3:
+-small blue rectangle -> True
+-medium blue circle -> True
+-large green rectangle -> True
+-medium yellow triangle -> True
+-medium blue triangle -> True","def is_rule(obj):
+    return True",True,True,1.0,True,False,3
+9,9,hg16,circle xor (not blue),medium green rectangle,True,True,"Based on your examples, I've learned that the rule for labeling the objects 'True' seems to be that an object must be either small or medium in size, and cannot be a blue rectangle. Large objects can also be labeled 'True' if they are green rectangles. The shape doesn't seem to matter for non-blue objects, and the color green is only 'True' for rectangles. Yellow objects can be any shape as long as they are not large. Blue objects must be circles to be labeled 'True'. 
+
+Following this rule, the label for the object in Group 4 is:
+- medium green rectangle -> True","def is_rule(obj):
+    return (obj.small or obj.medium or (obj.large and obj.green and obj.rectangle)) and not (obj.blue and obj.rectangle) or (obj.blue and obj.circle) or (obj.yellow and not obj.large)",(small or medium or (large and green and rectangle)) and not (blue and rectangle) or (blue and circle) or (yellow and not large),True,0.8888888888888888,True,False,4
+10,10,hg16,circle xor (not blue),small yellow triangle,True,True,"Based on your examples, I've learned that the rule for labeling the objects as 'True' appears to be that each object must either be small in size, or if it's not small, it must be a triangle or a rectangle. Color does not seem to have an influence on the rule, as there are various colors that have been labeled both 'True' and 'False'. The only 'False' labels are on objects that are not small and also not triangles or rectangles (medium blue rectangle and medium blue triangle).
+
+Following this rule, the labels for the objects in Group 5 should be:
+-small yellow triangle -> True (because it's small)
+-medium green triangle -> True (because it's a triangle)
+-large green triangle -> True (because it's a triangle)","def is_rule(obj):
+    return obj.small or obj.triangle or obj.rectangle",small or triangle or rectangle,True,0.7,True,False,5
+11,11,hg16,circle xor (not blue),medium green triangle,True,True,"Based on your examples, I've learned that the rule for labeling the objects as 'True' appears to be that each object must either be small in size, or if it's not small, it must be a triangle or a rectangle. Color does not seem to have an influence on the rule, as there are various colors that have been labeled both 'True' and 'False'. The only 'False' labels are on objects that are not small and also not triangles or rectangles (medium blue rectangle and medium blue triangle).
+
+Following this rule, the labels for the objects in Group 5 should be:
+-small yellow triangle -> True (because it's small)
+-medium green triangle -> True (because it's a triangle)
+-large green triangle -> True (because it's a triangle)","def is_rule(obj):
+    return obj.small or (not obj.small and (obj.triangle or obj.rectangle))",small or (not small and (triangle or rectangle)),True,0.7,True,False,5
+12,12,hg16,circle xor (not blue),large green triangle,True,True,"Based on your examples, I've learned that the rule for labeling the objects as 'True' appears to be that each object must either be small in size, or if it's not small, it must be a triangle or a rectangle. Color does not seem to have an influence on the rule, as there are various colors that have been labeled both 'True' and 'False'. The only 'False' labels are on objects that are not small and also not triangles or rectangles (medium blue rectangle and medium blue triangle).
+
+Following this rule, the labels for the objects in Group 5 should be:
+-small yellow triangle -> True (because it's small)
+-medium green triangle -> True (because it's a triangle)
+-large green triangle -> True (because it's a triangle)","def is_rule(obj):
+    return obj.small or (not obj.small and (obj.triangle or obj.rectangle))",small or (not small and (triangle or rectangle)),True,0.7,True,False,5
+13,13,hg16,circle xor (not blue),medium blue triangle,False,False,"Based on your examples, I've learned that the rule for labeling the objects as 'True' appears to be that they must not be blue triangles. It seems that all objects are labeled 'True' unless they are specifically a blue triangle, regardless of their size. Therefore, I will label the objects in Group 6 as follows:
+
+-medium blue triangle -> False
+-medium green circle -> True","def is_rule(obj):
+    return not (obj.blue and obj.triangle)",not (blue and triangle),False,0.9230769230769232,True,False,6
+14,14,hg16,circle xor (not blue),medium green circle,False,True,"Based on your examples, I've learned that the rule for labeling the objects as 'True' appears to be that they must not be blue triangles. It seems that all objects are labeled 'True' unless they are specifically a blue triangle, regardless of their size. Therefore, I will label the objects in Group 6 as follows:
+
+-medium blue triangle -> False
+-medium green circle -> True","def is_rule(obj):
+    return not (obj.blue and obj.triangle)",not (blue and triangle),True,0.9230769230769232,True,False,6
+15,15,hg16,circle xor (not blue),small green rectangle,True,True,"Based on your examples, I've learned that the rule for labeling the objects as 'True' seems to be based on the objects being any size or shape as long as they are not blue rectangles or green circles. All blue rectangles and green circles are marked 'False', regardless of their size, while all other color and shape combinations are marked 'True'. 
+
+Using this rule to label the objects in Group 7:
+-small green rectangle -> True
+-small yellow rectangle -> True
+-small yellow triangle -> True
+-medium yellow rectangle -> True","def is_rule(obj):
+    return not(obj.blue and obj.rectangle) and not(obj.green and obj.circle)",not(blue and rectangle) and not(green and circle),True,0.8666666666666667,True,False,7
+16,16,hg16,circle xor (not blue),small yellow rectangle,True,True,"Based on your examples, I've learned that the rule for labeling the objects as 'True' seems to be based on the objects being any size or shape as long as they are not blue rectangles or green circles. All blue rectangles and green circles are marked 'False', regardless of their size, while all other color and shape combinations are marked 'True'. 
+
+Using this rule to label the objects in Group 7:
+-small green rectangle -> True
+-small yellow rectangle -> True
+-small yellow triangle -> True
+-medium yellow rectangle -> True","def is_rule(obj):
+    return not (obj.blue and obj.rectangle) and not (obj.green and obj.circle)",not (blue and rectangle) and not (green and circle),True,0.8666666666666667,True,False,7
+17,17,hg16,circle xor (not blue),small yellow triangle,True,True,"Based on your examples, I've learned that the rule for labeling the objects as 'True' seems to be based on the objects being any size or shape as long as they are not blue rectangles or green circles. All blue rectangles and green circles are marked 'False', regardless of their size, while all other color and shape combinations are marked 'True'. 
+
+Using this rule to label the objects in Group 7:
+-small green rectangle -> True
+-small yellow rectangle -> True
+-small yellow triangle -> True
+-medium yellow rectangle -> True","def is_rule(obj):
+    return not (obj.blue and obj.rectangle) and not (obj.green and obj.circle)",not (blue and rectangle) and not (green and circle),True,0.8666666666666667,True,False,7
+18,18,hg16,circle xor (not blue),medium yellow rectangle,True,True,"Based on your examples, I've learned that the rule for labeling the objects as 'True' seems to be based on the objects being any size or shape as long as they are not blue rectangles or green circles. All blue rectangles and green circles are marked 'False', regardless of their size, while all other color and shape combinations are marked 'True'. 
+
+Using this rule to label the objects in Group 7:
+-small green rectangle -> True
+-small yellow rectangle -> True
+-small yellow triangle -> True
+-medium yellow rectangle -> True","def is_rule(obj):
+    return not (obj.blue and obj.rectangle) and not (obj.green and obj.circle)",not (blue and rectangle) and not (green and circle),True,0.8666666666666667,True,False,7
+19,19,hg16,circle xor (not blue),medium blue triangle,False,False,"Based on your examples, I've learned that the rule for labeling the objects as 'True' seems to be that an object must not be a blue triangle and must not be a medium green circle.
+
+Following this rule, the labels for the objects in Group 8 would be:
+-medium blue triangle-> False
+-large blue triangle-> False
+-large yellow circle-> True
+-small green triangle-> True","def is_rule(obj):
+    return not (obj.blue and obj.triangle) and not (obj.medium and obj.green and obj.circle)",not (blue and triangle) and not (medium and green and circle),False,0.9473684210526316,True,False,8
+20,20,hg16,circle xor (not blue),large blue triangle,False,False,"Based on your examples, I've learned that the rule for labeling the objects as 'True' seems to be that an object must not be a blue triangle and must not be a medium green circle.
+
+Following this rule, the labels for the objects in Group 8 would be:
+-medium blue triangle-> False
+-large blue triangle-> False
+-large yellow circle-> True
+-small green triangle-> True","def is_rule(obj):
+    return not (obj.blue and obj.triangle) and not (obj.medium and obj.green and obj.circle)",not (blue and triangle) and not (medium and green and circle),False,0.9473684210526316,True,False,8
+21,21,hg16,circle xor (not blue),large yellow circle,False,True,"Based on your examples, I've learned that the rule for labeling the objects as 'True' seems to be that an object must not be a blue triangle and must not be a medium green circle.
+
+Following this rule, the labels for the objects in Group 8 would be:
+-medium blue triangle-> False
+-large blue triangle-> False
+-large yellow circle-> True
+-small green triangle-> True","def is_rule(obj):
+    return not (obj.blue and obj.triangle) and not (obj.medium and obj.green and obj.circle)",not (blue and triangle) and not (medium and green and circle),True,0.9473684210526316,True,False,8
+22,22,hg16,circle xor (not blue),small green triangle,True,True,"Based on your examples, I've learned that the rule for labeling the objects as 'True' seems to be that an object must not be a blue triangle and must not be a medium green circle.
+
+Following this rule, the labels for the objects in Group 8 would be:
+-medium blue triangle-> False
+-large blue triangle-> False
+-large yellow circle-> True
+-small green triangle-> True","def is_rule(obj):
+    return not (obj.blue and obj.triangle) and not (obj.medium and obj.green and obj.circle)",not (blue and triangle) and not (medium and green and circle),True,0.9473684210526316,True,False,8
+23,23,hg16,circle xor (not blue),small blue circle,True,True,"Based on your examples, I've learned that the rule for labeling the objects 'True' involves having a shape that is neither a blue rectangle nor a blue triangle. All the objects marked as 'False' are either blue rectangles or blue triangles, regardless of their size. Other attributes such as size and color (if they aren't blue rectangles or triangles) do not seem to affect whether an object is labeled 'True'.
+
+Labels for Group 9:
+- small blue circle -> True
+- large green rectangle -> True
+- medium blue rectangle -> False","def is_rule(obj):
+    return not(obj.blue and (obj.rectangle or obj.triangle))",not(blue and (rectangle or triangle)),True,0.9130434782608696,True,False,9
+24,24,hg16,circle xor (not blue),large green rectangle,True,True,"Based on your examples, I've learned that the rule for labeling the objects 'True' involves having a shape that is neither a blue rectangle nor a blue triangle. All the objects marked as 'False' are either blue rectangles or blue triangles, regardless of their size. Other attributes such as size and color (if they aren't blue rectangles or triangles) do not seem to affect whether an object is labeled 'True'.
+
+Labels for Group 9:
+- small blue circle -> True
+- large green rectangle -> True
+- medium blue rectangle -> False","def is_rule(obj):
+    return not (obj.rectangle and obj.blue) and not (obj.triangle and obj.blue)",not (rectangle and blue) and not (triangle and blue),True,0.9130434782608696,True,False,9
+25,25,hg16,circle xor (not blue),medium blue rectangle,False,False,"Based on your examples, I've learned that the rule for labeling the objects 'True' involves having a shape that is neither a blue rectangle nor a blue triangle. All the objects marked as 'False' are either blue rectangles or blue triangles, regardless of their size. Other attributes such as size and color (if they aren't blue rectangles or triangles) do not seem to affect whether an object is labeled 'True'.
+
+Labels for Group 9:
+- small blue circle -> True
+- large green rectangle -> True
+- medium blue rectangle -> False","def is_rule(obj):
+    return not (obj.rectangle and obj.blue) and not (obj.triangle and obj.blue)",not (rectangle and blue) and not (triangle and blue),False,0.9130434782608696,True,False,9
+26,26,hg16,circle xor (not blue),medium blue rectangle,False,False,"Based on your examples, I've learned that the objects labeled 'True' all share the characteristic of not being a medium blue rectangle, medium blue triangle, large blue triangle, large yellow circle, or medium green circle. In other words, to be labeled 'True', the object cannot be blue if it's a medium-sized rectangle or any size triangle, nor can it be a large circle of any color, nor a medium circle that's green.
+
+For Group 10:
+-medium blue rectangle -> False (because it is a medium blue rectangle)
+-small green triangle -> True (it does not fall into any of the excluded categories)
+-medium green rectangle -> True (it does not fall into any of the excluded categories)","def is_rule(obj):
+    return not((obj.medium and obj.blue and obj.rectangle) or (obj.medium and obj.blue and obj.triangle) or (obj.large and obj.blue and obj.triangle) or (obj.large and obj.yellow and obj.circle) or (obj.medium and obj.green and obj.circle))",not((medium and blue and rectangle) or (medium and blue and triangle) or (large and blue and triangle) or (large and yellow and circle) or (medium and green and circle)),False,0.9615384615384616,True,False,10
+27,27,hg16,circle xor (not blue),small green triangle,True,True,"Based on your examples, I've learned that the objects labeled 'True' all share the characteristic of not being a medium blue rectangle, medium blue triangle, large blue triangle, large yellow circle, or medium green circle. In other words, to be labeled 'True', the object cannot be blue if it's a medium-sized rectangle or any size triangle, nor can it be a large circle of any color, nor a medium circle that's green.
+
+For Group 10:
+-medium blue rectangle -> False (because it is a medium blue rectangle)
+-small green triangle -> True (it does not fall into any of the excluded categories)
+-medium green rectangle -> True (it does not fall into any of the excluded categories)","def is_rule(obj):
+    return not ((obj.medium and obj.blue and obj.rectangle) or 
+                (obj.medium and obj.blue and obj.triangle) or 
+                (obj.large and obj.blue and obj.triangle) or 
+                (obj.large and obj.yellow and obj.circle) or 
+                (obj.medium and obj.green and obj.circle))",not ((medium and blue and rectangle) or (medium and blue and triangle) or (large and blue and triangle) or (large and yellow and circle) or (medium and green and circle)),True,0.9615384615384616,True,False,10
+28,28,hg16,circle xor (not blue),medium green rectangle,True,True,"Based on your examples, I've learned that the objects labeled 'True' all share the characteristic of not being a medium blue rectangle, medium blue triangle, large blue triangle, large yellow circle, or medium green circle. In other words, to be labeled 'True', the object cannot be blue if it's a medium-sized rectangle or any size triangle, nor can it be a large circle of any color, nor a medium circle that's green.
+
+For Group 10:
+-medium blue rectangle -> False (because it is a medium blue rectangle)
+-small green triangle -> True (it does not fall into any of the excluded categories)
+-medium green rectangle -> True (it does not fall into any of the excluded categories)","def is_rule(obj):
+    return not (obj.medium and obj.blue and (obj.rectangle or obj.triangle)) and not (obj.large and (obj.blue or obj.yellow) and obj.circle) and not (obj.medium and obj.green and obj.circle)",not (medium and blue and (rectangle or triangle)) and not (large and (blue or yellow) and circle) and not (medium and green and circle),True,0.9230769230769232,True,False,10
+29,29,hg16,circle xor (not blue),medium blue triangle,False,False,"Based on your examples, I've learned that the rule for labeling the objects as 'True' seems to depend on their color and shape. An object is labeled 'True' if it is not a blue triangle, not a medium blue rectangle, and not a large yellow circle. All other combinations of attributes will be labeled 'True.' Following this rule, the objects in Group 11 should be labeled as:
+
+-medium blue triangle -> False","def is_rule(obj):
+    return not (obj.blue and obj.triangle) and not (obj.medium and obj.blue and obj.rectangle) and not (obj.large and obj.yellow and obj.circle)",not (blue and triangle) and not (medium and blue and rectangle) and not (large and yellow and circle),False,0.9310344827586208,True,False,11
+30,30,hg16,circle xor (not blue),large green rectangle,True,True,"Based on your examples, I've learned that the rule for labeling the objects as 'True' is that the object must not be a blue rectangle or triangle of any size. All other shapes and colors appear to be labeled 'True' regardless of their size. Additionally, all rectangles and triangles that are not blue are also labeled 'True'.
+
+Here are the labels for the objects in Group 12:
+-large green rectangle -> True
+-large yellow triangle -> True
+-medium yellow rectangle -> True","def is_rule(obj):
+    return not(obj.blue and (obj.rectangle or obj.triangle))",not(blue and (rectangle or triangle)),True,0.9333333333333332,True,False,12
+31,31,hg16,circle xor (not blue),large yellow triangle,True,True,"Based on your examples, I've learned that the rule for labeling the objects as 'True' is that the object must not be a blue rectangle or triangle of any size. All other shapes and colors appear to be labeled 'True' regardless of their size. Additionally, all rectangles and triangles that are not blue are also labeled 'True'.
+
+Here are the labels for the objects in Group 12:
+-large green rectangle -> True
+-large yellow triangle -> True
+-medium yellow rectangle -> True","def is_rule(obj):
+    return not (obj.blue and (obj.rectangle or obj.triangle))",not (blue and (rectangle or triangle)),True,0.9333333333333332,True,False,12
+32,32,hg16,circle xor (not blue),medium yellow rectangle,True,True,"Based on your examples, I've learned that the rule for labeling the objects as 'True' is that the object must not be a blue rectangle or triangle of any size. All other shapes and colors appear to be labeled 'True' regardless of their size. Additionally, all rectangles and triangles that are not blue are also labeled 'True'.
+
+Here are the labels for the objects in Group 12:
+-large green rectangle -> True
+-large yellow triangle -> True
+-medium yellow rectangle -> True","def is_rule(obj):
+    return not(obj.blue and (obj.rectangle or obj.triangle))",not(blue and (rectangle or triangle)),True,0.9333333333333332,True,False,12
+33,33,hg16,circle xor (not blue),medium green circle,False,False,"Based on your examples, I've learned that the rule for labeling the objects as 'True' seems to be related to the combination of color and shape, irrespective of the size. The objects that are labeled 'True' have specific allowable combinations: blue circles, yellow rectangles, green triangles, and green rectangles. Any objects not matching these combinations are labeled 'False'.
+
+Label for the object in Group 13:
+-medium green circle -> False","def is_rule(obj):
+    return (obj.blue and obj.circle) or (obj.yellow and obj.rectangle) or (obj.green and (obj.rectangle or obj.triangle))",(blue and circle) or (yellow and rectangle) or (green and (rectangle or triangle)),False,0.8787878787878788,True,False,13
+34,34,hg16,circle xor (not blue),medium blue triangle,False,False,"Based on your examples, I've learned that the rule for labeling objects as 'True' is based on the following criteria: The object must be any shape except a blue triangle, must not be a medium blue rectangle, and circles must be medium-sized if they are green. Therefore, blue triangles and medium blue rectangles are labeled as 'False'.
+
+For Group 14, the objects should be labeled as:
+- medium blue triangle -> False (because blue triangles are labeled 'False')
+- small blue rectangle -> True (because it is not a blue triangle or a medium blue rectangle)
+- large yellow rectangle -> True (because it is not a blue triangle and it is not a medium blue rectangle)","def is_rule(obj):
+    return not (obj.blue and obj.triangle) and not (obj.medium and obj.blue and obj.rectangle) and (obj.circle and obj.medium and obj.green)",not (blue and triangle) and not (medium and blue and rectangle) and (circle and medium and green),False,0.2647058823529412,True,False,14
+35,35,hg16,circle xor (not blue),small blue rectangle,False,True,"Based on your examples, I've learned that the rule for labeling objects as 'True' is based on the following criteria: The object must be any shape except a blue triangle, must not be a medium blue rectangle, and circles must be medium-sized if they are green. Therefore, blue triangles and medium blue rectangles are labeled as 'False'.
+
+For Group 14, the objects should be labeled as:
+- medium blue triangle -> False (because blue triangles are labeled 'False')
+- small blue rectangle -> True (because it is not a blue triangle or a medium blue rectangle)
+- large yellow rectangle -> True (because it is not a blue triangle and it is not a medium blue rectangle)","def is_rule(obj):
+    return not(obj.blue and obj.triangle) and not(obj.medium and obj.blue and obj.rectangle) and (not(obj.circle) or (obj.circle and obj.medium and obj.green))",not(blue and triangle) and not(medium and blue and rectangle) and (not(circle) or (circle and medium and green)),True,0.8235294117647058,True,False,14
+36,36,hg16,circle xor (not blue),large yellow rectangle,True,True,"Based on your examples, I've learned that the rule for labeling objects as 'True' is based on the following criteria: The object must be any shape except a blue triangle, must not be a medium blue rectangle, and circles must be medium-sized if they are green. Therefore, blue triangles and medium blue rectangles are labeled as 'False'.
+
+For Group 14, the objects should be labeled as:
+- medium blue triangle -> False (because blue triangles are labeled 'False')
+- small blue rectangle -> True (because it is not a blue triangle or a medium blue rectangle)
+- large yellow rectangle -> True (because it is not a blue triangle and it is not a medium blue rectangle)","def is_rule(obj):
+    return not(obj.triangle and obj.blue) and not(obj.rectangle and obj.medium and obj.blue) and not(obj.circle and obj.medium and obj.green)",not(triangle and blue) and not(rectangle and medium and blue) and not(circle and medium and green),True,0.9411764705882352,True,False,14
+37,37,hg16,circle xor (not blue),large yellow circle,False,True,"Based on your examples, I've learned that the rule for labeling the objects 'True' is that they must not be blue triangles of any size. All objects that have been labeled 'True' are either not blue, not triangles, or if they are blue, they are not a triangle. All blue triangles have been labeled 'False' regardless of their size.
+
+For Group 15:
+-large yellow circle -> True","def is_rule(obj):
+    return not (obj.blue and obj.triangle)",not (blue and triangle),True,0.8108108108108109,True,False,15
+38,38,hg16,circle xor (not blue),medium yellow circle,False,False,"Based on your examples, I've learned that the rule for labeling the objects as 'True' depends on their shape and color, but not on their size. An object is labeled 'True' if it is any color other than blue and has any shape other than a circle, or if it is blue and has a circular shape. Any blue object that is not a circle should be labeled 'False', and any object that is a circle but is not blue should also be labeled 'False'.
+
+Labeling the objects in Group 16:
+-medium yellow circle -> False
+-large green triangle -> True
+-medium yellow rectangle -> True
+-medium blue triangle -> False
+-large yellow rectangle -> True","def is_rule(obj):
+    return (obj.blue and obj.circle) or (not obj.blue and not obj.circle)",(blue and circle) or (not blue and not circle),False,1.0,True,False,16
+39,39,hg16,circle xor (not blue),large green triangle,True,True,"Based on your examples, I've learned that the rule for labeling the objects as 'True' depends on their shape and color, but not on their size. An object is labeled 'True' if it is any color other than blue and has any shape other than a circle, or if it is blue and has a circular shape. Any blue object that is not a circle should be labeled 'False', and any object that is a circle but is not blue should also be labeled 'False'.
+
+Labeling the objects in Group 16:
+-medium yellow circle -> False
+-large green triangle -> True
+-medium yellow rectangle -> True
+-medium blue triangle -> False
+-large yellow rectangle -> True","def is_rule(obj):
+    return (obj.blue and obj.circle) or (not obj.blue and not obj.circle)",(blue and circle) or (not blue and not circle),True,1.0,True,False,16
+40,40,hg16,circle xor (not blue),medium yellow rectangle,True,True,"Based on your examples, I've learned that the rule for labeling the objects as 'True' depends on their shape and color, but not on their size. An object is labeled 'True' if it is any color other than blue and has any shape other than a circle, or if it is blue and has a circular shape. Any blue object that is not a circle should be labeled 'False', and any object that is a circle but is not blue should also be labeled 'False'.
+
+Labeling the objects in Group 16:
+-medium yellow circle -> False
+-large green triangle -> True
+-medium yellow rectangle -> True
+-medium blue triangle -> False
+-large yellow rectangle -> True","def is_rule(obj):
+    return ((not obj.blue and not obj.circle) or (obj.blue and obj.circle))",((not blue and not circle) or (blue and circle)),True,1.0,True,False,16
+41,41,hg16,circle xor (not blue),medium blue triangle,False,False,"Based on your examples, I've learned that the rule for labeling the objects as 'True' depends on their shape and color, but not on their size. An object is labeled 'True' if it is any color other than blue and has any shape other than a circle, or if it is blue and has a circular shape. Any blue object that is not a circle should be labeled 'False', and any object that is a circle but is not blue should also be labeled 'False'.
+
+Labeling the objects in Group 16:
+-medium yellow circle -> False
+-large green triangle -> True
+-medium yellow rectangle -> True
+-medium blue triangle -> False
+-large yellow rectangle -> True","def is_rule(obj):
+    return (obj.color != 'blue' and obj.shape != 'circle') or (obj.color == 'blue' and obj.shape == 'circle')",( not blue not circle) or (blue and circle),False,1.0,True,False,16
+42,42,hg16,circle xor (not blue),large yellow rectangle,True,True,"Based on your examples, I've learned that the rule for labeling the objects as 'True' depends on their shape and color, but not on their size. An object is labeled 'True' if it is any color other than blue and has any shape other than a circle, or if it is blue and has a circular shape. Any blue object that is not a circle should be labeled 'False', and any object that is a circle but is not blue should also be labeled 'False'.
+
+Labeling the objects in Group 16:
+-medium yellow circle -> False
+-large green triangle -> True
+-medium yellow rectangle -> True
+-medium blue triangle -> False
+-large yellow rectangle -> True","def is_rule(obj):
+    return (obj.color != 'blue' and obj.shape != 'circle') or (obj.color == 'blue' and obj.shape == 'circle')",( not blue not circle) or (blue and circle),True,1.0,True,False,16
+43,43,hg16,circle xor (not blue),medium yellow triangle,True,True,"Based on your examples, I've learned that the labeling rule is: An object is labeled 'True' if it is not a blue rectangle or a blue triangle, regardless of its size. A blue circle or any green or yellow shape is labeled 'True'. All medium blue triangles, large blue triangles, medium blue rectangles, large yellow circles, and medium yellow circles are labeled 'False'. 
+
+Let's label the objects in Group 17:
+-medium yellow triangle -> True
+-large blue triangle -> False
+-large blue rectangle -> False
+-small blue triangle -> False
+-large yellow circle -> False","def is_rule(obj):
+    return not(obj.blue and (obj.rectangle or obj.triangle)) and (obj.blue and obj.circle) or (obj.green or obj.yellow)",not(blue and (rectangle or triangle)) and (blue and circle) or (green or yellow),True,0.8837209302325582,True,False,17
+44,44,hg16,circle xor (not blue),large blue triangle,False,False,"Based on your examples, I've learned that the labeling rule is: An object is labeled 'True' if it is not a blue rectangle or a blue triangle, regardless of its size. A blue circle or any green or yellow shape is labeled 'True'. All medium blue triangles, large blue triangles, medium blue rectangles, large yellow circles, and medium yellow circles are labeled 'False'. 
+
+Let's label the objects in Group 17:
+-medium yellow triangle -> True
+-large blue triangle -> False
+-large blue rectangle -> False
+-small blue triangle -> False
+-large yellow circle -> False","def is_rule(obj):
+    return not(obj.blue and (obj.rectangle or obj.triangle))",not(blue and (rectangle or triangle)),False,0.8837209302325582,True,False,17
+45,45,hg16,circle xor (not blue),large blue rectangle,False,False,"Based on your examples, I've learned that the labeling rule is: An object is labeled 'True' if it is not a blue rectangle or a blue triangle, regardless of its size. A blue circle or any green or yellow shape is labeled 'True'. All medium blue triangles, large blue triangles, medium blue rectangles, large yellow circles, and medium yellow circles are labeled 'False'. 
+
+Let's label the objects in Group 17:
+-medium yellow triangle -> True
+-large blue triangle -> False
+-large blue rectangle -> False
+-small blue triangle -> False
+-large yellow circle -> False","def is_rule(obj):
+    return (not (obj.blue and obj.rectangle)) and (not (obj.blue and obj.triangle)) and (obj.blue or obj.circle or obj.green or obj.yellow)",(not (blue and rectangle)) and (not (blue and triangle)) and (blue or circle or green or yellow),False,0.8837209302325582,True,False,17
+46,46,hg16,circle xor (not blue),small blue triangle,False,False,"Based on your examples, I've learned that the labeling rule is: An object is labeled 'True' if it is not a blue rectangle or a blue triangle, regardless of its size. A blue circle or any green or yellow shape is labeled 'True'. All medium blue triangles, large blue triangles, medium blue rectangles, large yellow circles, and medium yellow circles are labeled 'False'. 
+
+Let's label the objects in Group 17:
+-medium yellow triangle -> True
+-large blue triangle -> False
+-large blue rectangle -> False
+-small blue triangle -> False
+-large yellow circle -> False","def is_rule(obj):
+    return not (obj.blue and (obj.rectangle or obj.triangle))",not (blue and (rectangle or triangle)),False,0.8837209302325582,True,False,17
+47,47,hg16,circle xor (not blue),large yellow circle,False,False,"Based on your examples, I've learned that the labeling rule is: An object is labeled 'True' if it is not a blue rectangle or a blue triangle, regardless of its size. A blue circle or any green or yellow shape is labeled 'True'. All medium blue triangles, large blue triangles, medium blue rectangles, large yellow circles, and medium yellow circles are labeled 'False'. 
+
+Let's label the objects in Group 17:
+-medium yellow triangle -> True
+-large blue triangle -> False
+-large blue rectangle -> False
+-small blue triangle -> False
+-large yellow circle -> False","def is_rule(obj):
+    return not (obj.blue and (obj.rectangle or obj.triangle))",not (blue and (rectangle or triangle)),True,0.8837209302325582,False,False,17
+48,48,hg16,circle xor (not blue),large green triangle,True,True,"Based on your examples, I've learned that the secret rule is based on the combination of objects' shape and color. The rule for labeling 'True' seems to be: **Triangles of any size and color are labeled 'True', rectangles that are either green or yellow are labeled 'True', and small circles are labeled 'True' if they are either blue or green. All other shapes or color combinations are labeled 'False'.**
+
+Now, to label the object in Group 18:
+-large green triangle -> True","def is_rule(obj):
+    return (obj.triangle) or (obj.rectangle and (obj.green or obj.yellow)) or (obj.small and obj.circle and (obj.blue or obj.green))",(triangle) or (rectangle and (green or yellow)) or (small and circle and (blue or green)),True,0.7916666666666666,True,False,18
+49,49,hg16,circle xor (not blue),medium blue rectangle,False,False,"Based on your examples, I've learned that the objects are labeled 'True' if they are not blue rectangles or blue triangles. Additionally, yellow and green circles are also labeled 'False'.
+
+For Group 19:
+
+-medium blue rectangle -> False
+-large blue rectangle -> False","def is_rule(obj):
+    return not (obj.blue and (obj.rectangle or obj.triangle)) and not ((obj.yellow or obj.green) and obj.circle)",not (blue and (rectangle or triangle)) and not ((yellow or green) and circle),False,1.0,True,False,19
+50,50,hg16,circle xor (not blue),large blue rectangle,False,False,"Based on your examples, I've learned that the objects are labeled 'True' if they are not blue rectangles or blue triangles. Additionally, yellow and green circles are also labeled 'False'.
+
+For Group 19:
+
+-medium blue rectangle -> False
+-large blue rectangle -> False","def is_rule(obj):
+    return not (obj.blue and (obj.rectangle or obj.triangle)) and not ((obj.yellow or obj.green) and obj.circle)",not (blue and (rectangle or triangle)) and not ((yellow or green) and circle),False,1.0,True,False,19
+51,51,hg16,circle xor (not blue),large yellow rectangle,True,True,"Based on your examples, I've learned that the rule for labeling objects as 'True' is that the objects must not be blue triangles, blue rectangles, or yellow circles. All other objects are labeled 'True' regardless of their color, size, and shape combination. Following this rule, the labels for the objects in Group 20 are:
+
+-large yellow rectangle -> True
+-medium blue triangle -> False","def is_rule(obj):
+    return not (obj.blue and obj.triangle) and not (obj.blue and obj.rectangle) and not (obj.yellow and obj.circle)",not (blue and triangle) and not (blue and rectangle) and not (yellow and circle),True,0.9607843137254902,True,False,20
+52,52,hg16,circle xor (not blue),medium blue triangle,False,False,"Based on your examples, I've learned that the rule for labeling objects as 'True' is that the objects must not be blue triangles, blue rectangles, or yellow circles. All other objects are labeled 'True' regardless of their color, size, and shape combination. Following this rule, the labels for the objects in Group 20 are:
+
+-large yellow rectangle -> True
+-medium blue triangle -> False","def is_rule(obj):
+    return not ((obj.blue and obj.triangle) or (obj.blue and obj.rectangle) or (obj.yellow and obj.circle))",not ((blue and triangle) or (blue and rectangle) or (yellow and circle)),False,0.9607843137254902,True,False,20
+53,53,hg16,circle xor (not blue),large blue circle,True,False,"Based on your examples, I've learned that the objects are labeled 'True' if they are either green in any size and shape, or if they are any color besides blue and in the shape of a rectangle or triangle, regardless of their size. The object is labeled 'False' if it is blue and not a circle, or if it isn't green but is a circle or a non-rectangle/non-triangle shape.
+
+For Group 21:
+-large blue circle -> False
+-large green circle -> False","def is_rule(obj):
+    return (obj.green) or ((obj.rectangle or obj.triangle) and (not obj.blue))",(green) or ((rectangle or triangle) and (not blue)),False,0.9056603773584906,True,False,21
+54,54,hg16,circle xor (not blue),large green circle,False,False,"Based on your examples, I've learned that the objects are labeled 'True' if they are either green in any size and shape, or if they are any color besides blue and in the shape of a rectangle or triangle, regardless of their size. The object is labeled 'False' if it is blue and not a circle, or if it isn't green but is a circle or a non-rectangle/non-triangle shape.
+
+For Group 21:
+-large blue circle -> False
+-large green circle -> False","def is_rule(obj):
+    return (obj.green) or ((obj.rectangle or obj.triangle) and (not obj.blue))",(green) or ((rectangle or triangle) and (not blue)),True,0.9056603773584906,False,False,21
+55,55,hg16,circle xor (not blue),medium blue rectangle,False,False,"Based on your examples, I've learned that the rule for labeling the objects as 'True' is based on a combination of their color and shape, but not their size. An object is labeled 'True' if it is green, regardless of the size or if it is a triangle, regardless of the color or size. Any object that does not meet these criteria is labeled 'False'.
+
+Group 22:
+-medium blue rectangle -> False
+-large green circle -> True
+-small yellow circle -> False
+-small yellow triangle -> True
+-small green rectangle -> True","def is_rule(obj):
+    return obj.green or obj.triangle",green or triangle,False,0.5454545454545454,True,False,22
+56,56,hg16,circle xor (not blue),large green circle,False,True,"Based on your examples, I've learned that the rule for labeling the objects as 'True' is based on a combination of their color and shape, but not their size. An object is labeled 'True' if it is green, regardless of the size or if it is a triangle, regardless of the color or size. Any object that does not meet these criteria is labeled 'False'.
+
+Group 22:
+-medium blue rectangle -> False
+-large green circle -> True
+-small yellow circle -> False
+-small yellow triangle -> True
+-small green rectangle -> True","def is_rule(obj):
+    return obj.green or obj.triangle",green or triangle,True,0.5454545454545454,True,False,22
+57,57,hg16,circle xor (not blue),small yellow circle,False,False,"Based on your examples, I've learned that the rule for labeling the objects as 'True' is based on a combination of their color and shape, but not their size. An object is labeled 'True' if it is green, regardless of the size or if it is a triangle, regardless of the color or size. Any object that does not meet these criteria is labeled 'False'.
+
+Group 22:
+-medium blue rectangle -> False
+-large green circle -> True
+-small yellow circle -> False
+-small yellow triangle -> True
+-small green rectangle -> True","def is_rule(obj):
+    return obj.green or obj.triangle",green or triangle,False,0.5454545454545454,True,False,22
+58,58,hg16,circle xor (not blue),small yellow triangle,True,True,"Based on your examples, I've learned that the rule for labeling the objects as 'True' is based on a combination of their color and shape, but not their size. An object is labeled 'True' if it is green, regardless of the size or if it is a triangle, regardless of the color or size. Any object that does not meet these criteria is labeled 'False'.
+
+Group 22:
+-medium blue rectangle -> False
+-large green circle -> True
+-small yellow circle -> False
+-small yellow triangle -> True
+-small green rectangle -> True","def is_rule(obj):
+    return obj.green or obj.triangle",green or triangle,True,0.5454545454545454,True,False,22
+59,59,hg16,circle xor (not blue),small green rectangle,True,True,"Based on your examples, I've learned that the rule for labeling the objects as 'True' is based on a combination of their color and shape, but not their size. An object is labeled 'True' if it is green, regardless of the size or if it is a triangle, regardless of the color or size. Any object that does not meet these criteria is labeled 'False'.
+
+Group 22:
+-medium blue rectangle -> False
+-large green circle -> True
+-small yellow circle -> False
+-small yellow triangle -> True
+-small green rectangle -> True","def is_rule(obj):
+    return obj.green or obj.triangle",green or triangle,True,0.5454545454545454,True,False,22
+60,60,hg16,circle xor (not blue),large blue circle,True,False,"Based on your examples, I've learned that the rule for labeling objects 'True' seems to require that the object is either a circle or a rectangle (not a triangle), and it involves the colors yellow or green. Additionally, size does not seem to affect the labeling. To summarize, an object is labeled 'True' if it's a yellow or green circle or rectangle, regardless of size.
+
+Labeling for Group 23:
+-large blue circle-> False","def is_rule(obj):
+    return (obj.circle or obj.rectangle) and (obj.yellow or obj.green) and not obj.triangle",(circle or rectangle) and (yellow or green) and not triangle,False,0.5666666666666667,True,False,23
+61,61,hg16,circle xor (not blue),large green circle,False,False,"Based on your examples, I've learned that the rule for labeling the objects 'True' considers the color and the shape of the objects. An object is labeled 'True' if it follows these criteria:
+
+1. The object must be any shape that is green or yellow.
+2. If the object is blue, it must be a large circle to be labeled 'True'.
+
+All other objects are labeled 'False'.
+
+Labels for Group 24:
+-large green circle -> False (does not satisfy the rule for blue objects and is not a green or yellow shape other than circle)
+-small blue rectangle -> False (blue objects must be large circles to be labeled 'True')
+-large yellow triangle -> True (it's a triangle and yellow, which fits the rule)
+-large receiveangle -> False (blue objects must be large circles to be labeled 'True')","def is_rule(obj):
+    return False",False,False,0.4426229508196721,True,False,24
+62,62,hg16,circle xor (not blue),small blue rectangle,False,False,"Based on your examples, I've learned that the rule for labeling the objects 'True' considers the color and the shape of the objects. An object is labeled 'True' if it follows these criteria:
+
+1. The object must be any shape that is green or yellow.
+2. If the object is blue, it must be a large circle to be labeled 'True'.
+
+All other objects are labeled 'False'.
+
+Labels for Group 24:
+-large green circle -> False (does not satisfy the rule for blue objects and is not a green or yellow shape other than circle)
+-small blue rectangle -> False (blue objects must be large circles to be labeled 'True')
+-large yellow triangle -> True (it's a triangle and yellow, which fits the rule)
+-large receiveangle -> False (blue objects must be large circles to be labeled 'True')","def is_rule(obj):
+    return obj.color and obj.shape", and ,True,0.5573770491803278,False,False,24
+63,63,hg16,circle xor (not blue),large yellow triangle,True,True,"Based on your examples, I've learned that the rule for labeling the objects 'True' considers the color and the shape of the objects. An object is labeled 'True' if it follows these criteria:
+
+1. The object must be any shape that is green or yellow.
+2. If the object is blue, it must be a large circle to be labeled 'True'.
+
+All other objects are labeled 'False'.
+
+Labels for Group 24:
+-large green circle -> False (does not satisfy the rule for blue objects and is not a green or yellow shape other than circle)
+-small blue rectangle -> False (blue objects must be large circles to be labeled 'True')
+-large yellow triangle -> True (it's a triangle and yellow, which fits the rule)
+-large receiveangle -> False (blue objects must be large circles to be labeled 'True')","def is_rule(obj):
+    return False",False,False,0.4426229508196721,False,False,24
+64,64,hg16,circle xor (not blue),large blue rectangle,False,,"Based on your examples, I've learned that the rule for labeling the objects 'True' considers the color and the shape of the objects. An object is labeled 'True' if it follows these criteria:
+
+1. The object must be any shape that is green or yellow.
+2. If the object is blue, it must be a large circle to be labeled 'True'.
+
+All other objects are labeled 'False'.
+
+Labels for Group 24:
+-large green circle -> False (does not satisfy the rule for blue objects and is not a green or yellow shape other than circle)
+-small blue rectangle -> False (blue objects must be large circles to be labeled 'True')
+-large yellow triangle -> True (it's a triangle and yellow, which fits the rule)
+-large receiveangle -> False (blue objects must be large circles to be labeled 'True')","def is_rule(obj):
+    return obj.color and obj.shape", and ,True,0.5573770491803278,False,False,24
+65,65,hg16,circle xor (not blue),medium yellow triangle,True,True,"Based on your examples, I've learned that the rule for labeling objects as 'True' seems to be that the object must not be a medium or large blue shape. All medium and large blue shapes have been labeled 'False,' while all other shapes and sizes, including small blue ones, have been labeled 'True'. Therefore, following this rule:
+
+-medium yellow triangle -> True","def is_rule(obj):
+    return not (obj.medium and obj.blue) and not (obj.large and obj.blue)",not (medium and blue) and not (large and blue),True,0.7384615384615385,True,False,25

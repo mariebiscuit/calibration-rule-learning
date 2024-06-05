@@ -19,6 +19,10 @@ from NeuroSurgeon.Models import model_configs, circuit_model
 from losses import compute_distribution_loss
 from utils.model_loading import load_model_and_tokenizer
 
+"""
+Future Work: Sparsification of the Model
+"""
+
 class TemperatureCallback:
     # A simple callback that updates the probes temperature parameter,
     # which transforms a soft mask into a hard mask

@@ -21,6 +21,10 @@ from typing import Type, Dict, List
 from utils.model_loading import _create_device_map
 from losses import compute_distribution_loss, compute_restricted_ce_loss
 
+"""
+=== Experiment 3 and 4 ===
+LoRA-Tuning Functions
+"""
 def find_all_linear_names(model):
     cls = bnb.nn.Linear4bit #if args.bits == 4 else (bnb.nn.Linear8bitLt if args.bits == 8 else torch.nn.Linear)
     lora_module_names = set()
@@ -31,7 +35,16 @@ def find_all_linear_names(model):
         if 'lm_head' in lora_module_names: # needed for 16-bit
             lora_module_names.remove('lm_head')
     return list(lora_module_names)
-    
+
+def get_model(model_id:str, ddp: bool=False):
+    # device_map = _create_device_map(model_id)
+
+    model = AutoModelForCausalLM.from_pretrained(model_id, 
+            cache_dir=os.environ['TRANSFORMERS_CACHE'],
+            device_map={"": PartialState().process_index} if ddp else 'auto'
+            )
+    return model
+
 def get_gemma_model(model_id, checkpoint:str=None, adapter_name="adapter1", ddp: bool=False):
 
     device_map = _create_device_map(model_id)
@@ -84,10 +97,16 @@ class KLTrainer(Trainer):
         self.true = self.tokenizer.encode(" True", add_special_tokens=False, return_tensors='pt').reshape(-1).to(torch.int64)
         self.false = self.tokenizer.encode(" False", add_special_tokens=False, return_tensors='pt').reshape(-1).to(torch.int64)
 
-        with open('./datasets/kl_dataset/L1_hdists.pkl', 'rb') as f:
+        # with open('./datasets/kl_dataset/L1_hdists.pkl', 'rb') as f:
+        #     self.train_hdists = pickle.load(f)
+        
+        # with open('./datasets/kl_dataset/L2_hdists.pkl', 'rb') as f:
+        #     self.test_hdists = pickle.load(f)
+
+        with open('./datasets/kl_dataset/L1_hdists_truncated.pkl', 'rb') as f:
             self.train_hdists = pickle.load(f)
         
-        with open('./datasets/kl_dataset/L2_hdists.pkl', 'rb') as f:
+        with open('./datasets/kl_dataset/L2_hdists_truncated.pkl', 'rb') as f:
             self.test_hdists = pickle.load(f)
 
     def compute_loss(self, model, inputs, return_outputs=False):
@@ -231,7 +250,13 @@ def main():
     RUN_NAME = sys.argv[-3]
     SUBSET_NAME = sys.argv[-2]
     MODEL_ID = sys.argv[-1]
-
+    DDP=False
+    
+    if "gemma" in MODEL_ID:
+        model_factory = get_gemma_model
+    else:
+        model_factory = get_model
+    
     from utils.get_api_keys import HF_TOKEN
     from utils.get_concept_subsets import SUBSETS
 
@@ -243,22 +268,25 @@ def main():
     os.environ['TRANSFORMERS_CACHE'] = '/oscar/scratch/aloo1/model_cache_2'
 
     concept_list = SUBSETS[SUBSET_NAME]
-    data = datasets.load_from_disk("./datasets/kl_dataset")
+    # data = datasets.load_from_disk("./datasets/kl_dataset")
+    data = datasets.load_from_disk("./datasets/kl_dataset_truncated")
     train_data = data["L1"].filter(lambda x: x['concepts'] in concept_list)
     # test_data = data["L2"].filter(lambda x: x['concepts'] in concept_list)
 
-    DDP=True
-    train(model_factory = lambda: get_gemma_model(MODEL_ID, ddp=DDP),
+
+    train(model_factory = lambda: model_factory(MODEL_ID, ddp=DDP),
           tokenizer_factory=lambda: get_tokenizer(MODEL_ID),
           train_dataset=train_data, 
           eval_dataset=None, 
           run_name=RUN_NAME, 
-          distribution_loss=False,
+          distribution_loss=True,
           output_dir= f'/users/aloo1/scratch/checkpoints_{RUN_NAME}',
           max_steps=0, 
-          num_train_epochs=72,
+        #   num_train_epochs=72,
+          num_train_epochs=200,
           save_steps=500,
-          gradient_accumulation_steps=4)
+          gradient_accumulation_steps=4,
+          fp16=False)
 
 
 if __name__ == "__main__":

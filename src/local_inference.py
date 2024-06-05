@@ -21,6 +21,11 @@ from utils.model_loading import load_model_and_tokenizer
 from sparsification import load_wrapped_model
 from losses import compute_distribution_loss
 
+"""
+==== Experiment 1, 3 and 4 ===
+Functions to perform inference on local models
+"""
+
 def _get_local_completions(model, tokenizer, dataset, anstoks):
 
     output = {k: [] for k in ['top5_ans', 'top_ans', 'sampled_ans', 'mass_ans', 'raw_true_mass', 'raw_false_mass', 'norm_true_mass']}
@@ -61,31 +66,33 @@ def _get_local_completions(model, tokenizer, dataset, anstoks):
 
         return pd.DataFrame.from_dict(output)
 
-def load_model(model_id, lora_checkpoint=None, circuit_model_checkpoint=None):
+def load_model(model_id, lora_checkpoint:str=None, circuit_model_checkpoint:str=None, normal_checkpoint:str=None):
 
     if circuit_model_checkpoint is not None:
         model, tokenizer = load_wrapped_model(model_id, lora_checkpoint, 1e-8, 0, circuit_model_checkpoint)
 
     else:
-        model, tokenizer = load_model_and_tokenizer(model_id, lora_checkpoint)
+        model, tokenizer = load_model_and_tokenizer(model_id, lora_checkpoint=lora_checkpoint, normal_checkpoint=normal_checkpoint)
       
     return model, tokenizer
 
 def query_local_completion(model_id: str,
             dataset: Type[Dataset], 
             uid: str, 
+            experiment: int=3,
             load_in_8bit:bool = True,
+            normal_checkpoint: str=None,
             lora_checkpoint: str=None, 
             sparsification_checkpoint: str=None,
             anstoks=(["True", "true", " True", " true"], 
             ["False", "false", " False", " false"])):
 
-    if not os.path.isdir(f'./results/raw_results/{uid}'):
-        os.mkdir(f'./results/raw_results/{uid}')
+    if not os.path.isdir(f'./results/experiment_{experiment}/raw_results/{uid}'):
+        os.mkdir(f'./results/experiment_{experiment}/raw_results/{uid}')
     else:
         raise ValueError("UID already exists!")
 
-    model, tokenizer = load_model(model_id, lora_checkpoint, sparsification_checkpoint)
+    model, tokenizer = load_model(model_id, lora_checkpoint, sparsification_checkpoint, normal_checkpoint)
 
     for concept in tqdm(dataset['concepts'], total=len(dataset['concepts'])):
         concept_dataset = dataset.filter(lambda x: x['concepts'] == concept)
@@ -95,7 +102,7 @@ def query_local_completion(model_id: str,
         output_df['answers'] = [a for sublist in concept_dataset['answers'][0] for a in sublist]
         output_df['object'] = [o for sublist in concept_dataset['objs'][0] for o in sublist]
     
-        output_df.to_csv(f'./results/raw_results/{uid}/{uid}_{concept}.csv')
+        output_df.to_csv(f'./results/experiment_{experiment}/raw_results/{uid}/{uid}_{concept}.csv')
 
     print("Done evaluating!")
 
@@ -114,7 +121,8 @@ if __name__ == "__main__":
     os.environ['TRANSFORMERS_CACHE'] = '/oscar/scratch/aloo1/model_cache_2'
     os.environ["CUDA_VISIBLE_DEVICES"]="0,1"
 
-    data = datasets.load_from_disk("./datasets/kl_dataset")["L2"]
+    data = datasets.load_from_disk("./datasets/kl_dataset_truncated")["L2"]
+    # data = datasets.load_from_disk("./datasets/kl_dataset")["L2"]
 
     """
     Querying a pretrained model
@@ -123,25 +131,32 @@ if __name__ == "__main__":
     # query_local_completion('google/gemma-7b', data, "gemma7b-pretrained")
 
     """
+    Querying a model with Normal Checkpoint
+    """ 
+    query_local_completion('gpt2', data, "gpt2-tuned112",
+                            normal_checkpoint="/users/aloo1/scratch/checkpoints_gpt2-sm-tuned112",
+                            anstoks=([" True", " False"]))
+
+    """
     Querying a model with LoRA Checkpoint
     """ 
-    # query_local_completion('google/gemma-2b', data, "gemma2b-tuned112",
+    # query_local_completion('google/gemma-2b', data, "gemma2b-tuned112", 
     #                         lora_checkpoint="/users/aloo1/scratch/checkpoints_gemma_kl_fulldist_2b_5000/checkpoint-3000",
     #                         anstoks=([" True", " False"]))
     
-    query_local_completion('google/gemma-7b', data, "gemma7b-pretrained",
-                            # lora_checkpoint="/users/aloo1/scratch/checkpoints_gemma-7b-tuned92-and-special",
-                            # lora_checkpoint="/users/aloo1/scratch/checkpoints_gemma-7b-tuned92",
-                            # lora_checkpoint="/users/aloo1/scratch/checkpoints_gemma_kl_fulldist",
-                            # lora_checkpoint='/users/aloo1/scratch/checkpoints_gemma-7b-tuned112-answerloss',
-                            anstoks=([" True", " False"]))
+    # query_local_completion('google/gemma-7b', data, "gemma7b-pretrained",
+    #                         # lora_checkpoint="/users/aloo1/scratch/checkpoints_gemma-7b-tuned92-and-special",
+    #                         # lora_checkpoint="/users/aloo1/scratch/checkpoints_gemma-7b-tuned92",
+    #                         # lora_checkpoint="/users/aloo1/scratch/checkpoints_gemma_kl_fulldist",
+    #                         # lora_checkpoint='/users/aloo1/scratch/checkpoints_gemma-7b-tuned112-answerloss',
+    #                         anstoks=([" True", " False"]))
 
-    query_local_completion('google/gemma-7b', data, "gemma7b-tuned112-answerloss",
-                            # lora_checkpoint="/users/aloo1/scratch/checkpoints_gemma-7b-tuned92-and-special",
-                            # lora_checkpoint="/users/aloo1/scratch/checkpoints_gemma-7b-tuned92",
-                            # lora_checkpoint="/users/aloo1/scratch/checkpoints_gemma_kl_fulldist",
-                            lora_checkpoint='/users/aloo1/scratch/checkpoints_gemma-7b-tuned112-answerloss',
-                            anstoks=([" True", " False"]))
+    # query_local_completion('google/gemma-7b', data, "gemma7b-tuned112-answerloss",
+    #                         # lora_checkpoint="/users/aloo1/scratch/checkpoints_gemma-7b-tuned92-and-special",
+    #                         # lora_checkpoint="/users/aloo1/scratch/checkpoints_gemma-7b-tuned92",
+    #                         # lora_checkpoint="/users/aloo1/scratch/checkpoints_gemma_kl_fulldist",
+    #                         lora_checkpoint='/users/aloo1/scratch/checkpoints_gemma-7b-tuned112-answerloss',
+    #                         anstoks=([" True", " False"]))
     """
     Querying a model with LoRA Checkpoint + Sparsification
     """ 

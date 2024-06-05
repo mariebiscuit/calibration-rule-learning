@@ -18,6 +18,9 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, AutoConfig, BitsAn
 from peft import PeftModel
 from datasets import Dataset
 
+"""
+Utilities to load models
+"""
 
 def _create_device_map(model_path: str) -> dict[str, int]:
     """
@@ -85,10 +88,17 @@ def _load_inference_model(model_id: str, lora_adaptor_fp: str = None):
     return inf_model
 
 
-def load_model_and_tokenizer(model_id: str, lora_checkpoint: str =None):
+def load_model_and_tokenizer(model_id: str, lora_checkpoint: str =None, normal_checkpoint: str=None):
 
-    model = _load_inference_model(model_id, lora_checkpoint)
-                                    
+    assert not(lora_checkpoint is None and normal_checkpoint is None)
+
+    if normal_checkpoint is not None:
+        model = AutoModelForCausalLM.from_pretrained(normal_checkpoint, 
+            device_map='auto',
+            cache_dir=os.environ['TRANSFORMERS_CACHE'])
+    else:
+        model = _load_inference_model(model_id, lora_checkpoint)
+                     
     tokenizer = AutoTokenizer.from_pretrained(
             model_id,
             cache_dir=os.environ['TRANSFORMERS_CACHE'], 
