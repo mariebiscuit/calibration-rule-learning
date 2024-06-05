@@ -32,14 +32,14 @@ def query_together_completion(model_id: str,
         query_pieces = dataset['text'].split("->")
         running_message = ""
         for piece in query_pieces:
-            running_message += piece + "->"
+            running_message += piece + pre_answer_token
 
-            top, _, _ = get_together_completion(model_url, prompt, max_tokens=1, logprobs=0, n=1, echo=False)
+            top, _, _ = get_together_completion(model_id, running_message, max_tokens=1, logprobs=0, n=1, echo=False)
 
             if get_logprobs:
-                _, _, response = get_together_completion(model_url, prompt + " True", max_tokens=1, logprobs=1, n=1, echo=True)
+                _, _, response = get_together_completion(model_id, running_message + " True", max_tokens=1, logprobs=1, n=1, echo=True)
                 t_logprob = response['prompt'][0]['logprobs']['token_logprobs'][-1]
-                _, _, response = get_together_completion(model_url, prompt + " False", max_tokens=1, logprobs=1, n=1, echo=True)
+                _, _, response = get_together_completion(model_id, running_message + " False", max_tokens=1, logprobs=1, n=1, echo=True)
                 f_logprob = response['prompt'][0]['logprobs']['token_logprobs'][-1]
             else:
                 t_logprob = -1
