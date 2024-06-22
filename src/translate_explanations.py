@@ -4,8 +4,13 @@ import sys, os
 import re
 from collections import defaultdict
 from tqdm import tqdm
+import json
+import traceback
+import numpy as np
+import copy
 
 from utils.api_utils import get_chatcompletion
+from utils.preprocess import format_shape
 
 """
 === Experiment 2 ===
@@ -27,10 +32,35 @@ class dotdict(dict):
     """dot.notation access to dictionary attributes"""
     def __init__(self, d):
         self.attrs = d
-        for k, v in list(d.items()):
-            self.attrs[feature_map[k]] = k
-        #     self.attrs[k] = v
 
+    def __getattr__(self, x):
+        return self.attrs[x]
+        # return y if y is not None else False
+
+    def __repr__(self):
+        return "dotdict(" + self.attrs.__repr__() + ")"
+
+    def __eq__(self, other):
+        isClass = isinstance(other, self.__class__)
+        if not isClass:
+            return False
+
+        for key, value in self.attrs.items():
+            if other.attrs[key] != value:
+                return False
+        
+        return True
+
+class objdotdict(dotdict):
+    # https://stackoverflow.com/questions/2352181/how-to-use-a-dot-to-access-members-of-dictionary
+    def __init__(self, d):
+        super(objdotdict, self).__init__(d)
+
+        for k, _ in list(d.items()):
+            if k in feature_map:
+                self.attrs[feature_map[k]] = k
+
+        self.attrs['size_num'] = {'small': 1, 'medium': 2, 'large': 3}[self.attrs['size']]
         self.attrs['medium_sized'] = d['medium']
         self.attrs['small_sized'] = d['small']
         self.attrs['large_sized'] = d['large']
@@ -41,11 +71,7 @@ class dotdict(dict):
         self.attrs['circular'] = d['circle']
         self.attrs['triangular'] = d['triangle']
         self.attrs['rectangular'] = d['rectangle']
-
-    def __getattr__(self, x):
-        return self.attrs[x]
-        # return y if y is not None else False
-
+    
 def process_python_code(code: str):
     try:
         statement = code.split("return ")[1]
@@ -73,19 +99,36 @@ def process_python_code(code: str):
         
     return statement
 
-def make_object(object_str: str):
+def make_object(object_str: str, setnum: int=None, concept=None):
     d = defaultdict(lambda: False)
     for k in object_str.split(" "):
         d[k] = True
-    return dotdict(d)
+
+    if setnum is not None and concept is not None:
+        with open('./data/labels_to_data.json', 'r') as f:
+            data = json.load(f)
+        d['current_set'] = dotdict({'objs': [make_object(format_shape(x)) for x in data[concept]['L2']['sets'][setnum-1]],
+                              'answers': data[concept]['L2']['answers'][setnum]})
+        d['past_sets'] = dotdict({'obj_sets': [[make_object(format_shape(x)) for x in s] for s in data[concept]['L2']['sets'][:setnum]],
+                             'answer_sets': data[concept]['L2']['answers'][:setnum-1]})
+    
+    dotd = objdotdict(d)
+    return dotd
 
 
-def evaluate_python_code(code, target_query):
+def evaluate_python_code(code, target_query, setnum=None, concept=None):
     loc = {}
     try:
-        exec(code + "\nanswer = is_rule(obj)", {'obj': make_object(target_query), 'sized': 0}, loc)
+        obj = make_object(target_query, setnum, concept)
+        print(obj.past_sets.obj_sets)
+        print(np.nonzero(np.array([o for s in obj.past_sets.answer_sets for o in s])))
+        exec(code + "\nanswer = is_rule(obj)", {'obj': make_object(target_query, setnum, concept), 
+                                                'sized': 0,
+                                                'np': np}, loc)
         loc['answer'] = bool(loc['answer'])
-    except:
+    except Exception as e:
+        print(code, "\n", target_query, setnum, concept)
+        print(traceback.format_exc())
         loc['answer'] = "ERROR"
     
     return loc['answer']
@@ -205,16 +248,38 @@ def test_python_code_eval():
     test7 = """def is_rule(obj):
     return (obj.yellow and obj.size) or (obj.small and obj.color)"""
 
-    assert process_python_code(test1) == "(medium and blue) and circle"
-    assert process_python_code(test2) == "False"
-    assert process_python_code(test3) == "blue or (large and circle)"
-    assert process_python_code(test4) == "medium"
-    assert process_python_code(test5) == "triangle or (rectangle and blue)"
-    assert process_python_code(test7) == "(yellow ) or (small )"
-
-    assert str(evaluate_python_code(test4, 'medium yellow rectangle')) == str(True)
-    assert str(evaluate_python_code(test6, 'dotted red star')) == str(False)
+    # same color as an object in the set
+    test8 = """def is_rule(obj):
+    return np.any([x.color == obj.color for x in obj.current_set.objs])"""
     
+    # object was previously true
+    test9 = """def is_rule(obj):
+    return np.any([(ob == obj) and an for objects, answers in zip(obj.past_sets.obj_sets, obj.past_sets.answer_sets) for ob, an in zip(objects, answers)])"""
+
+    test10 = """def is_rule(obj):  
+    return np.any([x.color == obj.color for s in obj.past_sets.obj_sets for x in s]) or np.any([x.shape == obj.shape for s in obj.past_sets.obj_sets for x in s]) or np.any([x.size == obj.size for s in obj.past_sets.obj_sets for x in s])"""
+
+    test11 = """def is_rule(obj):
+    return obj.medium and (obj.color == [o for s in obj.past_sets.obj_sets for o in s][np.nonzero(np.array([o for s in obj.past_sets.answer_sets for o in s]))[-1][-1]].color) and (obj.shape !=[o for s in obj.past_sets.obj_sets for o in s][np.nonzero(np.array([o for s in obj.past_sets.answer_sets for o in s]))[-1][-1]].shape)"""
+
+    test12 = """def is_rule(obj):
+    return obj.medium and ((len(np.nonzero(np.array([o for s in obj.past_sets.answer_sets for o in s]))[-1]) > 0) and (obj.color == [o for s in obj.past_sets.obj_sets for o in s][np.nonzero(np.array([o for s in obj.past_sets.answer_sets for o in s]))[-1][-1]].color) and (obj.shape !=[o for s in obj.past_sets.obj_sets for o in s][np.nonzero(np.array([o for s in obj.past_sets.answer_sets for o in s]))[-1][-1]].shape))"""
+    # assert process_python_code(test1) == "(medium and blue) and circle"
+    # assert process_python_code(test2) == "False"
+    # assert process_python_code(test3) == "blue or (large and circle)"
+    # assert process_python_code(test4) == "medium"
+    # assert process_python_code(test5) == "triangle or (rectangle and blue)"
+    # assert process_python_code(test7) == "(yellow ) or (small )"
+
+    # assert str(evaluate_python_code(test4, 'medium yellow rectangle')) == str(True)
+    # assert str(evaluate_python_code(test6, 'dotted red star')) == str(False)
+    # assert str(evaluate_python_code(test8, 'medium yellow rectangle', 1, 'hg19')) == str(True)
+    # assert str(evaluate_python_code(test9, 'large yellow triangle', 3, 'hg07')) == str(True)
+    # assert str(evaluate_python_code(test9, 'small green rectangle', 2, 'hg07')) == str(False)
+    # assert str(evaluate_python_code(test9, 'small yellow circle', 2, 'hg07')) == str(True)
+    print(evaluate_python_code(test12, 'medium green circle', 1, 'hg47'))
+    # assert str(evaluate_python_code(test11, 'small yellow circle', 2, 'hg07')) == str(True)
+
     o = make_object("large blue rectangle")
     assert o.large == True and o.blue == True and o.green == False
     assert o.color == "blue" and o.size == "large" and o.shape != 'circle'
@@ -226,18 +291,18 @@ def test_python_code_eval():
 if __name__ == "__main__":
     test_python_code_eval()
 
-    UID = "gpt4_fol"
-    FOLDER = f"./results/experiment_2/raw_results/{UID}"
-    output_folder = FOLDER + "_translated"
+    # UID = "gpt4_fol"
+    # FOLDER = f"./results/experiment_2/raw_results/{UID}"
+    # output_folder = FOLDER + "_translated"
 
-    if not os.path.isdir(output_folder):
-        os.mkdir(output_folder)
+    # if not os.path.isdir(output_folder):
+    #     os.mkdir(output_folder)
         
-    MOCK = False
+    # MOCK = False
 
-    dfs = []
-    for file in os.listdir(FOLDER):
-        if file.endswith(".csv"):
-            print(f"Working on {file}...")
-            df = translate_rules(pd.read_csv(os.path.join(FOLDER, file)), mock=MOCK)
-            df.to_csv(os.path.join(output_folder,file))
+    # dfs = []
+    # for file in os.listdir(FOLDER):
+    #     if file.endswith(".csv"):
+    #         print(f"Working on {file}...")
+    #         df = translate_rules(pd.read_csv(os.path.join(FOLDER, file)), mock=MOCK)
+    #         df.to_csv(os.path.join(output_folder,file))

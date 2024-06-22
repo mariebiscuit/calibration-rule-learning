@@ -3,7 +3,7 @@ import pandas as pd
 from scipy.stats import pearsonr, spearmanr, kendalltau
 import xicorpy
 
-from preprocess import process_human_data_file_to_df, process_response_file
+from utils.preprocess import process_human_data_file_to_df, process_response_file
 
 """
 === Experiment 1 and 3 ===
@@ -106,7 +106,6 @@ def process_bayesian_results_to_df(file_path: str):
                         answer_idx = (np.array(hdf[hdf['concepts'] == current_concept]['answers'])).astype(int)
                     else:
                         raise ValueError("DataFrame 'answers' column neither string nor boolean.")
-
                     hscore = np.vstack((hno, hyes))[answer_idx, np.arange(len(hyes))]
                     mscore = np.vstack((mno, myes))[answer_idx, np.arange(len(myes))]
                         
@@ -179,14 +178,16 @@ def compile_raw_results(filepath_template: str) -> pd.DataFrame:
 
         model_df = pd.read_csv(filepath_template.format(concept=concept))
         myes, mno = model_df['norm_true_mass'], np.ones(model_df['norm_true_mass'].shape)-model_df['norm_true_mass']
-
+        hyes, hno = hyes[:len(myes)], hno[:len(mno)]
+        
         if isinstance(np.array(hdf[hdf['concepts'] == concept]['answers'])[0], str):
             answer_idx = (np.array(hdf[hdf['concepts'] == concept]['answers']) == "True").astype(int)
         elif isinstance(np.array(hdf[hdf['concepts'] == concept]['answers'])[0], bool):
             answer_idx = (np.array(hdf[hdf['concepts'] == concept]['answers'])).astype(int)
         else:
             raise ValueError("DataFrame 'answers' column neither string nor boolean.")
-
+        
+        answer_idx = answer_idx[:len(myes)]
         hscore = np.vstack((hno, hyes))[answer_idx, np.arange(len(hyes))]
         mscore = np.vstack((mno, myes))[answer_idx, np.arange(len(myes))]
 
@@ -234,9 +235,10 @@ if __name__ == "__main__":
         # "gemma7b-tuned112-answerloss",
         # "gemma7b-tuned92-and-special",
         # 'gemma2b-pretrained',
-        'gemma7b-pretrained',
+        # 'gemma7b-pretrained',
+        "gpt2-tuned112"
         # 'gemma2b-tuned112-sparsed_primitivesor'
     ][0]
 
-    df = compile_raw_results(f"./results/experiment_2/raw_results/{prefix}/{prefix}" + "_{concept}.csv")
-    df.to_csv(f'./results/experiment_2/compiled_{prefix}.csv')
+    df = compile_raw_results(f"./results/experiment_3/raw_results/{prefix}/{prefix}" + "_{concept}.csv")
+    df.to_csv(f'./results/experiment_3/compiled_{prefix}.csv')

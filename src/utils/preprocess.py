@@ -5,7 +5,7 @@ import pandas as pd
 from typing import List, Dict, Tuple, Type
 from collections import defaultdict
 
-from custom_data import Obj
+from .custom_data import Obj
 
 """
 Utilities to turn PTG16's SFL data—both human data and rule exemplar lists,
