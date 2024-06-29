@@ -120,8 +120,6 @@ def evaluate_python_code(code, target_query, setnum=None, concept=None):
     loc = {}
     try:
         obj = make_object(target_query, setnum, concept)
-        print(obj.past_sets.obj_sets)
-        print(np.nonzero(np.array([o for s in obj.past_sets.answer_sets for o in s])))
         exec(code + "\nanswer = is_rule(obj)", {'obj': make_object(target_query, setnum, concept), 
                                                 'sized': 0,
                                                 'np': np}, loc)

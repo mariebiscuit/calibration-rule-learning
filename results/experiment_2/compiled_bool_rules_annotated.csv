@@ -1,4 +1,4 @@
-,concept_num,concept,object,answer,model_answer,model_reply,set,code,manual_code,rule_expression
+item_num,concept_num,concept,object,answer,model_answer,model_reply,set,code,manual_code,rule_expression
 0,hg01,True,medium yellow triangle,True,False,"Based on your examples, I've learned that the rule for labeling objects as 'True' seems to involve the object being a small blue circle. All other objects, regardless of their color, size, or shape, are labeled as 'False'. Therefore, I will label the object in Group 1 as follows:
 
 - medium yellow triangle -> False",1,"def is_rule(obj):

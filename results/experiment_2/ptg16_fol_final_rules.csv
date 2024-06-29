@@ -1,0 +1,76 @@
+,concept,concept_num,rule_expression,full_coverage_manual_code
+0,no other object has the same shape,hg64,same color as (the unique object with the same shape),1.0
+4,the unique smallest object,hg98,strictly larger than all other objects,0.6376811594202898
+9,larger than all other objects,hg29,strictly larger than all other objects,1.0
+12,does not exist another object with same shape and color,hg71,same color as (the unique object with the same shape and color),1.0
+16,one of the largest or smallest,hg26,same color as itself,0.8846153846153846
+18,same shape as a blue or green object,hg39,same color as itself,0.868421052631579
+21,same shape as an object that is blue or green,hg91,same color as itself,0.8777777777777778
+24,exactly one blue object that is the same shape excluding this object,hg106,larger than itself,0.7948717948717948
+26,all objects of the same shape are blue,hg109,larger than itself,0.8205128205128205
+29,at least one other object of the same shape is blue,hg110,larger than itself,0.875
+34,unique largest and blue,hg30,larger than itself,0.8888888888888888
+39,(not blue) and same shape as a blue object,hg40,larger than itself,0.7468354430379747
+43,green and same shape as a blue object,hg42,larger than itself,0.8554216867469879
+48,same shape as the unique largest,hg44,larger than itself,0.7692307692307693
+50,same shape as one of the unique largest that is not itself,hg48,larger than itself,0.9104477611940298
+55,blue and no other object is blue,hg50,larger than itself,0.8918918918918919
+58,unique circle,hg51,larger than itself,0.8860759493670886
+63,(blue or green) and no other object is blue or green,hg52,larger than itself,0.9746835443037974
+65,the unique object that is (blue and circle),hg53,larger than itself,0.9692307692307692
+69,(blue or circle) and no other object is (blue or circle),hg54,larger than itself,0.9777777777777776
+73,same shape and color as another object,hg65,larger than itself,0.9142857142857144
+75,same shape as another object that is blue,hg72,larger than itself,0.8026315789473685
+79,unique blue object,hg92,larger than itself,0.8589743589743589
+80,the unique element and is (blue or circle),hg93,larger than itself,0.9367088607594936
+85,the unique element and is (blue or green),hg94,larger than itself,0.925925925925926
+87,the unique element and is (blue and circle),hg95,larger than itself,0.9054054054054054
+90,the unique object,hg96,larger than itself,0.9333333333333332
+94,same shape as a uniquely blue object,hg97,larger than itself,0.8441558441558441
+98,same shape as the unique largest blue object,hg57,same color as the unique (blue object that this object is not larger than) ,0.8108108108108109
+100,unique largest (blue or green) object,hg56,same color as (the unique object that is ((not yellow) and (not smaller than this object))),0.8235294117647058
+104,(same shape as a blue object) and circle,hg43,circle,0.9295774647887324
+105,blue or larger than all other objects,hg31,(not green) and (not yellow),0.926829268292683
+109,same shape as a blue object,hg37,(not green) and (not yellow),0.9285714285714286
+110,unique largest blue object,hg55,(not green) and (not yellow),0.8974358974358975
+113,same shape as one of the largest and blue,hg58,(not green) and (not yellow),0.8472222222222222
+118,all objects of this shape are blue,hg69,(not green) and (not yellow),1.0
+127,one of the largest and blue,hg33,large and blue,0.9565217391304348
+128,(same shape as one of the largest) and blue,hg46,large and blue,0.8837209302325582
+133,blue and same shape as another object,hg62,large and blue,0.8947368421052632
+137,blue or (larger or equal in size to all other objects),hg34,large or blue,0.4492753623188406
+142,same shape as a (circle or blue) object,hg38,circle or blue,0.5119047619047619
+146,not one of the largest or smallest,hg27,medium and larger than some object,0.986842105263158
+151,there is another object of the same shape and another object of the same color,hg73,rectangle,0.6666666666666666
+153,exactly one object in the set is blue excluding this object,hg102,not the same color as a uniquely blue object,0.8734177215189873
+156,(same shape as one of the largest) or blue,hg47,not (yellow and small),0.8780487804878049
+161,exactly one blue object in the set,hg103,the uniquely blue element in the set is not green,1.0
+164,all other objects of the same shape are blue,hg108,not green,0.5909090909090909
+169,green or same shape as a blue object,hg41,not yellow,0.8904109589041096
+171,blue or same shape as another object,hg61,not yellow,0.765625
+173,blue or (same color as all other objects of the same shape),hg67,not yellow,0.6835443037974683
+177,one of the largest of its shape,hg28,no object of the same shape is larger than this object,1.0
+178,larger than or equal-sized with all objects,hg32,no object is larger than this object,1.0
+179,same shape as one of the largest,hg45,no object is larger than this object,0.7954545454545454
+181,at least one other object of the same shape is the same color,hg111,there does not exist an object of the same shape but not of the same color,1.0
+185,same color as all other objects of the same shape,hg66,there does not exist an object of the same shape but not of the same color,1.0
+189,(circle) or (same color as all other objects of the same shape),hg68,there does not exist an object of the same shape but not of the same color,0.9230769230769232
+194,one of the smallest of objects who share a shape with another object,hg100,there is no object of the same shape that is smaller,1.0
+195,same shape as a uniquely smallest object,hg101,there is no object of the same shape that is smaller,0.9142857142857144
+196,one of the smallest,hg99,not larger than an object,1.0
+197,every other object   shares at least one feature  with this object,hg76,there is not an object that is (not the same size and (the same color iff same shape)),0.9863013698630136
+202,exists another object of the same shape that is blue,hg89,there is a blue object of the same shape that is not the same color,1.0
+206,exactly one other object is the same color,hg104,there is an object of the same color that is not the same size or not the same shape,0.881578947368421
+211,same color as another object,hg63,there is an object of the same color that is not the same size or not the same shape,1.0
+212,larger than some other object,hg35,larger than an object,1.0
+217,at least one other object of the same shape is not the same color,hg112,there is an object of the same shape but not the same color,0.9722222222222222
+220,same shape as one of the largest that is not itself,hg49,there is an object of the same shape but not the same color,0.8108108108108109
+223,same size as a circular object,hg88,same size as a circular object,0.4204545454545454
+228,exactly one blue object that is the same shape,hg105,same shape as a blue object,0.9444444444444444
+233,larger than a blue object,hg36,larger than a blue object,1.0
+236,same shape as another object,hg59,there is an object of the same shape that is not the same size or not the same color,1.0
+237,there is another object of the same shape<br>and another different object of the same color,hg74,there is an object of the same shape that is not the same size or not the same color,0.782608695652174
+242,there is another object of the same shape<br>that is the same color as another different object,hg75,there is an object of the same shape that is not the same size or not the same color,0.8888888888888888
+244,same shape as another object that is blue or green,hg90,there is an object of the same shape that is not the same size or not the same color,0.8888888888888888
+246,same size as another object,hg60,there is an object of the same size that is ((the same color iff larger than object) or not the same shape),1.0
+248,there is a triangle in the set,hg17,triangle,0.5679012345679012

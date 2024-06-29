@@ -1,0 +1,757 @@
+,Unnamed: 0,concept,is_bool,item_num,set_num,answer,hyes,hno,p(yes),lambda_rule,rule_expression,manual_code,object,concept_num,set,model_answer,to_annotate,code_eval,human_lq,chance,coverage_manual_code,full_coverage_manual_code,consistency
+0,2775,no other object has the same shape,False,77,25,0,5,16,0.0029188907112711,"""λx.apply1(apply2(same_color,iota(filter(apply2(same_shape,x.o), x.s))),x.o)""
+",same color as (the unique object with the same shape),"def is_rule(obj):
+    return np.sum([obj.shape == x.shape for x in obj.current_set.objs]) == 1",large green circle,hg64,25,False,True,False,0.7278911564625851,0.53360768175583,1.0,1.0,True
+1,2776,no other object has the same shape,False,78,25,0,3,18,0.0002630733132491,"""λx.apply1(apply2(same_color,iota(filter(apply2(same_shape,x.o), x.s))),x.o)""
+",same color as (the unique object with the same shape),"def is_rule(obj):
+    return np.sum([obj.shape == x.shape for x in obj.current_set.objs]) == 1",medium yellow rectangle,hg64,25,False,True,False,0.7278911564625851,0.53360768175583,1.0,1.0,True
+2,2777,no other object has the same shape,False,79,25,0,4,17,0.000604772898896,"""λx.apply1(apply2(same_color,iota(filter(apply2(same_shape,x.o), x.s))),x.o)""
+",same color as (the unique object with the same shape),"def is_rule(obj):
+    return np.sum([obj.shape == x.shape for x in obj.current_set.objs]) == 1",small green rectangle,hg64,25,False,True,False,0.7278911564625851,0.53360768175583,1.0,1.0,True
+3,2778,no other object has the same shape,False,80,25,0,4,17,0.0043393204319954,"""λx.apply1(apply2(same_color,iota(filter(apply2(same_shape,x.o), x.s))),x.o)""
+",same color as (the unique object with the same shape),"def is_rule(obj):
+    return np.sum([obj.shape == x.shape for x in obj.current_set.objs]) == 1",small blue circle,hg64,25,False,True,False,0.7278911564625851,0.53360768175583,1.0,1.0,True
+4,3458,the unique smallest object,False,64,25,0,3,20,0.0328389212214688,"""λx.apply1(apply2(same_color,iota(filter(apply3(size-geq,x.o), x.s))),x.o)""
+",strictly larger than all other objects,"def is_rule(obj):
+    return np.sum([obj.size_num <= x.size_num for x in obj.current_set.objs]) == 1",medium blue rectangle,hg98,25,False,False,False,0.8019323671497586,0.6597353497164462,0.640625,0.6376811594202898,True
+5,3459,the unique smallest object,False,65,25,0,3,20,0.0225582837733782,"""λx.apply1(apply2(same_color,iota(filter(apply3(size-geq,x.o), x.s))),x.o)""
+",strictly larger than all other objects,"def is_rule(obj):
+    return np.sum([obj.size_num <= x.size_num for x in obj.current_set.objs]) == 1",medium yellow triangle,hg98,25,False,False,False,0.8019323671497586,0.6597353497164462,0.640625,0.6376811594202898,True
+6,3460,the unique smallest object,False,66,25,0,2,21,0.0189358901122886,"""λx.apply1(apply2(same_color,iota(filter(apply3(size-geq,x.o), x.s))),x.o)""
+",strictly larger than all other objects,"def is_rule(obj):
+    return np.sum([obj.size_num <= x.size_num for x in obj.current_set.objs]) == 1",medium yellow rectangle,hg98,25,False,False,False,0.8019323671497586,0.6597353497164462,0.640625,0.6376811594202898,True
+7,3461,the unique smallest object,False,67,25,0,2,21,0.1108702991447216,"""λx.apply1(apply2(same_color,iota(filter(apply3(size-geq,x.o), x.s))),x.o)""
+",strictly larger than all other objects,"def is_rule(obj):
+    return np.sum([obj.size_num <= x.size_num for x in obj.current_set.objs]) == 1",large green triangle,hg98,25,False,False,True,0.8019323671497586,0.6597353497164462,0.640625,0.6376811594202898,False
+8,3462,the unique smallest object,False,68,25,1,14,9,0.4937902062808916,"""λx.apply1(apply2(same_color,iota(filter(apply3(size-geq,x.o), x.s))),x.o)""
+",strictly larger than all other objects,"def is_rule(obj):
+    return np.sum([obj.size_num <= x.size_num for x in obj.current_set.objs]) == 1",small yellow circle,hg98,25,False,False,False,0.8019323671497586,0.6597353497164462,0.640625,0.6376811594202898,True
+9,1634,larger than all other objects,False,75,25,0,2,21,0.0111650368776281,"""λx.apply1(apply2(same_color,x.o),iota(filter(apply2(size-geq,x.o), x.s)))""
+",strictly larger than all other objects,"def is_rule(obj):
+    return np.sum([obj.size_num <= x.size_num for x in obj.current_set.objs]) == 1",small green rectangle,hg29,25,False,True,False,0.9021739130434784,0.6591058514135437,1.0,1.0,True
+10,1635,larger than all other objects,False,76,25,0,0,23,0.0084155630275972,"""λx.apply1(apply2(same_color,x.o),iota(filter(apply2(size-geq,x.o), x.s)))""
+",strictly larger than all other objects,"def is_rule(obj):
+    return np.sum([obj.size_num <= x.size_num for x in obj.current_set.objs]) == 1",medium green circle,hg29,25,False,True,False,0.9021739130434784,0.6591058514135437,1.0,1.0,True
+11,1636,larger than all other objects,False,77,25,1,20,3,0.8823822223617981,"""λx.apply1(apply2(same_color,x.o),iota(filter(apply2(size-geq,x.o), x.s)))""
+",strictly larger than all other objects,"def is_rule(obj):
+    return np.sum([obj.size_num <= x.size_num for x in obj.current_set.objs]) == 1",large yellow triangle,hg29,25,True,True,True,0.9021739130434784,0.6591058514135437,1.0,1.0,True
+12,7528,does not exist another object with same shape and color,False,74,25,1,19,2,0.9965359648787172,"""λx.apply1(apply2(same_color,x.o),iota(filter(apply3(same_shape,x.o), filter(apply3(same_color,x.o), x.s))))""
+",same color as (the unique object with the same shape and color),"def is_rule(obj):
+    return np.sum([obj.shape == x.shape and obj.color == x.color for x in obj.current_set.objs]) == 1",small blue rectangle,hg71,25,True,False,True,0.8738095238095237,0.7396449704142012,1.0,1.0,True
+13,7529,does not exist another object with same shape and color,False,75,25,1,20,1,0.9094713675750654,"""λx.apply1(apply2(same_color,x.o),iota(filter(apply3(same_shape,x.o), filter(apply3(same_color,x.o), x.s))))""
+",same color as (the unique object with the same shape and color),"def is_rule(obj):
+    return np.sum([obj.shape == x.shape and obj.color == x.color for x in obj.current_set.objs]) == 1",medium green triangle,hg71,25,True,False,True,0.8738095238095237,0.7396449704142012,1.0,1.0,True
+14,7530,does not exist another object with same shape and color,False,76,25,1,18,3,0.8766363120158758,"""λx.apply1(apply2(same_color,x.o),iota(filter(apply3(same_shape,x.o), filter(apply3(same_color,x.o), x.s))))""
+",same color as (the unique object with the same shape and color),"def is_rule(obj):
+    return np.sum([obj.shape == x.shape and obj.color == x.color for x in obj.current_set.objs]) == 1",medium yellow triangle,hg71,25,True,False,True,0.8738095238095237,0.7396449704142012,1.0,1.0,True
+15,7531,does not exist another object with same shape and color,False,77,25,1,20,1,0.997805315335313,"""λx.apply1(apply2(same_color,x.o),iota(filter(apply3(same_shape,x.o), filter(apply3(same_color,x.o), x.s))))""
+",same color as (the unique object with the same shape and color),"def is_rule(obj):
+    return np.sum([obj.shape == x.shape and obj.color == x.color for x in obj.current_set.objs]) == 1",medium green circle,hg71,25,True,False,True,0.8738095238095237,0.7396449704142012,1.0,1.0,True
+16,4914,one of the largest or smallest,False,76,25,1,20,1,0.995593966438264,"""λx.apply1(apply2(same_color,x.o),x.o)""
+",same color as itself,"def is_rule(obj):
+    return obj.color == obj.color",large blue rectangle,hg26,25,True,False,True,0.8571428571428571,0.7958579881656804,0.881578947368421,0.8846153846153846,True
+17,4915,one of the largest or smallest,False,77,25,1,18,3,0.8394074299162639,"""λx.apply1(apply2(same_color,x.o),x.o)""
+",same color as itself,"def is_rule(obj):
+    return obj.color == obj.color",medium green circle,hg26,25,True,False,True,0.8571428571428571,0.7958579881656804,0.881578947368421,0.8846153846153846,True
+18,1556,same shape as a blue or green object,False,73,25,0,6,14,0.7890876338781254,"""λx.apply1(apply2(same_color,x.o),x.o)""
+",same color as itself,"def is_rule(obj):
+    return obj.color == obj.color",small yellow rectangle,hg39,25,True,False,True,0.8724999999999999,0.7714681440443214,0.8767123287671232,0.868421052631579,True
+19,1557,same shape as a blue or green object,False,74,25,1,18,2,0.9450166195455268,"""λx.apply1(apply2(same_color,x.o),x.o)""
+",same color as itself,"def is_rule(obj):
+    return obj.color == obj.color",medium yellow triangle,hg39,25,True,False,True,0.8724999999999999,0.7714681440443214,0.8767123287671232,0.868421052631579,True
+20,1558,same shape as a blue or green object,False,75,25,1,20,0,0.9873038268912068,"""λx.apply1(apply2(same_color,x.o),x.o)""
+",same color as itself,"def is_rule(obj):
+    return obj.color == obj.color",medium green triangle,hg39,25,True,False,True,0.8724999999999999,0.7714681440443214,0.8767123287671232,0.868421052631579,True
+21,2866,same shape as an object that is blue or green,False,87,25,0,10,12,0.6832824366304067,"""λx.apply1(apply2(same_color,x.o),x.o)""
+",same color as itself,"def is_rule(obj):
+    return obj.color == obj.color",small yellow circle,hg91,25,True,False,True,0.8517786561264825,0.7854320987654322,0.8850574712643678,0.8777777777777778,True
+22,2867,same shape as an object that is blue or green,False,88,25,1,19,3,0.9962395162428948,"""λx.apply1(apply2(same_color,x.o),x.o)""
+",same color as itself,"def is_rule(obj):
+    return obj.color == obj.color",large green rectangle,hg91,25,True,False,True,0.8517786561264825,0.7854320987654322,0.8850574712643678,0.8777777777777778,True
+23,2868,same shape as an object that is blue or green,False,89,25,1,18,4,0.9987651099548884,"""λx.apply1(apply2(same_color,x.o),x.o)""
+",same color as itself,"def is_rule(obj):
+    return obj.color == obj.color",small blue triangle,hg91,25,True,False,True,0.8517786561264825,0.7854320987654322,0.8850574712643678,0.8777777777777778,True
+24,7852,exactly one blue object that is the same shape excluding this object,False,76,25,0,0,23,0.0485535837630095,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium blue triangle,hg106,25,False,False,False,0.733904761904762,0.6738987508218278,0.7894736842105263,0.7948717948717948,True
+25,7853,exactly one blue object that is the same shape excluding this object,False,77,25,0,3,20,0.1024505564078026,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large blue rectangle,hg106,25,False,False,False,0.733904761904762,0.6738987508218278,0.7894736842105263,0.7948717948717948,True
+26,543,all objects of the same shape are blue,False,75,25,0,0,24,0.0158037902497198,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large yellow circle,hg109,25,False,False,False,0.8705882352941177,0.7054569362261669,0.8133333333333334,0.8205128205128205,True
+27,544,all objects of the same shape are blue,False,76,25,0,1,23,0.0176798090762986,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",small green rectangle,hg109,25,False,False,False,0.8705882352941177,0.7054569362261669,0.8133333333333334,0.8205128205128205,True
+28,545,all objects of the same shape are blue,False,77,25,0,10,14,0.6947781220801517,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium blue circle,hg109,25,True,False,False,0.8705882352941177,0.7054569362261669,0.8133333333333334,0.8205128205128205,False
+29,8302,at least one other object of the same shape is blue,False,67,25,0,5,19,0.0494685518467576,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large yellow circle,hg110,25,False,False,False,0.6033684210526316,0.78125,0.8805970149253731,0.875,True
+30,8303,at least one other object of the same shape is blue,False,68,25,0,14,10,0.1117843490287668,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium blue triangle,hg110,25,False,False,False,0.6033684210526316,0.78125,0.8805970149253731,0.875,True
+31,8304,at least one other object of the same shape is blue,False,69,25,0,8,16,0.1301194940072036,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",small green circle,hg110,25,False,False,False,0.6033684210526316,0.78125,0.8805970149253731,0.875,True
+32,8305,at least one other object of the same shape is blue,False,70,25,1,3,21,0.0549353999932691,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large yellow triangle,hg110,25,False,False,False,0.6033684210526316,0.78125,0.8805970149253731,0.875,True
+33,8306,at least one other object of the same shape is blue,False,71,25,0,11,13,0.0939221593563388,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large blue triangle,hg110,25,False,False,False,0.6033684210526316,0.78125,0.8805970149253731,0.875,True
+34,884,unique largest and blue,False,67,25,0,6,15,0.1061824162610491,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium blue triangle,hg30,25,False,False,False,0.8771929824561404,0.8024691358024691,0.8805970149253731,0.8888888888888888,True
+35,885,unique largest and blue,False,68,25,0,5,16,0.0643394050144934,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",small blue rectangle,hg30,25,False,False,False,0.8771929824561404,0.8024691358024691,0.8805970149253731,0.8888888888888888,True
+36,886,unique largest and blue,False,69,25,0,1,20,0.0141814019597177,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",small green triangle,hg30,25,False,False,False,0.8771929824561404,0.8024691358024691,0.8805970149253731,0.8888888888888888,True
+37,887,unique largest and blue,False,70,25,0,0,21,0.0253490224864663,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium green rectangle,hg30,25,False,False,False,0.8771929824561404,0.8024691358024691,0.8805970149253731,0.8888888888888888,True
+38,888,unique largest and blue,False,71,25,0,1,20,0.0388212401727514,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium yellow circle,hg30,25,False,False,False,0.8771929824561404,0.8024691358024691,0.8805970149253731,0.8888888888888888,True
+39,5516,(not blue) and same shape as a blue object,False,75,25,1,11,12,0.531604582467935,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium green triangle,hg40,25,True,False,False,0.7565217391304349,0.6218554718795064,0.7466666666666667,0.7468354430379747,False
+40,5517,(not blue) and same shape as a blue object,False,76,25,0,4,19,0.178223080262228,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium yellow circle,hg40,25,False,False,False,0.7565217391304349,0.6218554718795064,0.7466666666666667,0.7468354430379747,True
+41,5518,(not blue) and same shape as a blue object,False,77,25,0,2,21,0.0193601709353288,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium blue triangle,hg40,25,False,False,False,0.7565217391304349,0.6218554718795064,0.7466666666666667,0.7468354430379747,True
+42,5519,(not blue) and same shape as a blue object,False,78,25,0,5,18,0.085769448902397,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large green rectangle,hg40,25,False,False,False,0.7565217391304349,0.6218554718795064,0.7466666666666667,0.7468354430379747,True
+43,6213,green and same shape as a blue object,False,78,25,1,15,7,0.3573906566901996,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium green triangle,hg42,25,False,False,False,0.8419913419913421,0.752649150820148,0.8589743589743589,0.8554216867469879,True
+44,6214,green and same shape as a blue object,False,79,25,0,14,8,0.2084074414651695,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large green circle,hg42,25,False,False,False,0.8419913419913421,0.752649150820148,0.8589743589743589,0.8554216867469879,True
+45,6215,green and same shape as a blue object,False,80,25,0,1,21,0.0149165140652485,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium yellow circle,hg42,25,False,False,False,0.8419913419913421,0.752649150820148,0.8589743589743589,0.8554216867469879,True
+46,6216,green and same shape as a blue object,False,81,25,0,12,10,0.2392297981035653,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",small green circle,hg42,25,False,False,False,0.8419913419913421,0.752649150820148,0.8589743589743589,0.8554216867469879,True
+47,6217,green and same shape as a blue object,False,82,25,0,1,21,0.0115533479468012,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium blue triangle,hg42,25,False,False,False,0.8419913419913421,0.752649150820148,0.8589743589743589,0.8554216867469879,True
+48,5229,same shape as the unique largest,False,76,25,0,1,23,0.0262169798542117,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium yellow rectangle,hg44,25,False,True,False,0.6619999999999999,0.6449704142011834,0.7763157894736842,0.7692307692307693,True
+49,5230,same shape as the unique largest,False,77,25,1,6,18,0.2609695695315395,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large yellow circle,hg44,25,False,True,False,0.6619999999999999,0.6449704142011834,0.7763157894736842,0.7692307692307693,True
+50,744,same shape as one of the unique largest that is not itself,False,62,25,0,8,15,0.053669898089538,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",small yellow rectangle,hg48,25,False,False,False,0.8274509803921569,0.8369347293383826,0.9032258064516129,0.9104477611940298,True
+51,745,same shape as one of the unique largest that is not itself,False,63,25,0,1,22,0.0499595985692167,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large green triangle,hg48,25,False,False,False,0.8274509803921569,0.8369347293383826,0.9032258064516129,0.9104477611940298,True
+52,746,same shape as one of the unique largest that is not itself,False,64,25,0,3,20,0.1401173667508146,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",small green circle,hg48,25,False,False,False,0.8274509803921569,0.8369347293383826,0.9032258064516129,0.9104477611940298,True
+53,747,same shape as one of the unique largest that is not itself,False,65,25,0,2,21,0.1232952249948766,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium green rectangle,hg48,25,False,False,False,0.8274509803921569,0.8369347293383826,0.9032258064516129,0.9104477611940298,True
+54,748,same shape as one of the unique largest that is not itself,False,66,25,0,1,22,0.0679950924857166,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium yellow rectangle,hg48,25,False,False,False,0.8274509803921569,0.8369347293383826,0.9032258064516129,0.9104477611940298,True
+55,2097,blue and no other object is blue,False,71,25,0,1,23,0.0173743795269274,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium yellow triangle,hg50,25,False,False,False,0.8771929824561404,0.8071585098612126,0.8873239436619719,0.8918918918918919,True
+56,2098,blue and no other object is blue,False,72,25,0,2,22,0.0369052356217025,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",small green circle,hg50,25,False,False,False,0.8771929824561404,0.8071585098612126,0.8873239436619719,0.8918918918918919,True
+57,2099,blue and no other object is blue,False,73,25,0,0,24,0.0438056688011556,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium green rectangle,hg50,25,False,False,False,0.8771929824561404,0.8071585098612126,0.8873239436619719,0.8918918918918919,True
+58,963,unique circle,False,74,25,0,0,23,0.0040701103507672,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large blue rectangle,hg51,25,False,False,False,0.8804347826086957,0.7981092773593976,0.8783783783783784,0.8860759493670886,True
+59,964,unique circle,False,75,25,0,12,11,0.3727260293510426,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium blue circle,hg51,25,False,False,False,0.8804347826086957,0.7981092773593976,0.8783783783783784,0.8860759493670886,True
+60,965,unique circle,False,76,25,0,0,23,0.0200694556575626,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",small yellow rectangle,hg51,25,False,False,False,0.8804347826086957,0.7981092773593976,0.8783783783783784,0.8860759493670886,True
+61,966,unique circle,False,77,25,0,3,20,0.556561987127111,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large yellow circle,hg51,25,True,False,False,0.8804347826086957,0.7981092773593976,0.8783783783783784,0.8860759493670886,False
+62,967,unique circle,False,78,25,0,1,22,0.0178045521911371,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium yellow triangle,hg51,25,False,False,False,0.8804347826086957,0.7981092773593976,0.8783783783783784,0.8860759493670886,True
+63,5597,(blue or green) and no other object is blue or green,False,77,25,0,0,22,0.0331323915405619,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large yellow circle,hg52,25,False,False,False,0.9090909090909092,0.9506489344656304,0.974025974025974,0.9746835443037974,True
+64,5598,(blue or green) and no other object is blue or green,False,78,25,0,0,22,0.1243313079695553,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large blue rectangle,hg52,25,False,False,False,0.9090909090909092,0.9506489344656304,0.974025974025974,0.9746835443037974,True
+65,3231,the unique object that is (blue and circle),False,61,25,0,1,22,0.0377038132892266,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium blue triangle,hg53,25,False,False,False,0.959079283887468,0.9403550295857988,0.9672131147540983,0.9692307692307692,True
+66,3232,the unique object that is (blue and circle),False,62,25,0,1,22,0.1255626279959187,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",small blue rectangle,hg53,25,False,False,False,0.959079283887468,0.9403550295857988,0.9672131147540983,0.9692307692307692,True
+67,3233,the unique object that is (blue and circle),False,63,25,0,1,22,0.0322437901774037,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",small green rectangle,hg53,25,False,False,False,0.959079283887468,0.9403550295857988,0.9672131147540983,0.9692307692307692,True
+68,3234,the unique object that is (blue and circle),False,64,25,0,0,23,0.0170866711637245,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large green circle,hg53,25,False,False,False,0.959079283887468,0.9403550295857988,0.9672131147540983,0.9692307692307692,True
+69,1117,(blue or circle) and no other object is (blue or circle),False,86,25,0,0,24,0.0136375228455563,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium blue triangle,hg54,25,False,False,False,0.947463768115942,0.9565432098765432,0.9767441860465116,0.9777777777777777,True
+70,1118,(blue or circle) and no other object is (blue or circle),False,87,25,0,1,23,0.0107953288692215,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large green triangle,hg54,25,False,False,False,0.947463768115942,0.9565432098765432,0.9767441860465116,0.9777777777777777,True
+71,1119,(blue or circle) and no other object is (blue or circle),False,88,25,0,1,23,0.0109665404135057,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium green triangle,hg54,25,False,False,False,0.947463768115942,0.9565432098765432,0.9767441860465116,0.9777777777777777,True
+72,1120,(blue or circle) and no other object is (blue or circle),False,89,25,0,1,23,0.0257536601353649,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large yellow rectangle,hg54,25,False,False,False,0.947463768115942,0.9565432098765432,0.9767441860465116,0.9777777777777777,True
+73,3531,same shape and color as another object,False,68,25,0,1,20,0.0591139789761427,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium green circle,hg65,25,False,False,False,0.9153439153439152,0.8432653061224489,0.9117647058823529,0.9142857142857143,True
+74,3532,same shape and color as another object,False,69,25,0,0,21,0.0457117932093069,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium yellow circle,hg65,25,False,False,False,0.9153439153439152,0.8432653061224489,0.9117647058823529,0.9142857142857143,True
+75,2315,same shape as another object that is blue,False,72,25,0,12,11,0.1391259594296343,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large yellow rectangle,hg72,25,False,True,False,0.7782608695652175,0.6831717451523545,0.7916666666666666,0.8026315789473685,True
+76,2316,same shape as another object that is blue,False,73,25,0,2,21,0.0364522229864405,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium green triangle,hg72,25,False,True,False,0.7782608695652175,0.6831717451523545,0.7916666666666666,0.8026315789473685,True
+77,2317,same shape as another object that is blue,False,74,25,0,2,21,0.0608077307160783,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium green rectangle,hg72,25,False,True,False,0.7782608695652175,0.6831717451523545,0.7916666666666666,0.8026315789473685,True
+78,2318,same shape as another object that is blue,False,75,25,0,5,18,0.095553256613357,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium yellow rectangle,hg72,25,False,True,False,0.7782608695652175,0.6831717451523545,0.7916666666666666,0.8026315789473685,True
+79,3169,unique blue object,False,77,25,1,20,4,0.6090095936950775,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large blue rectangle,hg92,25,True,False,False,0.9270833333333334,0.7577251808021039,0.8701298701298701,0.8589743589743589,False
+80,4833,the unique element and is (blue or circle),False,74,25,0,1,21,0.0340895956856002,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium blue circle,hg93,25,False,False,False,0.8795454545454544,0.8814292581317096,0.9324324324324325,0.9367088607594937,True
+81,4834,the unique element and is (blue or circle),False,75,25,0,1,21,0.0236997978585122,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large green circle,hg93,25,False,False,False,0.8795454545454544,0.8814292581317096,0.9324324324324325,0.9367088607594937,True
+82,4835,the unique element and is (blue or circle),False,76,25,0,1,21,0.024518330155729,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",small green rectangle,hg93,25,False,False,False,0.8795454545454544,0.8814292581317096,0.9324324324324325,0.9367088607594937,True
+83,4836,the unique element and is (blue or circle),False,77,25,0,1,21,0.0710019124792324,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large blue rectangle,hg93,25,False,False,False,0.8795454545454544,0.8814292581317096,0.9324324324324325,0.9367088607594937,True
+84,4837,the unique element and is (blue or circle),False,78,25,0,2,20,0.0145755626105028,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",small yellow triangle,hg93,25,False,False,False,0.8795454545454544,0.8814292581317096,0.9324324324324325,0.9367088607594937,True
+85,3923,the unique element and is (blue or green),False,79,25,1,21,1,0.1563272650653289,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",small blue triangle,hg94,25,False,True,False,0.9415584415584416,0.8628257887517148,0.9367088607594937,0.9259259259259259,True
+86,3924,the unique element and is (blue or green),False,80,25,0,0,22,0.0404803801558273,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large yellow rectangle,hg94,25,False,True,False,0.9415584415584416,0.8628257887517148,0.9367088607594937,0.9259259259259259,True
+87,6586,the unique element and is (blue and circle),False,71,25,0,0,23,0.0073205284638788,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large yellow triangle,hg95,25,False,False,False,0.9702517162471396,0.8287070854638421,0.9014084507042254,0.9054054054054054,True
+88,6587,the unique element and is (blue and circle),False,72,25,0,0,23,0.0058147417057625,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large green rectangle,hg95,25,False,False,False,0.9702517162471396,0.8287070854638421,0.9014084507042254,0.9054054054054054,True
+89,6588,the unique element and is (blue and circle),False,73,25,0,1,22,0.0145814020867192,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",small blue triangle,hg95,25,False,False,False,0.9702517162471396,0.8287070854638421,0.9014084507042254,0.9054054054054054,True
+90,4078,the unique object,False,71,25,0,0,20,0.0297809698300852,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium green triangle,hg96,25,False,False,False,0.9921052631578948,0.8755555555555556,0.9295774647887324,0.9333333333333333,True
+91,4079,the unique object,False,72,25,0,0,20,0.0226041807393357,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium yellow circle,hg96,25,False,False,False,0.9921052631578948,0.8755555555555556,0.9295774647887324,0.9333333333333333,True
+92,4080,the unique object,False,73,25,0,0,20,0.1747642957237758,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",small green rectangle,hg96,25,False,False,False,0.9921052631578948,0.8755555555555556,0.9295774647887324,0.9333333333333333,True
+93,4081,the unique object,False,74,25,0,0,20,0.0281587478841629,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large blue rectangle,hg96,25,False,False,False,0.9921052631578948,0.8755555555555556,0.9295774647887324,0.9333333333333333,True
+94,3021,same shape as a uniquely blue object,False,73,25,0,0,22,0.0074613605654576,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",large yellow rectangle,hg97,25,False,False,False,0.775,0.7368864901332433,0.8493150684931506,0.8441558441558441,True
+95,3022,same shape as a uniquely blue object,False,74,25,1,13,9,0.5836301701932598,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",medium blue triangle,hg97,25,True,False,False,0.775,0.7368864901332433,0.8493150684931506,0.8441558441558441,False
+96,3023,same shape as a uniquely blue object,False,75,25,0,1,21,0.0288860324910729,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",small yellow circle,hg97,25,False,False,False,0.775,0.7368864901332433,0.8493150684931506,0.8441558441558441,True
+97,3024,same shape as a uniquely blue object,False,76,25,0,3,19,0.0387750213460549,"""λx.apply1(apply2(size-gt,x.o),x.o)""
+",larger than itself,"def is_rule(obj):
+    return obj.size_num > obj.size_num",small yellow rectangle,hg97,25,False,False,False,0.775,0.7368864901332433,0.8493150684931506,0.8441558441558441,True
+98,5067,same shape as the unique largest blue object,False,72,25,1,16,8,0.8285044855234673,"""λx.apply1(apply3(same_color,iota(filter(compose2(not,apply3(size-gt,x.o)), filter(blue, x.s)))),x.o)""
+",same color as the unique (blue object that this object is not larger than) ,"def is_rule(obj):
+    return np.sum([x.blue and not (obj.size_num > x.size_num) for x in obj.current_set.objs]) == 1",large blue triangle,hg57,25,True,False,True,0.6885964912280702,0.5821767713659605,0.8055555555555556,0.8108108108108109,True
+99,5068,same shape as the unique largest blue object,False,73,25,1,10,14,0.2655874703166319,"""λx.apply1(apply3(same_color,iota(filter(compose2(not,apply3(size-gt,x.o)), filter(blue, x.s)))),x.o)""
+",same color as the unique blue object that is not smaller than this object,"def is_rule(obj):
+    return np.sum([x.blue and not (obj.size_num > x.size_num) for x in obj.current_set.objs]) == 1",large green triangle,hg57,25,False,False,True,0.6885964912280702,0.5821767713659605,0.8055555555555556,0.8108108108108109,False
+100,7160,unique largest (blue or green) object,False,64,25,0,2,23,0.0184043609734771,"""λx.apply1(apply3(same_color,x.o),iota(filter(compose11(compose8(compose6(and,not),yellow),apply2(size-lt,x.o)), x.s)))""
+",same color as (the unique object that is ((not yellow) and (not smaller than this object))),"def is_rule(obj):
+    return np.sum([(not x.yellow) and not (x.size_num < obj.size_num) for x in obj.current_set.objs]) == 1",large yellow circle,hg56,25,False,False,False,0.7333333333333333,0.6107266435986161,0.828125,0.8235294117647058,True
+101,7161,unique largest (blue or green) object,False,65,25,1,18,7,0.6629221599611128,"""λx.apply1(apply3(same_color,x.o),iota(filter(compose11(compose8(compose6(and,not),yellow),apply2(size-lt,x.o)), x.s)))""
+",same color as (the unique object that is ((not yellow) and (not smaller))),"def is_rule(obj):
+    return np.sum([(not x.yellow) and not (x.size_num < obj.size_num) for x in obj.current_set.objs]) == 1",small blue circle,hg56,25,True,False,True,0.7333333333333333,0.6107266435986161,0.828125,0.8235294117647058,True
+102,7162,unique largest (blue or green) object,False,66,25,0,1,24,0.0065225730636484,"""λx.apply1(apply3(same_color,x.o),iota(filter(compose11(compose8(compose6(and,not),yellow),apply2(size-lt,x.o)), x.s)))""
+",same color as (the unique object that is ((not yellow) and (not smaller))),"def is_rule(obj):
+    return np.sum([(not x.yellow) and not (x.size_num < obj.size_num) for x in obj.current_set.objs]) == 1",medium yellow triangle,hg56,25,False,False,False,0.7333333333333333,0.6107266435986161,0.828125,0.8235294117647058,True
+103,7163,unique largest (blue or green) object,False,67,25,0,3,22,0.0065669920707023,"""λx.apply1(apply3(same_color,x.o),iota(filter(compose11(compose8(compose6(and,not),yellow),apply2(size-lt,x.o)), x.s)))""
+",same color as (the unique object that is ((not yellow) and (not smaller))),"def is_rule(obj):
+    return np.sum([(not x.yellow) and not (x.size_num < obj.size_num) for x in obj.current_set.objs]) == 1",small yellow rectangle,hg56,25,False,False,True,0.7333333333333333,0.6107266435986161,0.828125,0.8235294117647058,False
+104,7095,(same shape as a blue object) and circle,False,70,25,0,12,10,0.6722605188688249,"""λx.apply1(circle,x.o)""
+",circle,"def is_rule(obj):
+    return obj.circle",medium yellow circle,hg43,25,True,False,True,0.8308080808080807,0.6508629240230113,0.9428571428571428,0.9295774647887324,True
+105,7610,blue or larger than all other objects,False,78,25,0,2,23,0.0233012663609315,"""λx.apply1(compose11(compose7(compose6(and,not),green),yellow),x.o)""
+",(not green) and (not yellow),"def is_rule(obj):
+    return (not obj.green) and (not obj.yellow)",small green circle,hg31,25,False,True,False,0.9085714285714286,0.5190362879238548,0.9230769230769231,0.926829268292683,True
+106,7611,blue or larger than all other objects,False,79,25,1,23,2,0.993742715379426,"""λx.apply1(compose11(compose7(compose6(and,not),green),yellow),x.o)""
+",(not green) and (not yellow),"def is_rule(obj):
+    return (not obj.green) and (not obj.yellow)",large blue triangle,hg31,25,True,True,True,0.9085714285714286,0.5190362879238548,0.9230769230769231,0.926829268292683,True
+107,7612,blue or larger than all other objects,False,80,25,0,1,24,0.0145824337948852,"""λx.apply1(compose11(compose7(compose6(and,not),green),yellow),x.o)""
+",(not green) and (not yellow),"def is_rule(obj):
+    return (not obj.green) and (not obj.yellow)",small green rectangle,hg31,25,False,True,False,0.9085714285714286,0.5190362879238548,0.9230769230769231,0.926829268292683,True
+108,7613,blue or larger than all other objects,False,81,25,0,4,21,0.0093197857451059,"""λx.apply1(compose11(compose7(compose6(and,not),green),yellow),x.o)""
+",(not green) and (not yellow),"def is_rule(obj):
+    return (not obj.green) and (not obj.yellow)",small green triangle,hg31,25,False,True,False,0.9085714285714286,0.5190362879238548,0.9230769230769231,0.926829268292683,True
+109,234,same shape as a blue object,False,69,25,0,2,18,0.0029724897570986,"""λx.apply1(compose11(compose7(compose6(and,not),green),yellow),x.o)""
+",(not green) and (not yellow),"def is_rule(obj):
+    return (not obj.green) and (not obj.yellow)",large yellow triangle,hg37,25,False,False,False,0.8083333333333332,0.5689795918367347,0.927536231884058,0.9285714285714286,True
+110,5674,unique largest blue object,False,75,25,0,1,22,0.010324265050599,"""λx.apply1(compose11(compose7(compose6(and,not),green),yellow),x.o)""
+",(not green) and (not yellow),"def is_rule(obj):
+    return (not obj.green) and (not obj.yellow)",medium green triangle,hg55,25,False,True,False,0.8706018518518519,0.6893491124260356,0.8933333333333333,0.8974358974358975,True
+111,5675,unique largest blue object,False,76,25,1,19,4,0.6992352242858715,"""λx.apply1(compose11(compose7(compose6(and,not),green),yellow),x.o)""
+",(not green) and (not yellow),"def is_rule(obj):
+    return (not obj.green) and (not obj.yellow)",small blue rectangle,hg55,25,True,True,True,0.8706018518518519,0.6893491124260356,0.8933333333333333,0.8974358974358975,True
+112,5676,unique largest blue object,False,77,25,0,0,23,0.0036280533912531,"""λx.apply1(compose11(compose7(compose6(and,not),green),yellow),x.o)""
+",(not green) and (not yellow),"def is_rule(obj):
+    return (not obj.green) and (not obj.yellow)",large yellow circle,hg55,25,False,True,False,0.8706018518518519,0.6893491124260356,0.8933333333333333,0.8974358974358975,True
+113,2386,same shape as one of the largest and blue,False,67,25,0,9,14,0.0268498354715802,"""λx.apply1(compose11(compose7(compose6(and,not),green),yellow),x.o)""
+",(not green) and (not yellow),"def is_rule(obj):
+    return (not obj.green) and (not obj.yellow)",small green triangle,hg58,25,False,False,False,0.7116704805491989,0.5096450617283951,0.8507462686567164,0.8472222222222222,True
+114,2387,same shape as one of the largest and blue,False,68,25,0,3,20,0.0951119755690115,"""λx.apply1(compose11(compose7(compose6(and,not),green),yellow),x.o)""
+",(not green) and (not yellow),"def is_rule(obj):
+    return (not obj.green) and (not obj.yellow)",small green circle,hg58,25,False,False,False,0.7116704805491989,0.5096450617283951,0.8507462686567164,0.8472222222222222,True
+115,2388,same shape as one of the largest and blue,False,69,25,0,4,19,0.150210358442564,"""λx.apply1(compose11(compose7(compose6(and,not),green),yellow),x.o)""
+",(not green) and (not yellow),"def is_rule(obj):
+    return (not obj.green) and (not obj.yellow)",large yellow circle,hg58,25,False,False,False,0.7116704805491989,0.5096450617283951,0.8507462686567164,0.8472222222222222,True
+116,2389,same shape as one of the largest and blue,False,70,25,0,14,9,0.8202125556892952,"""λx.apply1(compose11(compose7(compose6(and,not),green),yellow),x.o)""
+",(not green) and (not yellow),"def is_rule(obj):
+    return (not obj.green) and (not obj.yellow)",small blue triangle,hg58,25,True,False,True,0.7116704805491989,0.5096450617283951,0.8507462686567164,0.8472222222222222,True
+117,2390,same shape as one of the largest and blue,False,71,25,1,18,5,0.9198224777263704,"""λx.apply1(compose11(compose7(compose6(and,not),green),yellow),x.o)""
+",(not green) and (not yellow),"def is_rule(obj):
+    return (not obj.green) and (not obj.yellow)",medium blue rectangle,hg58,25,True,False,True,0.7116704805491989,0.5096450617283951,0.8507462686567164,0.8472222222222222,True
+118,5822,all objects of this shape are blue,False,71,25,1,22,2,0.9943248739176624,"""λx.apply1(compose11(compose7(compose6(and,not),green),yellow),x.o)""
+",(not green) and (not yellow),"def is_rule(obj):
+    return (not obj.green) and (not obj.yellow)",medium blue circle,hg69,25,True,False,True,0.93125,0.5346260387811634,1.0,1.0,True
+119,5823,all objects of this shape are blue,False,72,25,0,3,21,0.0058083292555011,"""λx.apply1(compose11(compose7(compose6(and,not),green),yellow),x.o)""
+",(not green) and (not yellow),"def is_rule(obj):
+    return (not obj.green) and (not obj.yellow)",large yellow rectangle,hg69,25,False,False,False,0.93125,0.5346260387811634,1.0,1.0,True
+120,5824,all objects of this shape are blue,False,73,25,1,21,3,0.9893502023498968,"""λx.apply1(compose11(compose7(compose6(and,not),green),yellow),x.o)""
+",(not green) and (not yellow),"def is_rule(obj):
+    return (not obj.green) and (not obj.yellow)",large blue rectangle,hg69,25,True,False,True,0.93125,0.5346260387811634,1.0,1.0,True
+121,5825,all objects of this shape are blue,False,74,25,0,4,20,0.0018661202577732,"""λx.apply1(compose11(compose7(compose6(and,not),green),yellow),x.o)""
+",(not green) and (not yellow),"def is_rule(obj):
+    return (not obj.green) and (not obj.yellow)",small green triangle,hg69,25,False,False,False,0.93125,0.5346260387811634,1.0,1.0,True
+122,5826,all objects of this shape are blue,False,75,25,1,22,2,0.9912201972714456,"""λx.apply1(compose11(compose7(compose6(and,not),green),yellow),x.o)""
+",(not green) and (not yellow),"def is_rule(obj):
+    return (not obj.green) and (not obj.yellow)",small blue rectangle,hg69,25,True,False,True,0.93125,0.5346260387811634,1.0,1.0,True
+123,6434,same shape as a blue object,False,72,25,0,1,18,0.0022064149967491,"""λx.apply1(compose11(compose7(compose6(and,not),green),yellow),x.o)""
+",(not green) and (not yellow),"def is_rule(obj):
+    return (not obj.green) and (not obj.yellow)",medium yellow triangle,hg87,25,False,True,False,0.9,0.5280470914127424,0.875,0.881578947368421,True
+124,6435,same shape as a blue object,False,73,25,0,2,17,0.0080233240386178,"""λx.apply1(compose11(compose7(compose6(and,not),green),yellow),x.o)""
+",(not green) and (not yellow),"def is_rule(obj):
+    return (not obj.green) and (not obj.yellow)",medium yellow rectangle,hg87,25,False,True,False,0.9,0.5280470914127424,0.875,0.881578947368421,True
+125,6436,same shape as a blue object,False,74,25,0,3,16,0.0082241898983284,"""λx.apply1(compose11(compose7(compose6(and,not),green),yellow),x.o)""
+",(not green) and (not yellow),"def is_rule(obj):
+    return (not obj.green) and (not obj.yellow)",medium green rectangle,hg87,25,False,True,False,0.9,0.5280470914127424,0.875,0.881578947368421,True
+126,6437,same shape as a blue object,False,75,25,0,2,17,0.0151953304552989,"""λx.apply1(compose11(compose7(compose6(and,not),green),yellow),x.o)""
+",(not green) and (not yellow),"def is_rule(obj):
+    return (not obj.green) and (not obj.yellow)",large yellow rectangle,hg87,25,False,True,False,0.9,0.5280470914127424,0.875,0.881578947368421,True
+127,7453,one of the largest and blue,False,68,25,0,0,21,0.0654719459266743,"""λx.apply1(compose11(compose8(and,large),blue),x.o)""
+",large and blue,"def is_rule(obj):
+    return obj.large and obj.blue",large green rectangle,hg33,25,False,False,False,0.9232804232804231,0.6941818945599665,0.9558823529411765,0.9565217391304348,True
+128,6130,(same shape as one of the largest) and blue,False,81,25,0,1,25,0.0019442374336904,"""λx.apply1(compose11(compose8(and,large),blue),x.o)""
+",large and blue,"def is_rule(obj):
+    return obj.large and obj.blue",large yellow rectangle,hg46,25,False,True,False,0.8444055944055944,0.5976203353163871,0.8765432098765432,0.8837209302325582,True
+129,6131,(same shape as one of the largest) and blue,False,82,25,0,11,15,0.2722192116915494,"""λx.apply1(compose11(compose8(and,large),blue),x.o)""
+",large and blue,"def is_rule(obj):
+    return obj.large and obj.blue",small blue circle,hg46,25,False,True,False,0.8444055944055944,0.5976203353163871,0.8765432098765432,0.8837209302325582,True
+130,6132,(same shape as one of the largest) and blue,False,83,25,0,1,25,0.0009976533807503,"""λx.apply1(compose11(compose8(and,large),blue),x.o)""
+",large and blue,"def is_rule(obj):
+    return obj.large and obj.blue",small green triangle,hg46,25,False,True,False,0.8444055944055944,0.5976203353163871,0.8765432098765432,0.8837209302325582,True
+131,6133,(same shape as one of the largest) and blue,False,84,25,0,10,16,0.269158454830972,"""λx.apply1(compose11(compose8(and,large),blue),x.o)""
+",large and blue,"def is_rule(obj):
+    return obj.large and obj.blue",small blue triangle,hg46,25,False,True,False,0.8444055944055944,0.5976203353163871,0.8765432098765432,0.8837209302325582,True
+132,6134,(same shape as one of the largest) and blue,False,85,25,0,1,25,0.0012110208870126,"""λx.apply1(compose11(compose8(and,large),blue),x.o)""
+",large and blue,"def is_rule(obj):
+    return obj.large and obj.blue",small yellow rectangle,hg46,25,False,True,False,0.8444055944055944,0.5976203353163871,0.8765432098765432,0.8837209302325582,True
+133,386,blue and same shape as another object,False,72,25,0,2,20,0.0056105704450146,"""λx.apply1(compose11(compose8(and,large),blue),x.o)""
+",large and blue,"def is_rule(obj):
+    return obj.large and obj.blue",large green circle,hg62,25,False,True,False,0.8727272727272727,0.7340720221606647,0.9027777777777778,0.8947368421052632,True
+134,387,blue and same shape as another object,False,73,25,0,0,22,0.0097734078618714,"""λx.apply1(compose11(compose8(and,large),blue),x.o)""
+",large and blue,"def is_rule(obj):
+    return obj.large and obj.blue",small green rectangle,hg62,25,False,True,False,0.8727272727272727,0.7340720221606647,0.9027777777777778,0.8947368421052632,True
+135,388,blue and same shape as another object,False,74,25,0,16,6,0.8759064844567774,"""λx.apply1(compose11(compose8(and,large),blue),x.o)""
+",large and blue,"def is_rule(obj):
+    return obj.large and obj.blue",large blue triangle,hg62,25,True,True,True,0.8727272727272727,0.7340720221606647,0.9027777777777778,0.8947368421052632,True
+136,389,blue and same shape as another object,False,75,25,0,1,21,0.0089865216846192,"""λx.apply1(compose11(compose8(and,large),blue),x.o)""
+",large and blue,"def is_rule(obj):
+    return obj.large and obj.blue",large yellow rectangle,hg62,25,False,True,False,0.8727272727272727,0.7340720221606647,0.9027777777777778,0.8947368421052632,True
+137,8160,blue or (larger or equal in size to all other objects),False,64,25,0,2,22,0.1222535109411637,"""λx.apply1(compose11(compose8(or,blue),large),x.o)""
+",large or blue,"def is_rule(obj):
+    return obj.large and obj.blue",small green triangle,hg34,25,False,False,False,0.7779487179487178,0.5555555555555556,0.421875,0.4492753623188406,True
+138,8161,blue or (larger or equal in size to all other objects),False,65,25,0,3,21,0.039742894656797,"""λx.apply1(compose11(compose8(or,blue),large),x.o)""
+",large or blue,"def is_rule(obj):
+    return obj.large and obj.blue",small yellow circle,hg34,25,False,False,False,0.7779487179487178,0.5555555555555556,0.421875,0.4492753623188406,True
+139,8162,blue or (larger or equal in size to all other objects),False,66,25,0,12,12,0.1953105601818379,"""λx.apply1(compose11(compose8(or,blue),large),x.o)""
+",large or blue,"def is_rule(obj):
+    return obj.large and obj.blue",medium green triangle,hg34,25,False,False,False,0.7779487179487178,0.5555555555555556,0.421875,0.4492753623188406,True
+140,8163,blue or (larger or equal in size to all other objects),False,67,25,1,14,10,0.8254776883566137,"""λx.apply1(compose11(compose8(or,blue),large),x.o)""
+",large or blue,"def is_rule(obj):
+    return obj.large and obj.blue",small blue triangle,hg34,25,True,False,False,0.7779487179487178,0.5555555555555556,0.421875,0.4492753623188406,False
+141,8164,blue or (larger or equal in size to all other objects),False,68,25,1,23,1,0.997801062527742,"""λx.apply1(compose11(compose8(or,blue),large),x.o)""
+",large or blue,"def is_rule(obj):
+    return obj.large and obj.blue",large blue rectangle,hg34,25,True,False,True,0.7779487179487178,0.5555555555555556,0.421875,0.4492753623188406,True
+142,5149,same shape as a (circle or blue) object,False,80,25,1,14,11,0.8862469904462387,"""λx.apply1(compose11(compose8(or,circle),blue),x.o)""
+",circle or blue,"def is_rule(obj):
+    return obj.large and obj.blue",small yellow circle,hg38,25,True,False,False,0.5727272727272728,0.518140589569161,0.5,0.5119047619047619,False
+143,5150,same shape as a (circle or blue) object,False,81,25,0,13,12,0.010802611177155,"""λx.apply1(compose11(compose8(or,circle),blue),x.o)""
+",circle or blue,"def is_rule(obj):
+    return obj.large and obj.blue",medium yellow triangle,hg38,25,False,False,False,0.5727272727272728,0.518140589569161,0.5,0.5119047619047619,True
+144,5151,same shape as a (circle or blue) object,False,82,25,0,12,13,0.0172347626252076,"""λx.apply1(compose11(compose8(or,circle),blue),x.o)""
+",circle or blue,"def is_rule(obj):
+    return obj.large and obj.blue",medium green triangle,hg38,25,False,False,False,0.5727272727272728,0.518140589569161,0.5,0.5119047619047619,True
+145,5152,same shape as a (circle or blue) object,False,83,25,0,7,18,0.0199414463839957,"""λx.apply1(compose11(compose8(or,circle),blue),x.o)""
+",circle or blue,"def is_rule(obj):
+    return obj.large and obj.blue",large green rectangle,hg38,25,False,False,False,0.5727272727272728,0.518140589569161,0.5,0.5119047619047619,True
+146,4754,not one of the largest or smallest,False,71,25,1,17,6,0.6908531870585648,"""λx.apply1(compose2(apply9(and,exists(apply3(size-gt,x.o), x.s)),medium),x.o)""
+",medium and larger than some object,"def is_rule(obj):
+    return obj.medium and np.any([obj.size_num > x.size_num for x in obj.current_set.objs])",medium green triangle,hg27,25,True,False,True,0.8826086956521738,0.6675900277008311,0.9859154929577465,0.9868421052631579,True
+147,4755,not one of the largest or smallest,False,72,25,1,18,5,0.6964156416561309,"""λx.apply1(compose2(apply9(and,exists(apply3(size-gt,x.o), x.s)),medium),x.o)""
+",medium and larger than some object,"def is_rule(obj):
+    return obj.medium and np.any([obj.size_num > x.size_num for x in obj.current_set.objs])",medium yellow rectangle,hg27,25,True,False,True,0.8826086956521738,0.6675900277008311,0.9859154929577465,0.9868421052631579,True
+148,4756,not one of the largest or smallest,False,73,25,0,1,22,0.0148864654624958,"""λx.apply1(compose2(apply9(and,exists(apply3(size-gt,x.o), x.s)),medium),x.o)""
+",medium and larger than some object,"def is_rule(obj):
+    return obj.medium and np.any([obj.size_num > x.size_num for x in obj.current_set.objs])",small green triangle,hg27,25,False,False,False,0.8826086956521738,0.6675900277008311,0.9859154929577465,0.9868421052631579,True
+149,4757,not one of the largest or smallest,False,74,25,0,1,22,0.0324127432249952,"""λx.apply1(compose2(apply9(and,exists(apply3(size-gt,x.o), x.s)),medium),x.o)""
+",medium and larger than some object,"def is_rule(obj):
+    return obj.medium and np.any([obj.size_num > x.size_num for x in obj.current_set.objs])",large yellow rectangle,hg27,25,False,False,False,0.8826086956521738,0.6675900277008311,0.9859154929577465,0.9868421052631579,True
+150,4758,not one of the largest or smallest,False,75,25,0,2,21,0.0128081275219074,"""λx.apply1(compose2(apply9(and,exists(apply3(size-gt,x.o), x.s)),medium),x.o)""
+",medium and larger than some object,"def is_rule(obj):
+    return obj.medium and np.any([obj.size_num > x.size_num for x in obj.current_set.objs])",small yellow circle,hg27,25,False,False,False,0.8826086956521738,0.6675900277008311,0.9859154929577465,0.9868421052631579,True
+151,6360,there is another object of the same shape and another object of the same color,False,70,25,0,6,15,0.0761447472077634,"""λx.apply1(rectangle,x.o)""
+",rectangle,"def is_rule(obj):
+    return obj.rectangle",medium yellow circle,hg73,25,False,True,False,0.681704260651629,0.5385802469135802,0.6571428571428571,0.6666666666666666,True
+152,6361,there is another object of the same shape and another object of the same color,False,71,25,0,3,18,0.0608304069386349,"""λx.apply1(rectangle,x.o)""
+",rectangle,"def is_rule(obj):
+    return obj.rectangle",small yellow triangle,hg73,25,False,True,False,0.681704260651629,0.5385802469135802,0.6571428571428571,0.6666666666666666,True
+153,311,exactly one object in the set is blue excluding this object,False,76,25,0,10,14,0.0157442695522149,"""λx.apply7(not,apply1(apply2(same_color,x.o),iota(filter(blue, x.s))))""
+",not the same color as a uniquely blue object,"def is_rule(obj):
+    return (np.sum([x.blue for x in obj.current_set.objs]) == 1) and (np.sum([x.blue and x.color != obj.color for x in obj.current_set.objs]) == 1)",large green circle,hg102,25,False,False,False,0.6104166666666667,0.5064893446563051,0.868421052631579,0.8734177215189873,True
+154,312,exactly one object in the set is blue excluding this object,False,77,25,0,12,12,0.092614780462668,"""λx.apply7(not,apply1(apply2(same_color,x.o),iota(filter(blue, x.s))))""
+",not the same color as a uniquely blue object,"def is_rule(obj):
+    return (np.sum([x.blue for x in obj.current_set.objs]) == 1) and (np.sum([x.blue and x.color != obj.color for x in obj.current_set.objs]) == 1)",medium green triangle,hg102,25,False,False,False,0.6104166666666667,0.5064893446563051,0.868421052631579,0.8734177215189873,True
+155,313,exactly one object in the set is blue excluding this object,False,78,25,0,8,16,0.0915623116726465,"""λx.apply7(not,apply1(apply2(same_color,x.o),iota(filter(blue, x.s))))""
+",not the same color as a uniquely blue object,"def is_rule(obj):
+    return (np.sum([x.blue for x in obj.current_set.objs]) == 1) and (np.sum([x.blue and x.color != obj.color for x in obj.current_set.objs]) == 1)",medium yellow triangle,hg102,25,False,False,False,0.6104166666666667,0.5064893446563051,0.868421052631579,0.8734177215189873,True
+156,4002,(same shape as one of the largest) or blue,False,77,25,1,19,4,0.9687364412320676,"""λx.apply7(not,apply1(compose11(compose8(and,small),yellow),x.o))""
+",not (yellow and small),"def is_rule(obj):
+    return not (obj.yellow and obj.small)",medium yellow circle,hg47,25,True,False,True,0.7246376811594203,0.685901249256395,0.8701298701298701,0.8780487804878049,True
+157,4003,(same shape as one of the largest) or blue,False,78,25,1,20,3,0.9131832756720542,"""λx.apply7(not,apply1(compose11(compose8(and,small),yellow),x.o))""
+",not (yellow and small),"def is_rule(obj):
+    return not (obj.yellow and obj.small)",medium yellow triangle,hg47,25,True,False,True,0.7246376811594203,0.685901249256395,0.8701298701298701,0.8780487804878049,True
+158,4004,(same shape as one of the largest) or blue,False,79,25,1,19,4,0.937982014701788,"""λx.apply7(not,apply1(compose11(compose8(and,small),yellow),x.o))""
+",not (yellow and small),"def is_rule(obj):
+    return not (obj.yellow and obj.small)",medium yellow rectangle,hg47,25,True,False,True,0.7246376811594203,0.685901249256395,0.8701298701298701,0.8780487804878049,True
+159,4005,(same shape as one of the largest) or blue,False,80,25,1,18,5,0.9976698812678252,"""λx.apply7(not,apply1(compose11(compose8(and,small),yellow),x.o))""
+",not (yellow and small),"def is_rule(obj):
+    return not (obj.yellow and obj.small)",medium blue rectangle,hg47,25,True,False,True,0.7246376811594203,0.685901249256395,0.8701298701298701,0.8780487804878049,True
+160,4006,(same shape as one of the largest) or blue,False,81,25,1,16,7,0.9847915108879306,"""λx.apply7(not,apply1(compose11(compose8(and,small),yellow),x.o))""
+",not (yellow and small),"def is_rule(obj):
+    return not (obj.yellow and obj.small)",small blue circle,hg47,25,True,False,True,0.7246376811594203,0.685901249256395,0.8701298701298701,0.8780487804878049,True
+161,6729,exactly one blue object in the set,False,70,25,1,15,7,0.7251896363346759,"""λx.apply7(not,apply1(green,iota(filter(blue, x.s))))""
+",the uniquely blue element in the set is not green,"def is_rule(obj):
+    return np.sum([x.blue for x in obj.current_set.objs]) == 1",medium green triangle,hg103,25,True,False,True,0.562200956937799,0.5496340776881216,1.0,1.0,True
+162,6730,exactly one blue object in the set,False,71,25,1,14,8,0.6456195822260042,"""λx.apply7(not,apply1(green,iota(filter(blue, x.s))))""
+",the uniquely blue element in the set is not green,"def is_rule(obj):
+    return np.sum([x.blue for x in obj.current_set.objs]) == 1",medium blue triangle,hg103,25,True,False,True,0.562200956937799,0.5496340776881216,1.0,1.0,True
+163,6731,exactly one blue object in the set,False,72,25,1,13,9,0.7096093655189861,"""λx.apply7(not,apply1(green,iota(filter(blue, x.s))))""
+",the uniquely blue element in the set is not green,"def is_rule(obj):
+    return np.sum([x.blue for x in obj.current_set.objs]) == 1",medium yellow rectangle,hg103,25,True,False,True,0.562200956937799,0.5496340776881216,1.0,1.0,True
+164,2238,all other objects of the same shape are blue,False,61,25,1,21,4,0.5431948325613121,"""λx.apply7(not,apply1(green,x.o))""
+",not green,"def is_rule(obj):
+    return not obj.green",large green triangle,hg108,25,True,False,False,0.6352941176470588,0.5371900826446281,0.6229508196721312,0.5909090909090909,False
+165,2239,all other objects of the same shape are blue,False,62,25,0,10,15,0.4833270354946535,"""λx.apply7(not,apply1(green,x.o))""
+",not green,"def is_rule(obj):
+    return not obj.green",large yellow rectangle,hg108,25,False,False,True,0.6352941176470588,0.5371900826446281,0.6229508196721312,0.5909090909090909,False
+166,2240,all other objects of the same shape are blue,False,63,25,0,12,13,0.5012708735345086,"""λx.apply7(not,apply1(green,x.o))""
+",not green,"def is_rule(obj):
+    return not obj.green",small green rectangle,hg108,25,True,False,False,0.6352941176470588,0.5371900826446281,0.6229508196721312,0.5909090909090909,False
+167,2241,all other objects of the same shape are blue,False,64,25,0,6,19,0.5545012729864993,"""λx.apply7(not,apply1(green,x.o))""
+",not green,"def is_rule(obj):
+    return not obj.green",small yellow rectangle,hg108,25,True,False,True,0.6352941176470588,0.5371900826446281,0.6229508196721312,0.5909090909090909,True
+168,2242,all other objects of the same shape are blue,False,65,25,1,19,6,0.746755433290673,"""λx.apply7(not,apply1(green,x.o))""
+",not green,"def is_rule(obj):
+    return not obj.green",large green circle,hg108,25,True,False,False,0.6352941176470588,0.5371900826446281,0.6229508196721312,0.5909090909090909,False
+169,5302,green or same shape as a blue object,False,71,25,1,20,1,0.9733300208243918,"""λx.apply7(not,apply1(yellow,x.o))""
+",not yellow,"def is_rule(obj):
+    return not obj.yellow",large green circle,hg41,25,True,False,True,0.8226774810801514,0.7072621504972789,0.8873239436619719,0.8904109589041096,True
+170,5303,green or same shape as a blue object,False,72,25,1,19,2,0.9917675542277492,"""λx.apply7(not,apply1(yellow,x.o))""
+",not yellow,"def is_rule(obj):
+    return not obj.yellow",large blue rectangle,hg41,25,True,False,True,0.8226774810801514,0.7072621504972789,0.8873239436619719,0.8904109589041096,True
+171,8458,blue or same shape as another object,False,62,25,1,17,5,0.4644404109001243,"""λx.apply7(not,apply1(yellow,x.o))""
+",not yellow,"def is_rule(obj):
+    return not obj.yellow",medium yellow circle,hg61,25,False,True,False,0.6844919786096256,0.625,0.7741935483870968,0.765625,True
+172,8459,blue or same shape as another object,False,63,25,1,18,4,0.8977066687168644,"""λx.apply7(not,apply1(yellow,x.o))""
+",not yellow,"def is_rule(obj):
+    return not obj.yellow",medium blue circle,hg61,25,True,True,True,0.6844919786096256,0.625,0.7741935483870968,0.765625,True
+173,4991,blue or (same color as all other objects of the same shape),False,75,25,0,10,12,0.7059425049345691,"""λx.apply7(not,apply1(yellow,x.o))""
+",not yellow,"def is_rule(obj):
+    return not obj.yellow",medium green triangle,hg67,25,True,False,True,0.6295454545454544,0.5353308764621054,0.7066666666666667,0.6835443037974683,True
+174,4992,blue or (same color as all other objects of the same shape),False,76,25,0,12,10,0.6752754217195616,"""λx.apply7(not,apply1(yellow,x.o))""
+",not yellow,"def is_rule(obj):
+    return not obj.yellow",large green triangle,hg67,25,True,False,True,0.6295454545454544,0.5353308764621054,0.7066666666666667,0.6835443037974683,True
+175,4993,blue or (same color as all other objects of the same shape),False,77,25,1,17,5,0.3840967780586197,"""λx.apply7(not,apply1(yellow,x.o))""
+",not yellow,"def is_rule(obj):
+    return not obj.yellow",large yellow rectangle,hg67,25,False,False,False,0.6295454545454544,0.5353308764621054,0.7066666666666667,0.6835443037974683,True
+176,4994,blue or (same color as all other objects of the same shape),False,78,25,0,15,7,0.2763159666284309,"""λx.apply7(not,apply1(yellow,x.o))""
+",not yellow,"def is_rule(obj):
+    return not obj.yellow",large yellow triangle,hg67,25,False,False,False,0.6295454545454544,0.5353308764621054,0.7066666666666667,0.6835443037974683,True
+177,2947,one of the largest of its shape,False,78,25,1,22,1,0.9966372112265844,"""λx.apply7(not,exists(apply2(size-gt,x.o), filter(apply2(same_shape,x.o), x.s)))""
+",no object of the same shape is larger than this object,"def is_rule(obj):
+    return not np.any([x.shape == obj.shape and x.size_num > obj.size_num for x in obj.current_set.objs])",large blue triangle,hg28,25,True,False,True,0.8021739130434782,0.5353308764621054,1.0,1.0,True
+178,6658,larger than or equal-sized with all objects,False,69,25,1,16,7,0.5787682246748318,"""λx.apply7(not,exists(apply2(size-gt,x.o), x.s))""
+",no object is larger than this object,"def is_rule(obj):
+    return not np.any([x.size_num > obj.size_num for x in obj.current_set.objs])",small yellow rectangle,hg32,25,True,False,True,0.8657407407407408,0.5004081632653061,1.0,1.0,True
+179,5913,same shape as one of the largest,False,86,25,0,4,19,0.1893263040658439,"""λx.apply7(not,exists(apply2(size-gt,x.o), x.s))""
+",no object is larger than this object,"def is_rule(obj):
+    return not np.any([x.size_num > obj.size_num for x in obj.current_set.objs])",medium green circle,hg45,25,False,False,False,0.6937618147448016,0.5506198347107438,0.7906976744186046,0.7954545454545454,True
+180,5914,same shape as one of the largest,False,87,25,1,18,5,0.9884080338042622,"""λx.apply7(not,exists(apply2(size-gt,x.o), x.s))""
+",no object is larger than this object,"def is_rule(obj):
+    return not np.any([x.size_num > obj.size_num for x in obj.current_set.objs])",large blue rectangle,hg45,25,True,False,True,0.6937618147448016,0.5506198347107438,0.7906976744186046,0.7954545454545454,True
+181,3390,at least one other object of the same shape is the same color,False,85,25,0,4,19,0.0055206403427519,"""λx.apply7(not,exists(apply3(compose3(not,same_color),x.o), filter(apply2(same_shape,x.o), x.s)))""
+",there does not exist an object of the same shape but not of the same color,"def is_rule(obj):
+    return np.all([not ((x.shape == obj.shape) and (x.color != obj.color)) for x in obj.current_set.objs])",small green circle,hg111,25,False,False,False,0.6559546313799621,0.5000631233430123,1.0,1.0,True
+182,3391,at least one other object of the same shape is the same color,False,86,25,0,5,18,0.0058864792916892,"""λx.apply7(not,exists(apply3(compose3(not,same_color),x.o), filter(apply2(same_shape,x.o), x.s)))""
+",there does not exist an object of the same shape but not of the same color,"def is_rule(obj):
+    return np.all([not ((x.shape == obj.shape) and (x.color != obj.color)) for x in obj.current_set.objs])",small blue circle,hg111,25,False,False,False,0.6559546313799621,0.5000631233430123,1.0,1.0,True
+183,3392,at least one other object of the same shape is the same color,False,87,25,0,13,10,0.0251981737241067,"""λx.apply7(not,exists(apply3(compose3(not,same_color),x.o), filter(apply2(same_shape,x.o), x.s)))""
+",there does not exist an object of the same shape but not of the same color,"def is_rule(obj):
+    return np.all([not ((x.shape == obj.shape) and (x.color != obj.color)) for x in obj.current_set.objs])",medium blue triangle,hg111,25,False,False,False,0.6559546313799621,0.5000631233430123,1.0,1.0,True
+184,3393,at least one other object of the same shape is the same color,False,88,25,0,9,14,0.0220023694375868,"""λx.apply7(not,exists(apply3(compose3(not,same_color),x.o), filter(apply2(same_shape,x.o), x.s)))""
+",there does not exist an object of the same shape but not of the same color,"def is_rule(obj):
+    return np.all([not ((x.shape == obj.shape) and (x.color != obj.color)) for x in obj.current_set.objs])",small green triangle,hg111,25,False,False,False,0.6559546313799621,0.5000631233430123,1.0,1.0,True
+185,1257,same color as all other objects of the same shape,False,60,25,0,11,12,0.0195750305657611,"""λx.apply7(not,exists(apply3(compose3(not,same_color),x.o), filter(apply2(same_shape,x.o), x.s)))""
+",there does not exist an object of the same shape but not of the same color,"def is_rule(obj):
+    return np.all([not ((x.shape == obj.shape) and (x.color != obj.color)) for x in obj.current_set.objs])",large green triangle,hg66,25,False,False,False,0.680306905370844,0.5078125,1.0,1.0,True
+186,1258,same color as all other objects of the same shape,False,61,25,1,19,4,0.9877485184078978,"""λx.apply7(not,exists(apply3(compose3(not,same_color),x.o), filter(apply2(same_shape,x.o), x.s)))""
+",there does not exist an object of the same shape but not of the same color,"def is_rule(obj):
+    return np.all([not ((x.shape == obj.shape) and (x.color != obj.color)) for x in obj.current_set.objs])",large yellow rectangle,hg66,25,True,False,True,0.680306905370844,0.5078125,1.0,1.0,True
+187,1259,same color as all other objects of the same shape,False,62,25,1,20,3,0.9800864587408568,"""λx.apply7(not,exists(apply3(compose3(not,same_color),x.o), filter(apply2(same_shape,x.o), x.s)))""
+",there does not exist an object of the same shape but not of the same color,"def is_rule(obj):
+    return np.all([not ((x.shape == obj.shape) and (x.color != obj.color)) for x in obj.current_set.objs])",large blue circle,hg66,25,True,False,True,0.680306905370844,0.5078125,1.0,1.0,True
+188,1260,same color as all other objects of the same shape,False,63,25,0,10,13,0.0309326154006157,"""λx.apply7(not,exists(apply3(compose3(not,same_color),x.o), filter(apply2(same_shape,x.o), x.s)))""
+",there does not exist an object of the same shape but not of the same color,"def is_rule(obj):
+    return np.all([not ((x.shape == obj.shape) and (x.color != obj.color)) for x in obj.current_set.objs])",medium blue triangle,hg66,25,False,False,False,0.680306905370844,0.5078125,1.0,1.0,True
+189,1335,(circle) or (same color as all other objects of the same shape),False,74,25,1,20,5,0.9875595204250658,"""λx.apply7(not,exists(apply3(compose3(not,same_color),x.o), filter(apply2(same_shape,x.o), x.s)))""
+",there does not exist an object of the same shape but not of the same color,"def is_rule(obj):
+    return np.all([not ((x.shape == obj.shape) and (x.color != obj.color)) for x in obj.current_set.objs])",medium blue circle,hg68,25,True,False,True,0.556,0.5210387902695595,0.918918918918919,0.9230769230769231,True
+190,1336,(circle) or (same color as all other objects of the same shape),False,75,25,1,22,3,0.856911288271931,"""λx.apply7(not,exists(apply3(compose3(not,same_color),x.o), filter(apply2(same_shape,x.o), x.s)))""
+",there does not exist an object of the same shape but not of the same color,"def is_rule(obj):
+    return np.all([not ((x.shape == obj.shape) and (x.color != obj.color)) for x in obj.current_set.objs])",medium green rectangle,hg68,25,True,False,True,0.556,0.5210387902695595,0.918918918918919,0.9230769230769231,True
+191,1337,(circle) or (same color as all other objects of the same shape),False,76,25,0,17,8,0.1495330772924035,"""λx.apply7(not,exists(apply3(compose3(not,same_color),x.o), filter(apply2(same_shape,x.o), x.s)))""
+",there does not exist an object of the same shape but not of the same color,"def is_rule(obj):
+    return np.all([not ((x.shape == obj.shape) and (x.color != obj.color)) for x in obj.current_set.objs])",small green triangle,hg68,25,False,False,False,0.556,0.5210387902695595,0.918918918918919,0.9230769230769231,True
+192,1338,(circle) or (same color as all other objects of the same shape),False,77,25,0,18,7,0.2502189922465732,"""λx.apply7(not,exists(apply3(compose3(not,same_color),x.o), filter(apply2(same_shape,x.o), x.s)))""
+",there does not exist an object of the same shape but not of the same color,"def is_rule(obj):
+    return np.all([not ((x.shape == obj.shape) and (x.color != obj.color)) for x in obj.current_set.objs])",large blue triangle,hg68,25,False,False,False,0.556,0.5210387902695595,0.918918918918919,0.9230769230769231,True
+193,7024,same color as all other objects of the same shape,False,69,25,1,19,3,0.9923060043179248,"""λx.apply7(not,exists(apply3(compose3(not,same_color),x.o), filter(apply2(same_shape,x.o), x.s)))""
+",there does not exist an object of the same shape but not of the same color,"def is_rule(obj):
+    return np.all([not ((x.shape == obj.shape) and (x.color != obj.color)) for x in obj.current_set.objs])",medium green circle,hg70,25,True,False,True,0.7070707070707072,0.5493877551020409,1.0,1.0,True
+194,3304,one of the smallest of objects who share a shape with another object,False,69,25,1,21,0,0.982282706798742,"""λx.apply7(not,exists(apply3(size-gt,x.o), filter(apply2(same_shape,x.o), x.s)))""
+",there is no object of the same shape that is smaller,"def is_rule(obj):
+    return np.all([not ((x.shape == obj.shape) and (x.size_num < obj.size_num)) for x in obj.current_set.objs])",large yellow rectangle,hg100,25,True,False,True,0.8386243386243386,0.6473469387755102,1.0,1.0,True
+195,8234,same shape as a uniquely smallest object,False,69,25,1,18,4,0.9278191941784826,"""λx.apply7(not,exists(apply3(size-gt,x.o), filter(apply2(same_shape,x.o), x.s)))""
+",there is no object of the same shape that is smaller,"def is_rule(obj):
+    return np.all([not ((x.shape == obj.shape) and (x.size_num < obj.size_num)) for x in obj.current_set.objs])",medium green circle,hg101,25,True,False,True,0.6666666666666667,0.5493877551020409,0.9130434782608695,0.9142857142857143,True
+196,5440,one of the smallest,False,64,25,1,19,2,0.6123238305547147,"""λx.apply7(not,exists(apply3(size-gt,x.o), x.s))""
+",not larger than an object,"def is_rule(obj):
+    return not np.any([obj.size_num > x.size_num for x in obj.current_set.objs])",medium blue rectangle,hg99,25,True,False,True,0.9103641456582632,0.5010650887573964,1.0,1.0,True
+197,1407,every other object   shares at least one feature  with this object,False,68,25,0,5,17,0.0762014608407071,"""λx.apply7(not,exists(compose2(not,apply3(same_size,x.o)), filter(compose11(compose8(iff,apply2(same_color,x.o)),apply2(same_shape,x.o)), x.s)))""
+",there is not an object that is (not the same size and (the same color iff same shape)),"def is_rule(obj):
+    return not np.any([obj.size != x.size and ((obj.color == x.color and obj.shape == x.shape) or (obj.color != x.color and obj.shape != x.shape)) for x in obj.current_set.objs])",small yellow triangle,hg76,25,False,False,False,0.6244019138755981,0.5413773691124039,0.9852941176470589,0.9863013698630136,True
+198,1408,every other object   shares at least one feature  with this object,False,69,25,0,3,19,0.0482946448618122,"""λx.apply7(not,exists(compose2(not,apply3(same_size,x.o)), filter(compose11(compose8(iff,apply2(same_color,x.o)),apply2(same_shape,x.o)), x.s)))""
+",there is not an object that is (not the same size and (the same color iff same shape)),"def is_rule(obj):
+    return not np.any([obj.size != x.size and ((obj.color == x.color and obj.shape == x.shape) or (obj.color != x.color and obj.shape != x.shape)) for x in obj.current_set.objs])",medium yellow circle,hg76,25,False,False,False,0.6244019138755981,0.5413773691124039,0.9852941176470589,0.9863013698630136,True
+199,1409,every other object   shares at least one feature  with this object,False,70,25,0,4,18,0.12051668899187,"""λx.apply7(not,exists(compose2(not,apply3(same_size,x.o)), filter(compose11(compose8(iff,apply2(same_color,x.o)),apply2(same_shape,x.o)), x.s)))""
+",there is not an object that is (not the same size and (the same color iff same shape)),"def is_rule(obj):
+    return not np.any([obj.size != x.size and ((obj.color == x.color and obj.shape == x.shape) or (obj.color != x.color and obj.shape != x.shape)) for x in obj.current_set.objs])",large blue triangle,hg76,25,False,False,False,0.6244019138755981,0.5413773691124039,0.9852941176470589,0.9863013698630136,True
+200,1410,every other object   shares at least one feature  with this object,False,71,25,0,3,19,0.0270078797345831,"""λx.apply7(not,exists(compose2(not,apply3(same_size,x.o)), filter(compose11(compose8(iff,apply2(same_color,x.o)),apply2(same_shape,x.o)), x.s)))""
+",there is not an object that is (not the same size and (the same color iff same shape)),"def is_rule(obj):
+    return not np.any([obj.size != x.size and ((obj.color == x.color and obj.shape == x.shape) or (obj.color != x.color and obj.shape != x.shape)) for x in obj.current_set.objs])",medium blue rectangle,hg76,25,False,False,False,0.6244019138755981,0.5413773691124039,0.9852941176470589,0.9863013698630136,True
+201,1411,every other object   shares at least one feature  with this object,False,72,25,0,3,19,0.1001340658450544,"""λx.apply7(not,exists(compose2(not,apply3(same_size,x.o)), filter(compose11(compose8(iff,apply2(same_color,x.o)),apply2(same_shape,x.o)), x.s)))""
+",there is not an object that is (not the same size and (the same color iff same shape)),"def is_rule(obj):
+    return not np.any([obj.size != x.size and ((obj.color == x.color and obj.shape == x.shape) or (obj.color != x.color and obj.shape != x.shape)) for x in obj.current_set.objs])",large green rectangle,hg76,25,False,False,False,0.6244019138755981,0.5413773691124039,0.9852941176470589,0.9863013698630136,True
+202,2468,exists another object of the same shape that is blue,False,77,25,0,11,11,0.0078200136849773,"""λx.exists(apply2(compose3(not,same_color),x.o), filter(compose11(compose8(and,blue),apply2(same_shape,x.o)), x.s))""
+",there is a blue object of the same shape that is not the same color,"def is_rule(obj):
+    return np.any([x.blue and (x.color != obj.color) and (x.shape == obj.shape)  for x in obj.current_set.objs])",large yellow triangle,hg89,25,False,True,False,0.761904761904762,0.654320987654321,1.0,1.0,True
+203,2469,exists another object of the same shape that is blue,False,78,25,0,1,21,0.0045876040691155,"""λx.exists(apply2(compose3(not,same_color),x.o), filter(compose11(compose8(and,blue),apply2(same_shape,x.o)), x.s))""
+",there is a blue object of the same shape that is not the same color,"def is_rule(obj):
+    return np.any([x.blue and (x.color != obj.color) and (x.shape == obj.shape)  for x in obj.current_set.objs])",small green rectangle,hg89,25,False,True,False,0.761904761904762,0.654320987654321,1.0,1.0,True
+204,2470,exists another object of the same shape that is blue,False,79,25,0,3,19,0.0042033857187107,"""λx.exists(apply2(compose3(not,same_color),x.o), filter(compose11(compose8(and,blue),apply2(same_shape,x.o)), x.s))""
+",there is a blue object of the same shape that is not the same color,"def is_rule(obj):
+    return np.any([x.blue and (x.color != obj.color) and (x.shape == obj.shape)  for x in obj.current_set.objs])",medium green rectangle,hg89,25,False,True,False,0.761904761904762,0.654320987654321,1.0,1.0,True
+205,2471,exists another object of the same shape that is blue,False,80,25,0,10,12,0.0154735173015296,"""λx.exists(apply2(compose3(not,same_color),x.o), filter(compose11(compose8(and,blue),apply2(same_shape,x.o)), x.s))""
+",there is a blue object of the same shape that is not the same color,"def is_rule(obj):
+    return np.any([x.blue and (x.color != obj.color) and (x.shape == obj.shape)  for x in obj.current_set.objs])",small green triangle,hg89,25,False,True,False,0.761904761904762,0.654320987654321,1.0,1.0,True
+206,1192,exactly one other object is the same color,False,71,25,0,9,15,0.9595391852698184,"""λx.exists(apply2(same_color,x.o), filter(compose11(compose7(compose6(or,not),apply2(same_size,x.o)),apply2(same_shape,x.o)), x.s))""
+",there is an object of the same color that is not the same size or not the same shape,"def is_rule(obj):
+    return np.any([x.color == obj.color and ((x.size != obj.size) or (x.shape != obj.shape))  for x in obj.current_set.objs])",large yellow rectangle,hg104,25,True,False,True,0.7979166666666667,0.5013850415512465,0.9154929577464789,0.881578947368421,True
+207,1193,exactly one other object is the same color,False,72,25,0,5,19,0.075285466686978,"""λx.exists(apply2(same_color,x.o), filter(compose11(compose7(compose6(or,not),apply2(same_size,x.o)),apply2(same_shape,x.o)), x.s))""
+",there is an object of the same color that is not the same size or not the same shape,"def is_rule(obj):
+    return np.any([x.color == obj.color and ((x.size != obj.size) or (x.shape != obj.shape))  for x in obj.current_set.objs])",medium blue circle,hg104,25,False,False,False,0.7979166666666667,0.5013850415512465,0.9154929577464789,0.881578947368421,True
+208,1194,exactly one other object is the same color,False,73,25,0,6,18,0.9612917926478984,"""λx.exists(apply2(same_color,x.o), filter(compose11(compose7(compose6(or,not),apply2(same_size,x.o)),apply2(same_shape,x.o)), x.s))""
+",there is an object of the same color that is not the same size or not the same shape,"def is_rule(obj):
+    return np.any([x.color == obj.color and ((x.size != obj.size) or (x.shape != obj.shape))  for x in obj.current_set.objs])",small yellow rectangle,hg104,25,True,False,True,0.7979166666666667,0.5013850415512465,0.9154929577464789,0.881578947368421,True
+209,1195,exactly one other object is the same color,False,74,25,0,8,16,0.0819177281612155,"""λx.exists(apply2(same_color,x.o), filter(compose11(compose7(compose6(or,not),apply2(same_size,x.o)),apply2(same_shape,x.o)), x.s))""
+",there is an object of the same color that is not the same size or not the same shape,"def is_rule(obj):
+    return np.any([x.color == obj.color and ((x.size != obj.size) or (x.shape != obj.shape))  for x in obj.current_set.objs])",medium green circle,hg104,25,False,False,False,0.7979166666666667,0.5013850415512465,0.9154929577464789,0.881578947368421,True
+210,1196,exactly one other object is the same color,False,75,25,0,7,17,0.9742169933288096,"""λx.exists(apply2(same_color,x.o), filter(compose11(compose7(compose6(or,not),apply2(same_size,x.o)),apply2(same_shape,x.o)), x.s))""
+",there is an object of the same color that is not the same size or not the same shape,"def is_rule(obj):
+    return np.any([x.color == obj.color and ((x.size != obj.size) or (x.shape != obj.shape))  for x in obj.current_set.objs])",medium yellow rectangle,hg104,25,True,False,True,0.7979166666666667,0.5013850415512465,0.9154929577464789,0.881578947368421,True
+211,6514,same color as another object,False,76,25,0,4,20,0.0079862025651209,"""λx.exists(apply2(same_color,x.o), filter(compose11(compose7(compose6(or,not),apply2(same_size,x.o)),apply2(same_shape,x.o)), x.s))""
+",there is an object of the same color that is not the same size or not the same shape,"def is_rule(obj):
+    return np.any([x.color == obj.color and ((x.size != obj.size) or (x.shape != obj.shape))  for x in obj.current_set.objs])",medium green triangle,hg63,25,False,False,False,0.8580000000000001,0.5041322314049587,1.0,1.0,True
+212,812,larger than some other object,False,63,25,0,2,21,0.0035033587674888,"""λx.exists(apply3(size-gt,x.o), x.s)""
+",larger than an object,"def is_rule(obj):
+    return np.any([obj.size_num > x.size_num for x in obj.current_set.objs])",small blue circle,hg35,25,False,False,False,0.9057971014492752,0.500432525951557,1.0,1.0,True
+213,813,larger than some other object,False,64,25,1,21,2,0.9889904639003362,"""λx.exists(apply3(size-gt,x.o), x.s)""
+",larger than an object,"def is_rule(obj):
+    return np.any([obj.size_num > x.size_num for x in obj.current_set.objs])",medium yellow triangle,hg35,25,True,False,True,0.9057971014492752,0.500432525951557,1.0,1.0,True
+214,814,larger than some other object,False,65,25,1,18,5,0.9865026865767276,"""λx.exists(apply3(size-gt,x.o), x.s)""
+",larger than an object,"def is_rule(obj):
+    return np.any([obj.size_num > x.size_num for x in obj.current_set.objs])",medium green rectangle,hg35,25,True,False,True,0.9057971014492752,0.500432525951557,1.0,1.0,True
+215,815,larger than some other object,False,66,25,1,20,3,0.9878959847261513,"""λx.exists(apply3(size-gt,x.o), x.s)""
+",larger than an object,"def is_rule(obj):
+    return np.any([obj.size_num > x.size_num for x in obj.current_set.objs])",medium yellow rectangle,hg35,25,True,False,True,0.9057971014492752,0.500432525951557,1.0,1.0,True
+216,816,larger than some other object,False,67,25,0,0,23,0.0022323055412698,"""λx.exists(apply3(size-gt,x.o), x.s)""
+",larger than an object,"def is_rule(obj):
+    return np.any([obj.size_num > x.size_num for x in obj.current_set.objs])",small yellow circle,hg35,25,False,False,False,0.9057971014492752,0.500432525951557,1.0,1.0,True
+217,3672,at least one other object of the same shape is not the same color,False,69,25,1,24,1,0.989761038504298,"""λx.exists(compose11(compose7(and,compose2(not,apply2(same_color,x.o))),apply2(same_shape,x.o)), x.s)""
+",there is an object of the same shape but not the same color,"def is_rule(obj):
+    return np.any([x.shape == obj.shape and x.color != obj.color for x in obj.current_set.objs])",small yellow circle,hg112,25,True,False,True,0.8042105263157893,0.5138888888888888,0.9710144927536232,0.9722222222222222,True
+218,3673,at least one other object of the same shape is not the same color,False,70,25,1,24,1,0.9877987851062926,"""λx.exists(compose11(compose7(and,compose2(not,apply2(same_color,x.o))),apply2(same_shape,x.o)), x.s)""
+",there is an object of the same shape but not the same color,"def is_rule(obj):
+    return np.any([x.shape == obj.shape and x.color != obj.color for x in obj.current_set.objs])",large blue circle,hg112,25,True,False,True,0.8042105263157893,0.5138888888888888,0.9710144927536232,0.9722222222222222,True
+219,3674,at least one other object of the same shape is not the same color,False,71,25,0,0,25,0.0031596766215216,"""λx.exists(compose11(compose7(and,compose2(not,apply2(same_color,x.o))),apply2(same_shape,x.o)), x.s)""
+",there is an object of the same shape but not the same color,"def is_rule(obj):
+    return np.any([x.shape == obj.shape and x.color != obj.color for x in obj.current_set.objs])",medium yellow rectangle,hg112,25,False,False,False,0.8042105263157893,0.5138888888888888,0.9710144927536232,0.9722222222222222,True
+220,7773,same shape as one of the largest that is not itself,False,71,25,0,9,13,0.1112348099587734,"""λx.exists(compose11(compose7(and,compose2(not,apply2(same_color,x.o))),apply2(same_shape,x.o)), x.s)""
+",there is an object of the same shape but not the same color,"def is_rule(obj):
+    return np.any([x.shape == obj.shape and x.color != obj.color for x in obj.current_set.objs])",large yellow circle,hg49,25,False,False,False,0.6267942583732057,0.5617238860482103,0.8028169014084507,0.8108108108108109,True
+221,7774,same shape as one of the largest that is not itself,False,72,25,0,9,13,0.0300091905721728,"""λx.exists(compose11(compose7(and,compose2(not,apply2(same_color,x.o))),apply2(same_shape,x.o)), x.s)""
+",there is an object of the same shape but not the same color,"def is_rule(obj):
+    return np.any([x.shape == obj.shape and x.color != obj.color for x in obj.current_set.objs])",large yellow rectangle,hg49,25,False,False,False,0.6267942583732057,0.5617238860482103,0.8028169014084507,0.8108108108108109,True
+222,7775,same shape as one of the largest that is not itself,False,73,25,0,6,16,0.0425204585159235,"""λx.exists(compose11(compose7(and,compose2(not,apply2(same_color,x.o))),apply2(same_shape,x.o)), x.s)""
+",there is an object of the same shape but not the same color,"def is_rule(obj):
+    return np.any([x.shape == obj.shape and x.color != obj.color for x in obj.current_set.objs])",medium green triangle,hg49,25,False,False,False,0.6267942583732057,0.5617238860482103,0.8028169014084507,0.8108108108108109,True
+223,8091,same size as a circular object,False,83,25,0,4,17,0.0024124304175074,"""λx.exists(compose11(compose8(and,apply2(same_size,x.o)),circle), x.s)""
+",same size as a circular object,"def is_rule(obj):
+    return np.any([x.circle and (obj.shape == x.size) for x in obj.current_set.objs])",large yellow triangle,hg88,25,False,True,False,0.6708074534161491,0.512654958677686,0.40963855421686746,0.42045454545454547,True
+224,8092,same size as a circular object,False,84,25,0,3,18,0.0021716109409908,"""λx.exists(compose11(compose8(and,apply2(same_size,x.o)),circle), x.s)""
+",same size as a circular object,"def is_rule(obj):
+    return np.any([x.circle and (obj.shape == x.size) for x in obj.current_set.objs])",medium yellow rectangle,hg88,25,False,True,False,0.6708074534161491,0.512654958677686,0.40963855421686746,0.42045454545454547,True
+225,8093,same size as a circular object,False,85,25,1,14,7,0.9800260681581676,"""λx.exists(compose11(compose8(and,apply2(same_size,x.o)),circle), x.s)""
+",same size as a circular object,"def is_rule(obj):
+    return np.any([x.circle and (obj.shape == x.size) for x in obj.current_set.objs])",small yellow rectangle,hg88,25,True,True,False,0.6708074534161491,0.512654958677686,0.40963855421686746,0.42045454545454547,False
+226,8094,same size as a circular object,False,86,25,1,15,6,0.9993814693391414,"""λx.exists(compose11(compose8(and,apply2(same_size,x.o)),circle), x.s)""
+",same size as a circular object,"def is_rule(obj):
+    return np.any([x.circle and (obj.shape == x.size) for x in obj.current_set.objs])",small blue circle,hg88,25,True,True,False,0.6708074534161491,0.512654958677686,0.40963855421686746,0.42045454545454547,False
+227,8095,same size as a circular object,False,87,25,0,7,14,0.0034319416064363,"""λx.exists(compose11(compose8(and,apply2(same_size,x.o)),circle), x.s)""
+",same size as a circular object,"def is_rule(obj):
+    return np.any([x.circle and (obj.shape == x.size) for x in obj.current_set.objs])",medium blue rectangle,hg88,25,False,True,False,0.6708074534161491,0.512654958677686,0.40963855421686746,0.42045454545454547,True
+228,2620,exactly one blue object that is the same shape,False,70,25,0,2,20,0.1439769269555881,"""λx.exists(compose11(compose8(and,blue),apply2(same_shape,x.o)), x.s)""
+",same shape as a blue object,"def is_rule(obj):
+    return np.any([x.blue and (obj.shape == x.shape) for x in obj.current_set.objs])",medium yellow circle,hg105,25,False,False,False,0.8253588516746411,0.5003858024691358,0.9428571428571428,0.9444444444444444,True
+229,2621,exactly one blue object that is the same shape,False,71,25,1,18,4,0.9243927410283276,"""λx.exists(compose11(compose8(and,blue),apply2(same_shape,x.o)), x.s)""
+",same shape as a blue object,"def is_rule(obj):
+    return np.any([x.blue and (obj.shape == x.shape) for x in obj.current_set.objs])",large blue triangle,hg105,25,True,False,True,0.8253588516746411,0.5003858024691358,0.9428571428571428,0.9444444444444444,True
+230,2174,exactly one blue object that is the same shape excluding this object,False,74,25,0,4,19,0.0244169407023946,"""λx.exists(compose11(compose8(and,blue),apply2(same_shape,x.o)), x.s)""
+",same shape as a blue object,"def is_rule(obj):
+    return np.any([x.blue and (obj.shape == x.shape) for x in obj.current_set.objs])",small yellow rectangle,hg107,25,False,False,False,0.7413043478260871,0.5304435823916344,0.972972972972973,0.974025974025974,True
+231,2175,exactly one blue object that is the same shape excluding this object,False,75,25,1,19,4,0.987134707109476,"""λx.exists(compose11(compose8(and,blue),apply2(same_shape,x.o)), x.s)""
+",same shape as a blue object,"def is_rule(obj):
+    return np.any([x.blue and (obj.shape == x.shape) for x in obj.current_set.objs])",small blue triangle,hg107,25,True,False,True,0.7413043478260871,0.5304435823916344,0.972972972972973,0.974025974025974,True
+232,2176,exactly one blue object that is the same shape excluding this object,False,76,25,1,20,3,0.9877610410318312,"""λx.exists(compose11(compose8(and,blue),apply2(same_shape,x.o)), x.s)""
+",same shape as a blue object,"def is_rule(obj):
+    return np.any([x.blue and (obj.shape == x.shape) for x in obj.current_set.objs])",large blue circle,hg107,25,True,False,True,0.7413043478260871,0.5304435823916344,0.972972972972973,0.974025974025974,True
+233,8005,larger than a blue object,False,69,25,0,2,19,0.0439180889921999,"""λx.exists(compose11(compose8(and,blue),apply3(size-gt,x.o)), x.s)""
+",larger than a blue object,"def is_rule(obj):
+    return np.any([x.blue and (obj.size_num > x.size_num) for x in obj.current_set.objs])",small blue rectangle,hg36,25,False,False,False,0.6390977443609023,0.6392746913580246,1.0,1.0,True
+234,8006,larger than a blue object,False,70,25,1,14,7,0.5886062000826087,"""λx.exists(compose11(compose8(and,blue),apply3(size-gt,x.o)), x.s)""
+",larger than a blue object,"def is_rule(obj):
+    return np.any([x.blue and (obj.size_num > x.size_num) for x in obj.current_set.objs])",large blue rectangle,hg36,25,True,False,True,0.6390977443609023,0.6392746913580246,1.0,1.0,True
+235,8007,larger than a blue object,False,71,25,1,8,13,0.6997548128914559,"""λx.exists(compose11(compose8(and,blue),apply3(size-gt,x.o)), x.s)""
+",larger than a blue object,"def is_rule(obj):
+    return np.any([x.blue and (obj.size_num > x.size_num) for x in obj.current_set.objs])",medium blue circle,hg36,25,True,False,True,0.6390977443609023,0.6392746913580246,1.0,1.0,True
+236,1944,same shape as another object,False,70,25,0,3,19,0.0029712351647503,"""λx.exists(compose11(compose8(compose6(or,not),apply2(same_color,x.o)),apply2(same_size,x.o)), filter(apply2(same_shape,x.o), x.s))""
+",there is an object of the same shape that is not the same size or not the same color,"def is_rule(obj):
+    return np.any([((x.color != obj.color) or (x.size != obj.size)) and (x.shape == obj.shape)  for x in obj.current_set.objs])",small green rectangle,hg59,25,False,False,False,0.8535353535353534,0.5167625471136679,1.0,1.0,True
+237,160,there is another object of the same shape<br>and another different object of the same color,False,87,25,1,14,9,0.6991188275692366,"""λx.exists(compose11(compose8(compose6(or,not),apply2(same_color,x.o)),apply2(same_size,x.o)), filter(apply2(same_shape,x.o), x.s))""
+",there is an object of the same shape that is not the same size or not the same color,"def is_rule(obj):
+    return np.any([((x.color != obj.color) or (x.size != obj.size)) and (x.shape == obj.shape)  for x in obj.current_set.objs])",large green rectangle,hg74,25,True,False,True,0.6847826086956521,0.5085066162570889,0.7931034482758621,0.782608695652174,True
+238,161,there is another object of the same shape<br>and another different object of the same color,False,88,25,1,16,7,0.6995440213920574,"""λx.exists(compose11(compose8(compose6(or,not),apply2(same_color,x.o)),apply2(same_size,x.o)), filter(apply2(same_shape,x.o), x.s))""
+",there is an object of the same shape that is not the same size or not the same color,"def is_rule(obj):
+    return np.any([((x.color != obj.color) or (x.size != obj.size)) and (x.shape == obj.shape)  for x in obj.current_set.objs])",large green circle,hg74,25,True,False,True,0.6847826086956521,0.5085066162570889,0.7931034482758621,0.782608695652174,True
+239,162,there is another object of the same shape<br>and another different object of the same color,False,89,25,0,6,17,0.657545051489592,"""λx.exists(compose11(compose8(compose6(or,not),apply2(same_color,x.o)),apply2(same_size,x.o)), filter(apply2(same_shape,x.o), x.s))""
+",there is an object of the same shape that is not the same size or not the same color,"def is_rule(obj):
+    return np.any([((x.color != obj.color) or (x.size != obj.size)) and (x.shape == obj.shape)  for x in obj.current_set.objs])",small yellow circle,hg74,25,True,False,True,0.6847826086956521,0.5085066162570889,0.7931034482758621,0.782608695652174,True
+240,163,there is another object of the same shape<br>and another different object of the same color,False,90,25,0,13,10,0.1197299774216844,"""λx.exists(compose11(compose8(compose6(or,not),apply2(same_color,x.o)),apply2(same_size,x.o)), filter(apply2(same_shape,x.o), x.s))""
+",there is an object of the same shape that is not the same size or not the same color,"def is_rule(obj):
+    return np.any([((x.color != obj.color) or (x.size != obj.size)) and (x.shape == obj.shape)  for x in obj.current_set.objs])",large green triangle,hg74,25,False,False,False,0.6847826086956521,0.5085066162570889,0.7931034482758621,0.782608695652174,True
+241,164,there is another object of the same shape<br>and another different object of the same color,False,91,25,0,2,21,0.664097716983747,"""λx.exists(compose11(compose8(compose6(or,not),apply2(same_color,x.o)),apply2(same_size,x.o)), filter(apply2(same_shape,x.o), x.s))""
+",there is an object of the same shape that is not the same size or not the same color,"def is_rule(obj):
+    return np.any([((x.color != obj.color) or (x.size != obj.size)) and (x.shape == obj.shape)  for x in obj.current_set.objs])",small blue rectangle,hg74,25,True,False,True,0.6847826086956521,0.5085066162570889,0.7931034482758621,0.782608695652174,True
+242,4152,there is another object of the same shape<br>that is the same color as another different object,False,70,25,0,7,18,0.1148602450147109,"""λx.exists(compose11(compose8(compose6(or,not),apply2(same_color,x.o)),apply2(same_size,x.o)), filter(apply2(same_shape,x.o), x.s))""
+",there is an object of the same shape that is not the same size or not the same color,"def is_rule(obj):
+    return np.any([((x.color != obj.color) or (x.size != obj.size)) and (x.shape == obj.shape)  for x in obj.current_set.objs])",large yellow circle,hg75,25,False,True,False,0.6484210526315789,0.5061728395061729,0.8857142857142857,0.8888888888888888,True
+243,4153,there is another object of the same shape<br>that is the same color as another different object,False,71,25,0,7,18,0.1148731875949806,"""λx.exists(compose11(compose8(compose6(or,not),apply2(same_color,x.o)),apply2(same_size,x.o)), filter(apply2(same_shape,x.o), x.s))""
+",there is an object of the same shape that is not the same size or not the same color,"def is_rule(obj):
+    return np.any([((x.color != obj.color) or (x.size != obj.size)) and (x.shape == obj.shape)  for x in obj.current_set.objs])",medium yellow rectangle,hg75,25,False,True,False,0.6484210526315789,0.5061728395061729,0.8857142857142857,0.8888888888888888,True
+244,6802,same shape as another object that is blue or green,False,70,25,0,4,16,0.0853986744008352,"""λx.exists(compose11(compose8(compose6(or,not),apply2(same_color,x.o)),apply2(same_size,x.o)), filter(apply2(same_shape,x.o), x.s))""
+",there is an object of the same shape that is not the same size or not the same color,"def is_rule(obj):
+    return np.any([((x.color != obj.color) or (x.size != obj.size)) and (x.shape == obj.shape)  for x in obj.current_set.objs])",large blue rectangle,hg90,25,False,False,False,0.6340852130325814,0.5189043209876543,0.8857142857142857,0.8888888888888888,True
+245,6803,same shape as another object that is blue or green,False,71,25,0,3,17,0.0388870702111034,"""λx.exists(compose11(compose8(compose6(or,not),apply2(same_color,x.o)),apply2(same_size,x.o)), filter(apply2(same_shape,x.o), x.s))""
+",there is an object of the same shape that is not the same size or not the same color,"def is_rule(obj):
+    return np.any([((x.color != obj.color) or (x.size != obj.size)) and (x.shape == obj.shape)  for x in obj.current_set.objs])",large yellow triangle,hg90,25,False,False,False,0.6340852130325814,0.5189043209876543,0.8857142857142857,0.8888888888888888,True
+246,4518,same size as another object,False,73,25,0,9,15,0.1007085956393893,"""λx.exists(compose11(compose8(or,compose11(compose7(iff,apply2(same_color,x.o)),apply2(size-gt,x.o))),compose2(not,apply2(same_shape,x.o))), filter(apply2(same_size,x.o), x.s))""
+",there is an object of the same size that is ((the same color iff larger than object) or not the same shape),"def is_rule(obj):
+    return np.any([obj.size == x.size and ((obj.color != x.color) or (obj.shape != x.shape))  for x in obj.current_set.objs])",small yellow triangle,hg60,25,False,False,False,0.8245614035087719,0.5000888888888888,1.0,1.0,True
+247,4519,same size as another object,False,74,25,0,9,15,0.1186590657224542,"""λx.exists(compose11(compose8(or,compose11(compose7(iff,apply2(same_color,x.o)),apply2(size-gt,x.o))),compose2(not,apply2(same_shape,x.o))), filter(apply2(same_size,x.o), x.s))""
+",there is an object of the same size that is ((the same color iff larger than object) or not the same shape),"def is_rule(obj):
+    return np.any([obj.size == x.size and ((obj.color != x.color) or (obj.shape != x.shape))  for x in obj.current_set.objs])",large yellow triangle,hg60,25,False,False,False,0.8245614035087719,0.5000888888888888,1.0,1.0,True
+248,2022,there is a triangle in the set,False,77,25,1,21,0,0.9895279444380094,"""λx.exists(triangle, x.s)""
+",triangle,"def is_rule(obj):
+    return obj.triangle",medium yellow rectangle,hg17,25,True,False,False,0.8299319727891156,0.6043286084438348,0.5714285714285714,0.5679012345679012,False
+249,2023,there is a triangle in the set,False,78,25,1,20,1,0.9887534905199118,"""λx.exists(triangle, x.s)""
+",triangle,"def is_rule(obj):
+    return obj.triangle",small green circle,hg17,25,True,False,False,0.8299319727891156,0.6043286084438348,0.5714285714285714,0.5679012345679012,False
+250,2024,there is a triangle in the set,False,79,25,1,21,0,0.9899416709268962,"""λx.exists(triangle, x.s)""
+",triangle,"def is_rule(obj):
+    return obj.triangle",medium yellow triangle,hg17,25,True,False,True,0.8299319727891156,0.6043286084438348,0.5714285714285714,0.5679012345679012,True
+251,2025,there is a triangle in the set,False,80,25,1,20,1,0.989445022059499,"""λx.exists(triangle, x.s)""
+",triangle,"def is_rule(obj):
+    return obj.triangle",small green triangle,hg17,25,True,False,True,0.8299319727891156,0.6043286084438348,0.5714285714285714,0.5679012345679012,True
